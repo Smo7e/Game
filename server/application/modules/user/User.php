@@ -1,14 +1,15 @@
 <?php
 class User
 {
-    function __constructor($bd)
+    function __construct($db)
     {
-        $this->$bd = $bd;
+        $this->db = $db;
     }
     function login($login, $password)
     {
         if ($login === 'vasya' && $password === '123') {
             return array('name' => 'Vasya', 'soname' => 'Pupkin', 'id' => 12);
         }
+        return array(false, 1002);
     }
 }

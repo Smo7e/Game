@@ -21,4 +21,4 @@ function result($params) {
     return array(false, 469);
 }
 
-echo json_encode(Answer::response(result($params)));
+echo json_encode(Answer::response(result($_GET)));
