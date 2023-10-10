@@ -28,4 +28,12 @@ class Application
         }
         return array(false, 1001);
     }
+
+    function checkParams($param1,$param2){
+        if(!empty($param1) && !empty($param2)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
