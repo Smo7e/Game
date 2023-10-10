@@ -29,11 +29,11 @@ class Application
         return array(false, 1001);
     }
 
-    function checkParams($param1,$param2){
-        if(!empty($param1) && !empty($param2)){
-            return true;
-        }else{
-            return false;
+    function checkParams(){
+        $arr = func_get_args();
+        foreach($arr as $i){
+            if(!$i) return false;
         }
+        return true;
     }
 }
