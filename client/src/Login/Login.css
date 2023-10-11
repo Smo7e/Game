@@ -1,0 +1,169 @@
+.Login {
+    background-image: url("./image/fon.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .logo {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    background-image: url("./image/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20%;
+    height: 20%;
+    transition: width 0.3s, height 0.3s;
+    background-color: transparent;
+    border: none;
+  }
+  @media (max-width: 1008px) {
+    .photo-button {
+      width: 15%;
+      height: 15%;
+    }
+  }
+
+  .photo {
+    position: absolute;
+    top: 12%;
+    left: 25%;
+    background-image: url("./image/photo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 75%;
+    height: 75%;
+    transition: width 0.3s, height 0.3s;
+    background-color: transparent;
+    border: none;
+    }
+
+  .container {
+    position: absolute;
+    left: 27%;
+    top: 55%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .button {
+    margin: 10px 5px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background: white;
+    color: black;
+    cursor: pointer;
+    border-color: black;
+    border-radius: 20px;
+    z-index: 1;
+  }
+  
+  .button:hover {
+    background: blue;
+  }
+
+  .text {
+    position: absolute;
+    top: 22%;
+    left:42%;
+    font-size: 30px;
+    color: black;
+    font-weight:800;
+  }
+  
+  .container-text {
+    position: absolute;
+    left: 27%;
+    top: 75%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-button {
+    font-size: 15px;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    border: none;
+  }
+
+  .container-text2 {
+    position: absolute;
+    left: 27%;
+    top: 78%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-button2 {
+    font-size: 15px;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    border: none;
+  }
+
+  .container-login {
+    position: absolute;
+    left: 9%;
+    top: 30%;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+  }
+  .button-login {
+    margin: 15px 15px;
+    padding: 8px 200px;
+    font-size: 13px;
+    background: white;
+    color: grey;
+    cursor: text;
+    border-radius: 15px;
+    border-color: black;
+    z-index: 1;
+  }
+
+  .container-password {
+    position: absolute;
+    left: 9%;
+    top: 39%;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+  }
+  .button-password {
+    margin: 15px 15px;
+    padding: 8px 195px;
+    font-size: 13px;
+    background: white;
+    color: grey;
+    cursor: text;
+    border-radius: 15px;
+    border-color: black;
+    z-index: 1;
+  }
+  
+  .check {
+    position: absolute;
+    top: 49%;
+    left: 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 75%;
+    height: 75%;
+    font-size: 15px
+  }

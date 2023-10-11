@@ -4,6 +4,8 @@ import { HOST } from "./config";
 
 import { Server } from "./modules";
 
+import Login from "./Login/Login";
+
 import "./App.css";
 
 export const ServerContext = React.createContext<Server>(null!);
@@ -13,7 +15,9 @@ const App: React.FC = () => {
 
   return (
     <ServerContext.Provider value={server}>
-      <>Разметка!!!</>
+      <div>
+        <Login />
+        </div>
     </ServerContext.Provider>
   );
 };
