@@ -13,12 +13,16 @@ function result($params) {
     if ($params) {
         $app = new Application();
         switch ($method) {
-            case 'login': return $app->login($params);
+            case 'login':
+                return $app->login($params);
+            case 'getPerson':
+                return $app->getPerson($_GET);
             //..
-            default: return array(false, 466);
+            default:
+                return array(false, 466);
+            }
         }
-    }
     return array(false, 469);
-}
+    }
 
 echo json_encode(Answer::response(result($params)));
