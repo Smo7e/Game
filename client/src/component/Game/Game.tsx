@@ -1,6 +1,8 @@
 import React from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
 const Game: React.FC = () => {
+    const colorMap = useLoader(TextureLoader, "texture.jpg");
     return (
         <Canvas
             className="canvas"
@@ -16,6 +18,10 @@ const Game: React.FC = () => {
             <mesh>
                 <boxGeometry />
                 <meshStandardMaterial />
+            </mesh>
+            <mesh position={[0, 4, 0]}>
+                <boxGeometry />
+                <meshStandardMaterial map={colorMap} />
             </mesh>
         </Canvas>
     );
