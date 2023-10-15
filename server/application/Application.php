@@ -36,6 +36,6 @@ class Application {
                 return $personData;
                 }
             }
-        return $personId;
+        return array(false, 1002);
         }
     }

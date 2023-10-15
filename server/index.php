@@ -16,7 +16,7 @@ function result($params) {
             case 'login':
                 return $app->login($params);
             case 'getPerson':
-                return $app->getPerson($_GET);
+                return $app->getPerson($params);
             //..
             default:
                 return array(false, 466);
