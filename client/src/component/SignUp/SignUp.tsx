@@ -1,7 +1,11 @@
 import React from "react";
 import "./SignUp.css";
 import logo from "./image/logo.png";
-const SignUp: React.FC = () => {
+import { EPAGES } from "../../App";
+interface ISignProps {
+    epages: Function;
+}
+const SignUp: React.FC<ISignProps> = ({ epages }) => {
     return (
         <div className="container-SignUp">
             <img className="logo-SignUp" src={logo} />
@@ -13,7 +17,9 @@ const SignUp: React.FC = () => {
                 <input className="input-SignUp" placeholder="Почта" />
                 <input className="input-SignUp" placeholder="Пароль" />
                 <input className="input-SignUp" placeholder="Подтвердите пароль" />
-                <button className="reg-button">Регистрация</button>
+                <button onClick={() => epages(EPAGES.GAME)} className="reg-button">
+                    Регистрация
+                </button>
                 <br />
                 <hr />
                 <button className="estakk">Уже есть аккаунт</button>
