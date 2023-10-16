@@ -10,13 +10,9 @@ import Game from "./component/Game/Game";
 export const ServerContext = React.createContext<Server>(null!);
 
 const App: React.FC = () => {
-  const server = new Server(HOST);
+    const server = new Server(HOST);
 
-  return (
-    <ServerContext.Provider value={server}>
-      <Game />
-    </ServerContext.Provider>
-  );
+    return <ServerContext.Provider value={server}></ServerContext.Provider>;
 };
 
 export default App;
