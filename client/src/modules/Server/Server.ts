@@ -10,8 +10,8 @@ export default class Server {
     async request<T>(method: string, params: any): Promise<T | null> {
         try {
             const str = Object.keys(params)
-                .map(key => `${key}=${params[key]}`)
-                .join('&');
+                .map((key) => `${key}=${params[key]}`)
+                .join("&");
             const res = await fetch(`${this.HOST}/?method=${method}&${str}`);
             const answer = await res.json();
             if (answer.result === "ok") {
@@ -30,5 +30,7 @@ export default class Server {
         return this.request<TUser>("login", { login, password });
     }
 
-
+    getPerson(personName: string, personId: number, imageId: number): Promise<TUser | null> {
+        return this.request<TUser>('getPerson', { personName, personId, imageId });
+    }
 }

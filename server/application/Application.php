@@ -27,4 +27,17 @@ class Application {
             }
         return array(false, 1001);
         }
+
+    function getPerson($params) {
+        $personName = $params['personName'];
+        $personId = $params['personId'];
+        $imageId = $params['imageId'];
+        if ($personName && $personId && $imageId) {
+            $personData = $this->db->getPersonByParams($personName, $personId, $imageId);
+            if ($personData) {
+                return $personData;
+                }
+            }
+        return array(false, 1012);
+        }
     }

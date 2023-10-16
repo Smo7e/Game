@@ -14,6 +14,8 @@ function result($params) {
         switch ($method) {
             case 'login':
                 return $app->login($params);
+            case 'getPerson':
+                return $app->getPerson($params);
             //..
             default:
                 return array(false, 466);
@@ -22,4 +24,4 @@ function result($params) {
     return array(false, 469);
     }
 
-echo json_encode(Answer::response(result($params)));
+echo json_encode(Answer::response(result($_GET)));
