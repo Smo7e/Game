@@ -1,0 +1,102 @@
+
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+img {
+    width: 200px;
+} 
+
+.form {
+    position: absolute;
+    max-height: 1080px;
+    max-width: 1920px;
+    width: 36%;
+    height: 87%;
+    top: 71px;
+    left: 57%;
+    background-image: linear-gradient(to bottom, #5cb95c, rgb(53, 122, 53));
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-size: 60px;
+    text-align: center;
+    box-shadow: 8px -8px rgb(50, 156, 58), 16px -16px rgb(30, 114, 37);
+    font-family: Playfair Display;
+}
+
+body {
+    background-image: url(./udsu.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+input { 
+    border: 1px solid #000;
+    border-radius: 12px;
+    height: 40px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.text {
+    position: absolute;
+    max-height: 1080px;
+    max-width: 1920px;
+    width: 41%;
+    height: 31%;
+    top: 289px;
+    left: 166px;
+    font-size: 115px;
+    color: white;
+    text-shadow: 3px -3px #000;
+    -webkit-text-stroke: 2px #000;
+}
+
+.reg-button { 
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.reg-button :active { 
+    box-shadow: inset 0 0 5px #000;
+    color: white;
+}
+
+hr { 
+    margin-left: 50px;
+    margin-right: 50px;
+    color: #000;
+    background-color: #000;
+}
+
+h3 { 
+    padding: auto;
+}
+
+.estakk { 
+    color: #000;
+    border: 0;
+    background-color: rgba(28,28,28,0);
+    font-size: 25px;
+}
+
+
+
+
+
+
+  
