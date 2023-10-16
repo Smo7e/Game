@@ -11,11 +11,7 @@ export const ServerContext = React.createContext<Server>(null!);
 const App: React.FC = () => {
     const server = new Server(HOST);
 
-    return (
-        <ServerContext.Provider value={server}>
-            <SignUp />
-        </ServerContext.Provider>
-    );
+    return <ServerContext.Provider value={server}></ServerContext.Provider>;
 };
 
 export default App;
