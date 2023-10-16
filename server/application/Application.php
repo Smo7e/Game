@@ -31,6 +31,7 @@ class Application
 
     function checkParams(){
         $arr = func_get_args();
+        if(count($arr)===0)return false;
         foreach($arr as $i){
             if(!$i) return false;
         }
