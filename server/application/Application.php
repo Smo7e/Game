@@ -1,9 +1,9 @@
 <?php
 
-require_once('./modules/DB.php');
-require_once('./modules/Chat.php');
-require_once('./modules/User.php');
-require_once('./modules/Game.php');
+require_once('application\modules\DB.php');
+require_once('application\modules\Chat.php');
+require_once('application\modules\User.php');
+require_once('application\modules\Game.php');
 
 class Application {
     private $user = null;
@@ -26,16 +26,5 @@ class Application {
             return $this->user->login($login, $hash, $rnd);
             }
         return array(false, 1001);
-        }
-
-    function getPerson($params) {
-        $personId = $params['personId']; // Передаётся ID нужного персонажа
-        if ($personId) {
-            $personData = $this->db->getPersonById($personId); // Получение данных о персонаже из базы данных // getPersonById - соответствующий метод в базе данных возвращающий данные о персонаже
-            if ($personData) {
-                return $personData;
-                }
-            }
-        return array(false, 1002);
         }
     }

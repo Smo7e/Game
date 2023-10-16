@@ -5,17 +5,13 @@ import { HOST } from "./config";
 import { Server } from "./modules";
 
 import "./App.css";
-
+import SignUp from "./component/SignUp/SignUp";
 export const ServerContext = React.createContext<Server>(null!);
 
 const App: React.FC = () => {
-  const server = new Server(HOST);
+    const server = new Server(HOST);
 
-  return (
-    <ServerContext.Provider value={server}>
-      <>Разметка!!!</>
-    </ServerContext.Provider>
-  );
+    return <ServerContext.Provider value={server}></ServerContext.Provider>;
 };
 
 export default App;

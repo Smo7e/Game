@@ -14,7 +14,7 @@ export default class Server {
                 .join('&');
             const res = await fetch(`${this.HOST}/?method=${method}&${str}`);
             const answer = await res.json();
-            if (answer.result === 'ok') {
+            if (answer.result === "ok") {
                 return answer.data;
             }
 
@@ -27,11 +27,8 @@ export default class Server {
     }
 
     login(login: string, password: string): Promise<TUser | null> {
-        return this.request<TUser>('login', { login, password });
+        return this.request<TUser>("login", { login, password });
     }
 
-    getPerson(personId: number): Promise<TUser | null> {
-        return this.request<TUser>('getPerson', { personId });
-    }
 
 }
