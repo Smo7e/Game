@@ -5,7 +5,6 @@ import Scene from "../Scene/Scene";
 const Game: React.FC = () => {
     return (
         <Canvas
-            className="canvas"
             camera={{
                 position: [0, 0, 14],
                 zoom: 2,
@@ -14,7 +13,6 @@ const Game: React.FC = () => {
             }}
         >
             <ambientLight intensity={2} position={[0, 0, 5]} />
-            {/* <directionalLight color="white" intensity={2} position={[0, 0, 5]} /> */}
             <Scene />
             <Player />
         </Canvas>
