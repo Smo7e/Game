@@ -167,10 +167,10 @@
 ![](images/TZ/image9.png)
 
 - “Гуманитарий”
-![](images/TZ/image10.png)
+![](images/TZ/image12.png)
 
 - “Технарь”
-![](images/TZ/image8.png)
+![](images/TZ/image13.png)
 
 ### 4.4 Предметы
 #### 4.4.1 Список предметов
