@@ -2,34 +2,43 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { Mesh, TextureLoader } from "three";
-import trus from "./Trus.png";
-import trusGif from "./trus.gif";
+import trusLeft from "./image/trusLeft.gif";
+import trusRight from "./image/trusRight.gif";
+import trusUp from "./image/trusUp.gif";
+import trusDown from "./image/trusDown.gif";
 
 const Player: React.FC = () => {
-    const colorMap = useLoader(TextureLoader, trusGif);
     const personRef = useRef<Mesh>(null);
+    const [directionPlayer, setdirectionPlayer] = useState(trusDown);
     const [controls, setControls] = useState({
         w: false,
         s: false,
         a: false,
         d: false,
     });
+
     useFrame(() => {
-        if (controls.w) personRef.current!.position.y += 0.01;
-        if (controls.s) personRef.current!.position.y -= 0.01;
-        if (controls.a) personRef.current!.position.x -= 0.01;
-        if (controls.d) personRef.current!.position.x += 0.01;
+        if (controls.w) personRef.current!.position.y += 0.03;
+        if (controls.s) personRef.current!.position.y -= 0.03;
+        if (controls.a) personRef.current!.position.x -= 0.03;
+        if (controls.d) personRef.current!.position.x += 0.03;
     });
     const keyUpHangler = (e: any) => {
+        const key = e.key.toLowerCase();
         setControls((controls) => ({
             ...controls,
-            [e.key]: true,
+            [key]: true,
         }));
+        if (key === "w") setdirectionPlayer(trusUp);
+        if (key === "s") setdirectionPlayer(trusDown);
+        if (key === "a") setdirectionPlayer(trusLeft);
+        if (key === "d") setdirectionPlayer(trusRight);
     };
     const keydownHangler = (e: any) => {
+        const key = e.key.toLowerCase();
         setControls((controls) => ({
             ...controls,
-            [e.key]: false,
+            [key]: false,
         }));
     };
 
@@ -45,7 +54,7 @@ const Player: React.FC = () => {
         <>
             <mesh ref={personRef}>
                 <planeGeometry />
-                <meshStandardMaterial map={colorMap} transparent />
+                <meshStandardMaterial map={useLoader(TextureLoader, directionPlayer)} transparent />
             </mesh>
         </>
     );
