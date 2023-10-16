@@ -1,14 +1,20 @@
 <?php
-class User
-{
-    function __constructor($bd)
-    {
-        $this->$bd = $bd;
+ class User {
+    private $db = null;
+    function __construct($db) {
+        $this->db = $db;
     }
-    function login($login, $password)
-    {
-        if ($login === 'vasya' && $password === '123') {
-            return array('name' => 'Vasya', 'soname' => 'Pupkin', 'id' => 12);
+
+    function login($login, $hash, $rnd) {
+        $hashS = md5(md5($login.'1234').$rnd);
+        if ($hash === $hashS) {
+            $token = md5($hash.rand());
+            return array(
+                'name' => 'Vasya',
+                'soname' => 'Vasilyevitch',
+                'token' => $token
+            );
         }
+        return array(false,456);
     }
 }
