@@ -1,9 +1,9 @@
 <?php
 
-require_once('./modules/DB.php');
-require_once('./modules/Chat.php');
-require_once('./modules/User.php');
-require_once('./modules/Game.php');
+require_once('application\modules\DB.php');
+require_once('application\modules\Chat.php');
+require_once('application\modules\User.php');
+require_once('application\modules\Game.php');
 
 class Application
 {
@@ -13,7 +13,7 @@ class Application
 
     function __construct()
     {
-        $db = new DB();
+         $db = new DB();
         $this->user = new User($db);
         $this->chat = new Chat();
         $this->game = new Game();
@@ -27,5 +27,13 @@ class Application
             return $this->user->login($login,$hash,$rnd);
         }
         return array(false, 1001);
+    }
+    function logout($params){
+        $login = $params['login'];
+        $token = $params['token'];
+        if($login && $token){
+            return $this -> user -> logout($login, $token);
+        }
+        return array(false, 400);
     }
 }
