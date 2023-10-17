@@ -27,7 +27,7 @@ class Answer
                 );
             }
             return array(
-                'rasult' => 'ok',
+                'result' => 'ok',
                 'data' => $data
             );
         }
