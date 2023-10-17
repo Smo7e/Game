@@ -13,7 +13,7 @@ function result($params) {
         $app = new Application();
         switch ($method) {
             case 'login': return $app->login($params);
-            case 'logout': return $uApp->logout($params);
+            case 'logout': return $app->logout($params);
             
             default: return array(false, 466);
         }

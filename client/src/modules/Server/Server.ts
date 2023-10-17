@@ -1,10 +1,13 @@
+import { Mediator } from "..";
 import { TUser, TError } from "./types";
 
 export default class Server {
-    HOST: string;
+    private HOST: string;
+    private mediator: Mediator;
 
-    constructor(HOST: string) {
+    constructor(HOST: string, mediator: Mediator) {
         this.HOST = HOST;
+        this.mediator = mediator;
     }
 
     async request<T>(method: string, params: any): Promise<T | null> {
@@ -17,9 +20,12 @@ export default class Server {
             if (answer.result === "ok") {
                 return answer.data;
             }
-
             // обработать ошибку
-
+            const { SERVER_ERROR } = this.mediator.getEventTypes();
+            this.mediator.call<TError>(
+                SERVER_ERROR, 
+                answer.error
+            );
             return null;
         } catch (e) {
             return null;
