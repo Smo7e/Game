@@ -31,7 +31,7 @@ class Application
     function logout($params){
         $token = $params['token'];
         if($login && $token){
-            return $this -> user -> logout($token);
+            return $this->user->logout($token);
         }
         return array(false, 400);
     }
