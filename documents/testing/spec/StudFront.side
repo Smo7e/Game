@@ -1,0 +1,28 @@
+{
+  "id": "42c2f886-ad8f-4538-b885-d926fba6f5a5",
+  "version": "2.0",
+  "name": "StudFront",
+  "url": "",
+  "tests": [{
+    "id": "78d0eda5-c9bb-4bb9-895f-b053a04c2a8d",
+    "name": "Test1",
+    "commands": [{
+      "id": "dca19b5d-e185-4780-bbd7-937098374a83",
+      "comment": "",
+      "command": "open",
+      "target": "https://rebelstar.ru/",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "bd726c4d-24a0-4c0f-bc2c-7ba3ebcfc743",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["78d0eda5-c9bb-4bb9-895f-b053a04c2a8d"]
+  }],
+  "urls": [],
+  "plugins": []
+}
