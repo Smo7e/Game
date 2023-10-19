@@ -41,3 +41,23 @@ class Application {
         return array(false, 1012);
         }
     }
+    }
+    function logout($params){
+        $token = $params['token'];
+        if($token){
+            return $this->user->logout($token);
+        }
+        return array(false, 400);
+    }
+
+    function checkParams(){
+        $arr = func_get_args();
+        if(count($arr)===0)return false;
+        foreach($arr as $i){
+            if(!$i) return false;
+        }
+        return true;
+    }
+    
+
+}
