@@ -4,10 +4,11 @@ class Answer
 {
     static $CODE = array(
         '404' => 'not Found',
+        '456'=>'hash mismatch',
         '469' => 'param method not setted',
         '466' => 'method not found',
-        '9000' => 'undefined error',
-        '1001' => '-'
+        '1001' => 'missing parameters',
+        '9000' => 'undefined error'
     );
     static function response($data)
     {
@@ -26,7 +27,7 @@ class Answer
                 );
             }
             return array(
-                'rasult' => 'ok',
+                'result' => 'ok',
                 'data' => $data
             );
         }

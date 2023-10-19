@@ -15,5 +15,10 @@
                 'token' => $token
             );
         }
+        return array(false,456);
+    }
+
+    function logout($token) {
+        return true;
     }
 }
