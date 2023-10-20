@@ -239,53 +239,29 @@
     left: 0;
     right: 0;
   }
-  .profile-panel::after {
-    top: 92%;
-    left: 0;
-    right: 0;
-  }
-  
-  .text-button{
-      position: absolute;
-      font-family: Playfair Display;
-      border: none;
-      background-color: transparent;
-      flex-shrink: 0;
-      color: #FFF;
-      bottom: 43.8vw;
-      right: 0;
-      font-size: 1.6vw;
-      text-align: center;
-      transform: translateX(-50%);
-      left: 9vw;
-      text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);  
-      display: flex;
-      transition: background-color 0.3s, transform 0.3s;
-      cursor: pointer;
-      align-self: flex-start;
-   
-  }
-  @media (max-width: 1008px) {
-    .text-button {
-      position: absolute;
-      font-family: Playfair Display;
-      border: none;
-      background-color: transparent;
-      flex-shrink: 0;
-      color: #FFF;
-      bottom: 20.8vw;
-      right: 0;
-      font-size: 1.6vw;
-      text-align: center;
-      transform: translateX(-50%);
-      left: 80vw;
-      text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);  
-      display: flex;
-      transition: background-color 0.3s, transform 0.3s;
-      cursor: pointer;
-      align-self: flex-start;
-    }
-  }
+.profile-panel::after {
+  top: 92%;
+  left: 0;
+  right: 0;
+}
+.text-button {
+  position: fixed;
+  font-family: Playfair Display;
+  border: none;
+  background-color: transparent;
+  flex-shrink: 0;
+  color: #FFF;
+  display: flex;
+  right: 2%;
+  font-size: 1.6vw;
+  transform: translateX(-50%);
+  text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  align-self: flex-end;
+  text-align: right;
+  top: 9%; 
+}
   
   
   
