@@ -1,3 +1,87 @@
+# Описание методов API
+
+## Оглавление
+
+## Домен
+**http://studentfront**
+
+## Структуры данных
+### Корректный ответ Correct
+```
+{
+    result: 'ok',
+    data: Data
+}
+```
+### Ответ с ошибкой Error
+```
+{
+    result: 'error',
+    error: ErrorDetail
+}
+```
+### ErrorDetail
+```
+{
+    code: number,
+    text: string
+}
+```
+### User
+```
+{
+    id: string,
+    name: string,
+    soname: string,
+    token: string
+}
+```
+
+
+## Метод login
+### адрес
+```/?method=login```
+### параметры
+|Параметр|Тип данных|Комментарий|
+|-|-|-|
+|login|string|логин юзера|
+|hash|string|md5(md5(login+password)+rnd)|
+|rnd|number|случайное целое число|
+
+### Успешный ответ
+```
+Correct => User
+```
+### Ошибки
+```
+ErrorDetail = { code: 1001, text: 'missing parameters' } если переданы не все параметры
+ErrorDetail = { code: 456, text: 'hash mismatch' } ошибка авторизации
+```
+
+## Метод logout
+### адрес
+```/?method=logout```
+### параметры
+|Параметр|Тип данных|Комментарий|
+|-|-|-|
+|token|string|авторизационный токен юзера|
+
+### Успешный ответ
+```
+Correct => true
+```
+### Ошибки
+```
+ErrorDetail = { code: 400, text: '---' } если токен не передан
+```
+
+
+
+
+
+
+
+
 | | | | | |
 |-|-|-|-|-|
 |Метод|Описание|Входные параметры|Возвращаемые значения| |
