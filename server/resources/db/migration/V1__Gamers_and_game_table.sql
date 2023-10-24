@@ -3,6 +3,8 @@ CREATE TABLE gamers (
     name varchar(120),
     user_id bigint,
     status varchar(20),
+    inventory text,
+    stats text,
     primary key (id),
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
