@@ -3,6 +3,7 @@
 class Answer
 {
     static $CODE = array(
+        '400' => 'token not found',
         '404' => 'not Found',
         '456'=>'hash mismatch',
         '469' => 'param method not setted',
