@@ -44,12 +44,10 @@ CREATE TABLE game
     player_1    bigint,
     player_2    bigint,
     player_3    bigint,
-    player_4    bigint,
     primary key (id),
     FOREIGN KEY (player_1) REFERENCES gamers (id),
     FOREIGN KEY (player_2) REFERENCES gamers (id),
     FOREIGN KEY (player_3) REFERENCES gamers (id),
-    FOREIGN KEY (player_4) REFERENCES gamers (id),
     FOREIGN KEY (current_rang) REFERENCES rangs (id)
 );
 
@@ -58,8 +56,7 @@ CREATE OR REPLACE FUNCTION game_unique_players_func() RETURNS TRIGGER
 AS
 $$
 BEGIN
-    IF (NEW.player_1 = NEW.player_2 OR NEW.player_1 = NEW.player_3 OR NEW.player_1 = NEW.player_4 OR
-        NEW.player_2 = NEW.player_3 OR NEW.player_2 = NEW.player_4 OR NEW.player_3 = NEW.player_4) THEN
+    IF (NEW.player_1 = NEW.player_2 OR NEW.player_1 = NEW.player_3 OR NEW.player_2 = NEW.player_3) THEN
         RAISE EXCEPTION 'Игроки должны иметь разные ID';
     END IF;
     RETURN NEW;
