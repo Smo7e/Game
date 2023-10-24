@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+img {
+    width: 200px;
+}
+.text-register {
+    font-size: 50%;
+}
+
+.form {
+    position: absolute;
+
+    width: 36%;
+    height: 87%;
+    top: 71px;
+    left: 57%;
+    background-image: linear-gradient(to bottom, #5cb95c, rgb(53, 122, 53));
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-size: 60px;
+    text-align: center;
+    box-shadow: 8px -8px rgb(50, 156, 58), 16px -16px rgb(30, 114, 37);
+    font-family: Playfair Display;
+}
+
+.container-SignUp {
+    background-image: url(./image/udsu.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.input-SignUp {
+    border: 1px solid #000;
+    border-radius: 12px;
+    height: 40px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+.logo-SignUp {
+    width: 12%;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.text {
+    position: absolute;
+    width: 40%;
+    top: 43%;
+    left: 15%;
+    font-size: 12vh;
+    font-family: Playfair Display;
+    font-style: normal;
+    color: white;
+    text-shadow: 8px 0px 0px #000;
+    -webkit-text-stroke: 2px #000;
+}
+
+.reg-button {
+    border: 1px solid #000;
+    border-radius: 13px;
+    height: 9%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    font-size: 50%;
+}
+
+.reg-button :active {
+    box-shadow: inset 0 0 5px #000;
+    color: white;
+}
+
+hr {
+    margin-left: 50px;
+    margin-right: 50px;
+    color: #000;
+    background-color: #000;
+}
+
+h3 {
+    padding: auto;
+}
+
+.estakk {
+    color: #000;
+    border: 0;
+    background-color: rgba(28, 28, 28, 0);
+    font-size: 25px;
+}
