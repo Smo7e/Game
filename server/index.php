@@ -14,16 +14,16 @@ function result($params) {
         switch ($method) {
             case 'login':
                 return $app->login($params);
-            case 'getPerson':
-                return $app->getPerson($params);
+            case 'getPersons':
+                return $app->getPersons($params);
             case 'logout':
                 return $app->logout($params);
             //..
             default:
                 return array(false, 466);
-            }
         }
-    return array(false, 469);
     }
+    return array(false, 469);
+}
 
 echo json_encode(Answer::response(result($_GET)));
