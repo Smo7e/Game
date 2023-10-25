@@ -12,11 +12,11 @@ class Application {
     private $db = null;
 
     function __construct() {
-        $db = new DB();
-        $this->user = new User($db);
+        $this->db = new DB();
+        $this->user = new User($this->db);
         $this->chat = new Chat();
         $this->game = new Game();
-        }
+    }
 
     function login($params) {
         $login = $params['login'];
@@ -24,40 +24,35 @@ class Application {
         $rnd = $params['rnd'];
         if ($login && $hash && $rnd) {
             return $this->user->login($login, $hash, $rnd);
-            }
+        }
         return array(false, 1001);
-        }
+    }
 
-    function getPerson($params) {
-        $personName = $params['personName'];
-        $personId = $params['personId'];
-        $imageId = $params['imageId'];
-        if ($personName && $personId && $imageId) {
-            $personData = $this->db->getPersonByParams($personName, $personId, $imageId);
-            if ($personData) {
-                return $personData;
-                }
-            }
-        return array(false, 1012);
-        }
-    }
-    }
-    function logout($params){
+
+    function logout($params) {
         $token = $params['token'];
-        if($token){
+        if ($token) {
             return $this->user->logout($token);
         }
         return array(false, 400);
     }
 
-    function checkParams(){
+    function checkParams() {
         $arr = func_get_args();
-        if(count($arr)===0)return false;
-        foreach($arr as $i){
-            if(!$i) return false;
+        if (count($arr) === 0)
+            return false;
+        foreach ($arr as $i) {
+            if (!$i)
+                return false;
         }
         return true;
     }
-    
 
+    function getPersons($params) {
+        $token = $params['token'];
+        if ($token) {
+            return $this->db->getPersons($token);
+        }
+        return array(false, 1002);
+    }
 }
