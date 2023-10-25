@@ -3,6 +3,7 @@ import { HOST, MEDIATOR } from "./config";
 import { Server, Mediator, TError } from "./modules";
 import SignUp from "./component/SignUp/SignUp";
 import Game from "./component/Game/Game";
+import Menu from "./component/Menu/Menu";
 
 import "./App.css";
 
@@ -13,18 +14,20 @@ export enum EPAGES {
     SIGNUP,
     LOGIN,
     GAME,
+    MENU,
 }
 
 const MainApp = () => {
-    const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
+    // const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
     return (
         <>
-            {epages === EPAGES.SIGNUP ?
+        <Menu />
+{/*             {epages === EPAGES.SIGNUP ?
                 <SignUp epages={setEpages} /> :
                 epages === EPAGES.GAME ?
                     <Game /> :
                     <></>
-            }
+            } */}
         </>
     );
 };
