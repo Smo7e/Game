@@ -5,19 +5,20 @@ class DB {
     function __construct() {
         $username = 'mysql';
         $password = 'mysql';
-        $db = 'pdo_example';
+        $database = 'pdo_example';
         $host = 'server';
 
-        $dsn = 'mysql:host='.$host.';dbname'.$db.';charset=utf8;';
+        $dsn = 'mysql:host='.$host.';dbname='.$database.';charset=utf8;';
 
         $this->db = new PDO($dsn, $username, $password);
+
     }
 
 
     function getPersons($token) {
         if ($token) {
-            $query = 'SELECT * FROM persons';
-            $stmt = $this->db->prepare($query);
+            $query = 'SELECT * FROM person';
+            $stmt = $this->db->query($query);
             if ($stmt) {
                 $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $persons;
