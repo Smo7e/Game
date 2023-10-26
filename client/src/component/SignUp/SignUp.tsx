@@ -9,8 +9,8 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
     return (
         <div className="container-SignUp">
             <img className="logo-SignUp" src={logo} />
-            <div className="text">СОЗДАТЬ УЧЕТНУЮ ЗАПИСЬ</div>
-            <div className="form">
+            <div className="text-SignUp">СОЗДАТЬ УЧЕТНУЮ ЗАПИСЬ</div>
+            <div className="form-SignUp">
                 <div className="text-register">Регистрация</div>
                 <input className="input-SignUp" placeholder="Логин" />
                 <input className="input-SignUp" placeholder="Никнейм" />
@@ -21,8 +21,11 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
                     Регистрация
                 </button>
                 <br />
+                <br />
+                <br />
+
                 <hr />
-                <button className="estakk">Уже есть аккаунт</button>
+                <div className="estakk">Уже есть аккаунт</div>
             </div>
         </div>
     );
