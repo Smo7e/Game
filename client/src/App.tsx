@@ -18,18 +18,8 @@ export enum EPAGES {
 }
 
 const MainApp = () => {
-    // const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
-    return (
-        <>
-        <Menu />
-{/*             {epages === EPAGES.SIGNUP ?
-                <SignUp epages={setEpages} /> :
-                epages === EPAGES.GAME ?
-                    <Game /> :
-                    <></>
-            } */}
-        </>
-    );
+    const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
+    return <>{epages === EPAGES.SIGNUP ? <SignUp epages={setEpages} /> : epages === EPAGES.GAME ? <Game /> : <></>}</>;
 };
 
 const App: React.FC = () => {
