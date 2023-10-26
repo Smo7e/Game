@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HOST, MEDIATOR } from "./config";
 import { Server, Mediator, TError } from "./modules";
 import SignUp from "./component/SignUp/SignUp";
-import Game from "./component/Game/Game";
+import Game from "./modules/Game/Game";
 
 import "./App.css";
 
@@ -17,16 +17,7 @@ export enum EPAGES {
 
 const MainApp = () => {
     const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
-    return (
-        <>
-            {epages === EPAGES.SIGNUP ?
-                <SignUp epages={setEpages} /> :
-                epages === EPAGES.GAME ?
-                    <Game /> :
-                    <></>
-            }
-        </>
-    );
+    return <>{epages === EPAGES.SIGNUP ? <SignUp epages={setEpages} /> : epages === EPAGES.GAME ? <Game /> : <></>}</>;
 };
 
 const App: React.FC = () => {
