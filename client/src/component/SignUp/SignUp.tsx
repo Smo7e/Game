@@ -17,7 +17,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
                 <input className="input-SignUp" placeholder="Почта" />
                 <input className="input-SignUp" placeholder="Пароль" />
                 <input className="input-SignUp" placeholder="Подтвердите пароль" />
-                <button onClick={() => epages(EPAGES.GAME)} className="reg-button">
+                <button onClick={() => epages(EPAGES.MENU)} className="reg-button">
                     Регистрация
                 </button>
                 <br />
