@@ -14,9 +14,8 @@ const Player: React.FC = () => {
         a: false,
         d: false,
     });
-    useFrame((state) => {
+    useFrame(() => {
         const { w, a, s, d } = controls;
-        console.log(state);
         if (w) {
             setCurrentFrame((frame) => (frame + 0.1) % sportikUp.length);
             setdirectionPlayer(sportikUp[Math.floor(currentFrame)]);
