@@ -13,6 +13,7 @@
   }
   
   .buttons-container {
+  cursor: pointer;
     font-size: 2vw;
     position: absolute;
     left: 5vw;
@@ -98,8 +99,11 @@
     line-height: normal;
     text-align: center;
     padding-top: 0;
+  cursor: pointer;
+
     }
   .new-profile-button {
+  cursor: pointer;
   background-image: url("./image/friend.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -112,10 +116,13 @@
     position: absolute;
   }
   .new-profile-button:hover {
+  cursor: pointer;
     background-image: url("./image/friend2.png");
     height: 4vh;
     } 
   .button-account {
+  cursor: pointer;
+
     background: rgba(0, 0, 0, 0.7);
     position: absolute;
     height: 6vh;
