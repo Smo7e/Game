@@ -10,23 +10,30 @@ interface IMenuProps {
 }
  
 const Menu: React.FC<IMenuProps> = ({ epages }) => {
-  return ( 
-    <div className="mainMenu"> 
-      <img className="photo-button" src={logo}/>
-
-      <div className="profile-panel"> 
-        <button className="new-profile-button"></button> 
-        <button className="text-button">Друзья</button> 
-      </div> 
-
-      <div className="buttons-container"> 
-      <button onClick={() => epages(EPAGES.GAME)} className="button1">Играть</button>
-        <button onClick={() => epages()} className="button2">Герои</button> 
-        <button onClick={() => epages()} className="button3">Параметры</button> 
-        <button onClick={() => epages()} className="button-account">Сменить аккаунт</button> 
-      </div> 
-    </div> 
-  ); 
-}; 
- 
+  return (
+  <div className="mainMenu">
+  <img className="photo-button" src={logo} />
+  
+  <div className="buttons-container">
+  <div onClick={() => epages(EPAGES.GAME)} className="button1">
+  Играть
+  </div>
+  <div className="button2">Герои</div>
+  <div className="button3">Параметры</div>
+  </div>
+  
+  <div className="profile-panel">
+  <div className="user-profile"></div>
+  <hr className="hr-user-profile1" />
+  
+  <div className="text-button">Друзья</div>
+  <div className="your-friend-menu"></div>
+  <hr className="hr-user-profile2" />
+  
+  <div className="new-profile-button"></div>
+  </div>
+  <button className="button-account">Сменить аккаунт</button>
+  </div>
+  );
+  };
 export default Menu;

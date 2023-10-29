@@ -21,13 +21,14 @@ const MainApp = () => {
     const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
     return (
         <>
-            {epages === EPAGES.SIGNUP ?
-                <SignUp epages={setEpages} /> :
-                epages === EPAGES.MENU ?
-                          <Menu epages={setEpages} /> : 
-                         
+            {epages === EPAGES.SIGNUP ? (
+                <SignUp epages={setEpages} /> 
+    ) : epages === EPAGES.MENU ? (
+                          <Menu epages={setEpages}/> ) : epages === EPAGES.GAME ? (
+                            <Game />
+                          ) : (
                     <></>
-            }
+)}
         </>
     );
 };
