@@ -5,7 +5,7 @@ class DB {
     function __construct() {
         $username = 'mysql';
         $password = 'mysql';
-        $database = 'pdo_example';
+        $database = 'studfront';
         $host = 'server';
 
         $dsn = 'mysql:host='.$host.';dbname='.$database.';charset=utf8;';
