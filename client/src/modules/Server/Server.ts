@@ -20,12 +20,8 @@ export default class Server {
             if (answer.result === "ok") {
                 return answer.data;
             }
-            // обработать ошибку
             const { SERVER_ERROR } = this.mediator.getEventTypes();
-            this.mediator.call<TError>(
-                SERVER_ERROR, 
-                answer.error
-            );
+            this.mediator.call<TError>(SERVER_ERROR, answer.error);
             return null;
         } catch (e) {
             return null;
@@ -34,5 +30,9 @@ export default class Server {
 
     login(login: string, password: string): Promise<TUser | null> {
         return this.request<TUser>("login", { login, password });
+    }
+
+    getPerson(personName: string, personId: number, imageId: number): Promise<TUser | null> {
+        return this.request<TUser>("getPerson", { personName, personId, imageId });
     }
 }
