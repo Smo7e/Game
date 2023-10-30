@@ -1,0 +1,202 @@
+{
+  "id": "557cee25-2dee-4a7f-b760-5aebc25e85a9",
+  "version": "2.0",
+  "name": "Auto-test_Menu",
+  "url": "http://localhost:3000/",
+  "tests": [{
+    "id": "a688c04e-b695-4187-82d2-97db5397b2db",
+    "name": "Test",
+    "commands": [{
+      "id": "b8464396-bfac-4e2c-accd-216a2ee92f83",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5399e70b-9d4a-4d0c-958a-d8b1f6dc3acd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.reg-button",
+      "targets": [
+        ["css=.reg-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Регистрация')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a296dae-0cb0-4c78-af86-3ae14aea827c",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.mainMenu",
+      "targets": [
+        ["css=.mainMenu", "css:finder"],
+        ["xpath=//div[@id='root']/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef2f50a2-7273-4e03-b078-d84b26991588",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.photo-button",
+      "targets": [
+        ["css=.photo-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/img", "xpath:idRelative"],
+        ["xpath=//div[3]/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b71ae802-429a-497c-8974-9c3bfff476b5",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.button1",
+      "targets": [
+        ["css=.button1", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "695a7e22-ed11-458c-a662-890f36c94242",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.button1",
+      "targets": [],
+      "value": "Играть"
+    }, {
+      "id": "72e9ea2f-d26a-436d-a858-dc7f8d4aa636",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.button2",
+      "targets": [
+        ["css=.button2", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3709563f-825d-4454-a2c3-8f2e8d465dd5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.button2",
+      "targets": [],
+      "value": "Герои"
+    }, {
+      "id": "8eeb9009-d57e-4742-8244-3b373f69e537",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.button3",
+      "targets": [
+        ["css=.button3", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "adb5acd1-0f3e-4bff-ad43-709f50f63c65",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.button3",
+      "targets": [],
+      "value": "Параметры"
+    }, {
+      "id": "df41fc9a-2262-4d6d-9643-8635c5953c63",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.profile-panel",
+      "targets": [
+        ["css=.profile-panel", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d3610a9-429c-4e8a-9fd0-4d1149e2b4a4",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.user-profile",
+      "targets": [
+        ["css=.user-profile", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04415f08-c7a0-4af9-ad6d-d78392145190",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.new-profile-button",
+      "targets": [
+        ["css=.new-profile-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[4]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4eb21b1-4e56-411c-a86e-4af2cbba2760",
+      "comment": "",
+      "command": "click",
+      "target": "css=.new-profile-button",
+      "targets": [
+        ["css=.new-profile-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[4]", "xpath:idRelative"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "63034822-8555-48aa-bbe8-bade62d869ed",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.text-button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8d86a247-f002-4da2-9a08-4a1e00ed8269",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-button",
+      "targets": [
+        ["css=.text-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]", "xpath:position"]
+      ],
+      "value": "Друзья"
+    }, {
+      "id": "fab7bcd6-8e7f-4d17-b5a3-e1c1c6baa1cb",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.button-account",
+      "targets": [
+        ["css=.button-account", "css:finder"],
+        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Сменить аккаунт')]", "xpath:innerText"]
+      ],
+      "value": "Сменить аккаунт"
+    }, {
+      "id": "2d1e06cf-bbcc-46bc-8918-5324f6f5832c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button-account",
+      "targets": [
+        ["css=.button-account", "css:finder"],
+        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Сменить аккаунт')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "90ee65b0-50ef-4a1e-9b65-e3a2e79cadd9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a688c04e-b695-4187-82d2-97db5397b2db"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}
