@@ -34,21 +34,21 @@ class DB {
         $query = 'SELECT * FROM users WHERE id=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$id]);
-        return $stmt->fetchObject();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getUserByLogin($login) {
         $query = 'SELECT * FROM users WHERE login=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$login]);
-        return $stmt->fetchObject();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getUserByToken($token) {
-        $query = 'SELECT id FROM users WHERE token=?';
+        $query = 'SELECT * FROM users WHERE token=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$token]);
-        return $stmt->fetchObject();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
