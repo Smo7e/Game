@@ -5,7 +5,7 @@ class DB {
     function __construct() {
         $username = 'mysql';
         $password = 'mysql';
-        $database = 'pdo_example';
+        $database = 'studfront';
         $host = 'server';
 
         $dsn = 'mysql:host='.$host.';dbname='.$database.';charset=utf8;';
@@ -28,6 +28,27 @@ class DB {
         } else {
             return array(false, 1002);
         }
+    }
+
+    function getUserById($id) {
+        $query = 'SELECT * FROM users WHERE id=?';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getUserByLogin($login) {
+        $query = 'SELECT * FROM users WHERE login=?';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$login]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getUserByToken($token) {
+        $query = 'SELECT * FROM users WHERE token=?';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$token]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
