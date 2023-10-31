@@ -187,6 +187,28 @@
         ["xpath=//button[contains(.,'Сменить аккаунт')]", "xpath:innerText"]
       ],
       "value": ""
+    }, {
+      "id": "145255d0-8158-4b03-8e7c-35668a199d1e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button1",
+      "targets": [
+        ["css=.button1", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8fe6fc5-b36a-4eab-a8db-4a7e9a37d408",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=canvas",
+      "targets": [
+        ["css=canvas", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/canvas", "xpath:idRelative"],
+        ["xpath=//canvas", "xpath:position"]
+      ],
+      "value": ""
     }]
   }],
   "suites": [{
