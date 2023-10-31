@@ -12,10 +12,15 @@ function result($params) {
     if ($params) {
         $app = new Application();
         switch ($method) {
-            case 'login': return $app->login($params);
-            case 'logout': return $app->logout($params);
-            
-            default: return array(false, 466);
+            case 'login':
+                return $app->login($params);
+            case 'getPersons':
+                return $app->getPersons($params);
+            case 'logout':
+                return $app->logout($params);
+            //..
+            default:
+                return array(false, 466);
         }
     }
     return array(false, 469);

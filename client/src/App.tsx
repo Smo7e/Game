@@ -3,6 +3,7 @@ import { HOST, MEDIATOR } from "./config";
 import { Server, Mediator, TError } from "./modules";
 import SignUp from "./component/SignUp/SignUp";
 import Game from "./modules/Game/Game";
+import Menu from "./component/Menu/Menu";
 
 import "./App.css";
 
@@ -13,6 +14,7 @@ export enum EPAGES {
     SIGNUP,
     LOGIN,
     GAME,
+    MENU,
 }
 
 const MainApp = () => {
