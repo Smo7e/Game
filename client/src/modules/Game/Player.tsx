@@ -38,14 +38,16 @@ const Player: React.FC = () => {
         }
     });
     const keydownHangler = (e: any) => {
-        const key = e.key.toLowerCase();
+        const key = e.code[e.code.length - 1].toLowerCase();
+        console.log(e);
         setControls((controls) => ({
             ...controls,
             [key]: true,
         }));
     };
     const keyUpHangler = (e: any) => {
-        const key = e.key.toLowerCase();
+        console.log(e);
+        const key = e.code[e.code.length - 1].toLowerCase();
         setControls((controls) => ({
             ...controls,
             [key]: false,
