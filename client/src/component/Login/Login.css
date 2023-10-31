@@ -1,0 +1,115 @@
+.Login {
+    background-image: url("./image/fon.jpg");
+    background-size: cover;
+    width:100vw;
+    height:100vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    box-sizing: border-box;
+}
+    
+    .logo {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    background-image: url("./image/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20%;
+    height: 20%;
+    transition: width 0.3s, height 0.3s;
+    background-color: transparent;
+    border: none;
+    z-index:1;
+    }
+    
+    .container {
+        position: absolute;
+
+        width: 51%;
+        height: 71%;
+        top: 14%;
+        left: 25%;
+        background-image: linear-gradient(to bottom, #5cb95c, rgb(53, 122, 53));
+        
+        border-radius: 10px;
+        font-size: 60px;
+        text-align: center;
+        box-shadow: 8px -8px rgb(50, 156, 58), 16px -16px rgb(30, 114, 37);
+    }
+    
+    .loginInput {
+        border: 1px solid #000;
+        border-radius: 12px;
+        height: 5vh;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+    }
+    
+    .check {
+    position: relative;
+    top: 49%;
+    left: 7%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 75%;
+    height: 75%;
+    font-size: 80%;
+    }
+
+.containerHeader { 
+    color: #000;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 0 auto;
+    font-size: 5vh;
+}
+
+.loginButton { 
+    border: 1px solid #000;
+    border-radius: 13px;
+    height: 35%;
+    width: 25%;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    font-size: 1.5vw;
+    font-weight: solid;
+}
+
+
+hr { 
+    width: 60%;
+    margin-bottom: 0;
+    padding: auto;
+    background-color: #000000;
+}
+
+.checkbox{ 
+    align-items: left;
+    margin-left: 9vw;
+    align-items: center;
+}
+
+.checkboxText { 
+    font-size: 1.3vw;
+    margin-right: 20vw;
+    color: white;
+
+}
+
+.otherButton {
+    color: #000;
+    border: 0;
+    background-color: rgba(28, 28, 28, 0);
+    font-size: 3vh;
+    margin: 0 auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 20vw;
+}
