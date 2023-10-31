@@ -111,7 +111,7 @@
         ["xpath=//div[@id='root']/div/div[2]/input[4]", "xpath:idRelative"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "qwerty123"
+      "value": "Qwerty123"
     }, {
       "id": "d5868c7d-6bef-4472-a249-3309b4fb9376",
       "comment": "",
@@ -133,7 +133,7 @@
         ["xpath=//div[@id='root']/div/div[2]/input[5]", "xpath:idRelative"],
         ["xpath=//input[5]", "xpath:position"]
       ],
-      "value": "qwerty123"
+      "value": "Qwerty123"
     }, {
       "id": "8f86c243-628a-4525-a711-a0b796979147",
       "comment": "",
