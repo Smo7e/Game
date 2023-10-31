@@ -8,6 +8,7 @@ class Answer
         '456'=>'hash mismatch',
         '469' => 'param method not setted',
         '466' => 'method not found',
+        '598' => 'arguments passed incorrectly',
         '1001' => 'missing parameters',
         '9000' => 'undefined error'
     );

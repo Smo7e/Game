@@ -1,9 +1,19 @@
 # Описание методов API
 
 ## Оглавление
+1. [User.php](#1-User.php)
+    * 1.1 [Метод login](#11-Метод-login)
+    * 1.2 [Метод logout](#12-Метод-logout)
+2. [Application.php](#2-Application.php)
+    * 2.1 [Функция checkParams](#21-Функция-checkParams)
+    * 2.2 [Метод login](#22-Метод-login)
+    * 2.3 [Метод logout](#23-Метод-logout)
+3. [index.php](#3-index.php)
+    * 3.1 [Функция result](#31-Функция-result)
+
 
 ## Домен
-**http://studentfront**
+```http://studfront```
 
 ## Структуры данных
 ### Корректный ответ Correct
@@ -32,13 +42,14 @@
 {
     id: string,
     name: string,
-    soname: string,
     token: string
 }
 ```
 
+## 1. User.php
 
-## Метод login
+
+### 1.1. Метод login
 ### адрес
 ```/?method=login```
 ### параметры
@@ -58,7 +69,7 @@ ErrorDetail = { code: 1001, text: 'missing parameters' } если передан
 ErrorDetail = { code: 456, text: 'hash mismatch' } ошибка авторизации
 ```
 
-## Метод logout
+### 1.2. Метод logout
 ### адрес
 ```/?method=logout```
 ### параметры
@@ -76,30 +87,9 @@ ErrorDetail = { code: 400, text: 'token not found' } если токен не п
 ```
 
 
-## Метод result
-### адрес
-```/?method=result```
-### параметры
-|Параметр|Тип данных|Комментарий|
-|-|-|-|
-|params|string|параметр пришедший по ссылке|
+## 2. Application.php
 
-### Успешный ответ
-```
-Correct => login
-Correct => logout
-```
-### Ошибки
-```
-ErrorDetail = { code: 466, text: 'method not found' }  если метод не найден
-ErrorDetail = { code: 469, text: 'param method not setted' } если параметры не определены
-
-```
-
-
-## Метод checkParams
-### адрес
-```/?method=checkParams```
+### 2.1. Функция checkParams
 ### параметры
 |Параметр|Тип данных|Комментарий|
 |-|-|-|
@@ -111,13 +101,26 @@ Correct => true
 ```
 ### Ошибки
 ```
-Error => false 
+ErrorDetail = { code: 1001, text: 'missing parameters' } если параметры не переданы
+ErrorDetail = { code: 598, text: 'arguments passed incorrectly' } не верно передан аргумент
 ```
 
+### 2.2. Метод login
+### параметры
+|Параметр|Тип данных|Комментарий|
+|-|-|-|
+|params|string|параметр пришедший по ссылке|
 
-## Метод logout(Application)
-### адрес
-```/?method=logout```
+### Успешный ответ
+```
+Correct => true
+```
+### Ошибки
+```
+ErrorDetail = { code: 1001, text: 'missing parameters' } если недостаёт параметров
+```
+
+### 2.3. Метод logout
 ### параметры
 |Параметр|Тип данных|Комментарий|
 |-|-|-|
@@ -133,9 +136,12 @@ ErrorDetail = { code: 400, text: 'token not found' } если токен не п
 ```
 
 
-## Метод login(Application)
-### адрес
-```/?method=login```
+
+
+## 3. index.php
+
+### 3.1. Функция result
+
 ### параметры
 |Параметр|Тип данных|Комментарий|
 |-|-|-|
@@ -143,9 +149,12 @@ ErrorDetail = { code: 400, text: 'token not found' } если токен не п
 
 ### Успешный ответ
 ```
-Correct => true
+Correct => login
+Correct => logout
 ```
 ### Ошибки
 ```
-ErrorDetail = { code: 1001, text: 'missing parameters' } если недостаёт параметров
+ErrorDetail = { code: 466, text: 'method not found' }  если метод не найден
+ErrorDetail = { code: 469, text: 'param method not setted' } если параметры не определены
+
 ```
