@@ -1,19 +1,19 @@
 <?php
 
-class Answer
-{
+class Answer {
     static $CODE = array(
         '400' => 'token not found',
+        '401' => 'no character data',
         '404' => 'not Found',
-        '456'=>'hash mismatch',
+        '456' => 'hash mismatch',
         '469' => 'param method not setted',
         '466' => 'method not found',
         '598' => 'arguments passed incorrectly',
         '1001' => 'missing parameters',
+        '1002' => 'invalid token',
         '9000' => 'undefined error'
     );
-    static function response($data)
-    {
+    static function response($data) {
 
         if ($data) {
             if (count($data) === 2 && !$data[0]) {
