@@ -1,7 +1,7 @@
 import React from "react";
-import { Canvas, useLoader } from "@react-three/fiber";
-import Player from "../Player/Player";
-import Scene from "../Scene/Scene";
+import { Canvas } from "@react-three/fiber";
+import Player from "./Player";
+import Scene from "./Scene";
 const Game: React.FC = () => {
     return (
         <Canvas
