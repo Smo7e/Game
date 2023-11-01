@@ -1,5 +1,4 @@
 <?php
-class Chat
-{
+class Chat {
 
 }

@@ -3,52 +3,51 @@ class DB {
     private $db;
 
     function __construct() {
-        $username = 'mysql';
-        $password = 'mysql';
-        $database = 'studfront';
-        $host = 'server';
+        $user = 'root';
+        $pass = '';
+        $db = 'studfront';
+        $host = '127.0.0.1';
+        $port = 3306;
+        $this->db = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
 
-        $dsn = 'mysql:host='.$host.';dbname='.$database.';charset=utf8;';
 
-        $this->db = new PDO($dsn, $username, $password);
-
+        /*
+        $query = 'SELECT * FROM users';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        print_r($stmt->fetchAll(PDO::FETCH_OBJ));
+        */
+        
     }
 
-
-    function getPersons($token) {
-        if ($token) {
-            $query = 'SELECT * FROM person';
-            $stmt = $this->db->query($query);
-            if ($stmt) {
-                $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $persons;
-            } else {
-                return array(false, 401);
-            }
-        } else {
-            return array(false, 1002);
-        }
+    function __destruct() {
+        $this->db = null;
     }
 
     function getUserById($id) {
         $query = 'SELECT * FROM users WHERE id=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$id]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     function getUserByLogin($login) {
         $query = 'SELECT * FROM users WHERE login=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$login]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     function getUserByToken($token) {
         $query = 'SELECT * FROM users WHERE token=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$token]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    function updateToken($userId, $token) {
+        $query = 'UPDATE users SET token=? WHERE id=?';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$token, $userId]);
+    }
 }

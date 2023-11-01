@@ -14,8 +14,8 @@ function result($params) {
         switch ($method) {
             case 'login':
                 return $app->login($params);
-            case 'getPersons':
-                return $app->getPersons($params);
+            //case 'getPersons':
+                //return $app->getPersons($params);
             case 'logout':
                 return $app->logout($params);
             //..

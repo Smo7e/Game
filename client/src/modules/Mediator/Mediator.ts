@@ -51,6 +51,10 @@ export default class Mediator {
         }
     }
 
+    unsubscribe(name: string, func: TFunction): void {
+
+    }
+
     call<T>(name: string, data: T | null = null): void {
         if (name && this.events[name]) {
             this.events[name].forEach(
