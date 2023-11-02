@@ -21,4 +21,12 @@
     function logout($token) {
         return true;
     }
+
+  function signUp($login, $password, $nickname) {
+        $user = $this->db->getUserByLogin($login);
+        if (!$user) {
+            $this->db->addUser($login, $password, $nickname);
+            return true;
+        }
+    }
 }
