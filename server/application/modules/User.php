@@ -1,38 +1,24 @@
 <?php
  class User {
-    private $db;
-
+    private $db = null;
     function __construct($db) {
         $this->db = $db;
     }
 
-    function getUser($token) {
-        return $this->db->getUserByToken($token);
-    }
-
     function login($login, $hash, $rnd) {
-        $user = $this->db->getUserByLogin($login);
-        if ($user) {
-            $hashS = md5($user->password.$rnd);
-            if ($hash === $hashS) {
-                $token = md5($hash.rand());
-                $this->db->updateToken($user->id, $token);
-                return array(
-                    'name' => $user->name,
-                    'token' => $token
-                );
-            }
-            return array(false, 456);
+        $hashS = md5(md5($login.'1234').$rnd);
+        if ($hash === $hashS) {
+            $token = md5($hash.rand());
+            return array(
+                'name' => 'Vasya',
+                'soname' => 'Vasilyevitch',
+                'token' => $token
+            );
         }
-        return array(false, 455);
+        return array(false,456);
     }
 
     function logout($token) {
-        $user = $this->db->getUserByToken($token);
-        if ($user) {
-            $this->db->updateToken($user->id, null);
-            return true;
-        }
-        return array(false, 455);
+        return true;
     }
 }
