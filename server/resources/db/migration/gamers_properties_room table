@@ -1,0 +1,15 @@
+CREATE TABLE gamers_properties (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gamer_id INT,
+    health FLOAT,
+    mass FLOAT,
+    speed FLOAT
+    FOREIGN KEY (gamer_id) REFERENCES gamers (id)
+);
+
+
+CREATE TABLE room (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    width INT,
+    height INT
+);
