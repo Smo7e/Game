@@ -51,4 +51,12 @@ class DB {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    function addUser($login, $password, $nickname) {
+        $query = 'INSERT INTO users (login, password, name) VALUES (:login, :password, :name)';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':login', $login);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':name', $nickname);
+        $stmt->execute();
+    }
 }
