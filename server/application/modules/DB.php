@@ -3,31 +3,23 @@ class DB {
     private $db;
 
     function __construct() {
-        $username = 'mysql';
-        $password = 'mysql';
-        $database = 'studfront';
-        $host = 'server';
+        $user = 'root';
+        $pass = '';
+        $db = 'studfront';
+        $host = '127.0.0.1';
+        $port = 3306;
+        $this->db = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
+    }
 
-        $dsn = 'mysql:host='.$host.';dbname='.$database.';charset=utf8;';
-
-        $this->db = new PDO($dsn, $username, $password);
-
+    function __destruct() {
+        $this->db = null;
     }
 
 
     function getPersons($token) {
-        if ($token) {
-            $query = 'SELECT * FROM person';
-            $stmt = $this->db->query($query);
-            if ($stmt) {
-                $persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $persons;
-            } else {
-                return array(false, 401);
-            }
-        } else {
-            return array(false, 1002);
-        }
+        $query = 'SELECT * FROM persons';
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     function getUserById($id) {

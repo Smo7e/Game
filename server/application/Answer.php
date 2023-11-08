@@ -16,7 +16,7 @@ class Answer {
     static function response($data) {
 
         if ($data) {
-            if (count($data) === 2 && !$data[0]) {
+            if (count($data) === 2 && $data[0] === false) {
                 $code = $data[1];
                 return array(
                     'result' => 'error',

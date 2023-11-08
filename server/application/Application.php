@@ -4,18 +4,21 @@ require_once('application\modules\DB.php');
 require_once('application\modules\Chat.php');
 require_once('application\modules\User.php');
 require_once('application\modules\Game.php');
+require_once('application\modules\Lobby.php');
 
 class Application {
     private $user = null;
     private $chat = null;
     private $game = null;
     private $db = null;
+    private $lobby = null;
 
     function __construct() {
         $this->db = new DB();
         $this->user = new User($this->db);
         $this->chat = new Chat();
         $this->game = new Game();
+        $this->lobby = new Lobby($this->db);
     }
 
     function login($params) {
@@ -51,8 +54,8 @@ class Application {
     function getPersons($params) {
         $token = $params['token'];
         if ($token) {
-            return $this->db->getPersons($token);
+            return $this->lobby->getPersons($params);
         }
-        return array(false, 1002);
+        return array(false, 400);
     }
 }
