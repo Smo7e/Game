@@ -50,12 +50,4 @@ class Application {
         }
         return true;
     }
-
-    function getPersons($params) {
-        $token = $params['token'];
-        if ($token) {
-            return $this->lobby->getPersons($params);
-        }
-        return array(false, 400);
-    }
 }
