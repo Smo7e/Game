@@ -15,6 +15,13 @@ class DB {
         $this->db = null;
     }
 
+
+    function getPersons($token) {
+        $query = 'SELECT * FROM persons';
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     function getUserById($id) {
         $query = 'SELECT * FROM users WHERE id=?';
         $stmt = $this->db->prepare($query);

@@ -4,12 +4,14 @@ require_once('application\modules\DB.php');
 require_once('application\modules\Chat.php');
 require_once('application\modules\User.php');
 require_once('application\modules\Game.php');
+require_once('application\modules\Lobby.php');
 
 class Application {
     private $user = null;
     private $chat = null;
     private $game = null;
     private $db = null;
+    private $lobby = null;
 
     function __construct() {
         $this->db = new DB();
