@@ -105,6 +105,7 @@ hr {
 
 .checkboxText { 
     font-size: 1vw;
+    margin: auto;
     margin-right: 20vw;
     margin-left: 1vw;
     color: white;
