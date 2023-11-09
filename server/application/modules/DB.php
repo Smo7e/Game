@@ -26,21 +26,26 @@ class DB {
         $query = 'SELECT * FROM users WHERE id=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$id]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     function getUserByLogin($login) {
         $query = 'SELECT * FROM users WHERE login=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$login]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     function getUserByToken($token) {
         $query = 'SELECT * FROM users WHERE token=?';
         $stmt = $this->db->prepare($query);
         $stmt->execute([$token]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    function updateToken($userId, $token) {
+        $query = 'UPDATE users SET token=? WHERE id=?';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$token, $userId]);
+    }
 }

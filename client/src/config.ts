@@ -1,10 +1,10 @@
 // UdSU
-const DOMAIN = 'http://studfront';
-const PORT = 81;
+// const DOMAIN = 'http://studfront';
+// const PORT = 81;
 
 // dev
-//const DOMAIN = 'http://studfront';
-//const PORT = 0;
+const DOMAIN = 'http://studfront';
+const PORT = 0;
 
 // prod
 //...
@@ -16,6 +16,6 @@ export const MEDIATOR = {
         SERVER_ERROR: 'SERVER_ERROR',
     },
     TRIGGERS: {
-        
+
     }
 }

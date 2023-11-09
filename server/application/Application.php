@@ -18,7 +18,17 @@ class Application {
         $this->user = new User($this->db);
         $this->chat = new Chat();
         $this->game = new Game();
-        $this->lobby = new Lobby($this->db);
+    }
+
+    private function checkParams() {
+        $arr = func_get_args();
+        if (count($arr) === 0)
+            return false;
+        foreach ($arr as $i) {
+            if (!$i)
+                return false;
+        }
+        return array(false, 1001);
     }
 
     function login($params) {
@@ -40,14 +50,17 @@ class Application {
         return array(false, 400);
     }
 
-    function checkParams() {
-        $arr = func_get_args();
-        if (count($arr) === 0)
-            return false;
-        foreach ($arr as $i) {
-            if (!$i)
-                return false;
+    function sendMessage($params) {
+        $token = $params['token'];
+        $message = $params['message'];
+        if ($token && $message) {
+            //if ($this->check(['token', 'message'])) {
+            $user = $this->user->getUser($token);
+            if ($user) {
+                //return $this->chat->sendMessage($user->id, $message);
+            }
+            return array(false, 455);
         }
-        return true;
+        return array(false, 1001);
     }
 }
