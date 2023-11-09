@@ -15,8 +15,10 @@ return (
                 <input type='checkbox' className='checkbox'/><label className='checkboxText'>Не выходить из учетной записи</label><br />
                 <button className='loginButton'>Продолжить</button><br />
                 <hr />
-                <button className='otherButton'>Не можете войти?</button>
-                <button className='otherButton'>Создать учетную запись</button>
+                <div className='otherButtons'>
+                    <button className='otherButton'>Не можете войти?</button><br />
+                    <button className='otherButton'>Создать учетную запись</button>
+                </div>
             </form>
         </div>
     </div>
