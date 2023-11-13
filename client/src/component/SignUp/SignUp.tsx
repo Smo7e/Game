@@ -58,7 +58,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
                 <br />
                 <br />
 
-                <hr />
+                <hr className="hr-SingUp" />
                 <div className="estakk">Уже есть аккаунт</div>
             </div>
         </div>
