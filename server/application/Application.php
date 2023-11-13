@@ -63,4 +63,13 @@ class Application {
         }
         return array(false, 1001);
     }
+
+    function signUp($params) {
+        $login = $params['login'];
+        $password = $params['password'];
+        $nickname = $params['nickname'];
+        if ($login && $password && $nickname) {
+        $this->user->signUp($login, $password, $nickname);
+        }
+    }
 }

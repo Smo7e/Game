@@ -35,4 +35,14 @@ class User {
         }
         return array(false, 455);
     }
+
+    function signUp($login, $password, $nickname) {
+        $password = md5($login.$password);
+        $user = $this->db->getUserByLogin($login);
+        if (!$user) {
+            $this->db->addUser($login, $password, $nickname);
+            return true;
+        }
+        return array(false, 487);
+    }
 }

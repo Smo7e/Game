@@ -43,6 +43,12 @@ class DB {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    function addUser($login, $password, $nickname) {
+        $query = 'INSERT INTO users (login, password, name) VALUES (?, ?, ?)';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$login, $password, $nickname]);
+    }
+
     function updateToken($userId, $token) {
         $query = 'UPDATE users SET token=? WHERE id=?';
         $stmt = $this->db->prepare($query);
