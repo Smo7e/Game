@@ -64,7 +64,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
                 <br />
 
                 <hr className="hr-SingUp" />
-                <div className="estakk">Уже есть аккаунт</div>
+                <div className="estakk" onClick={() => epages(EPAGES.LOGIN)}>Уже есть аккаунт</div>
             </div>
         </div>
     );

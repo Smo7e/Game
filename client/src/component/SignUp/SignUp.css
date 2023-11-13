@@ -110,6 +110,7 @@ img {
     line-height: normal;
     background-color: unset;
     transition: 0.2s;
+    cursor:default;
 }
 .estakk:hover {
     color: #ebe4e4;

@@ -12,7 +12,6 @@ export default class Server {
 
     async request<T>(method: string, params: any): Promise<T | null> {
         try {
-            console.log(method);
             const str = Object.keys(params)
                 .map((key) => `${key}=${params[key]}`)
                 .join("&");

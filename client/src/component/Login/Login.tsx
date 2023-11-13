@@ -14,12 +14,10 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
 
     const clickHandler = async () => {
         const login = loginRef.current!.value;
-        console.log(login);
         const password = passwordRef.current!.value;
         const rnd = Math.round(Math.random() * 1000000);
         const hash = md5(md5(login + password) + rnd);
         const user = await server.login(login, hash, rnd);
-
         if (user) {
             epages(EPAGES.MENU);
         }
