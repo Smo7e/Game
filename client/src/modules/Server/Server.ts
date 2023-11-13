@@ -31,4 +31,7 @@ export default class Server {
     login(login: string, hash: string, rnd: number): Promise<TUser | null> {
         return this.request<TUser>("login", { login, hash, rnd });
     }
+    signUp(login: string, password: string, nickname: string): Promise<TUser | null> {
+        return this.request<TUser>("signUp", { login, password, nickname });
+    }
 }

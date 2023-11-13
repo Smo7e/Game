@@ -69,7 +69,9 @@ class Application {
         $password = $params['password'];
         $nickname = $params['nickname'];
         if ($login && $password && $nickname) {
-        $this->user->signUp($login, $password, $nickname);
+        return $this->user->signUp($login, $password, $nickname);
+        } else {
+            return (false, 1001);
         }
     }
 }
