@@ -4,6 +4,7 @@ import { Server, Mediator, TError } from "./modules";
 import SignUp from "./component/SignUp/SignUp";
 import Game from "./modules/Game/Game";
 import Menu from "./component/Menu/Menu";
+import Login from "./component/Login/Login";
 
 import "./App.css";
 
@@ -18,10 +19,12 @@ export enum EPAGES {
 }
 
 const MainApp = () => {
-    const [epages, setEpages] = useState<EPAGES>(EPAGES.SIGNUP);
+    const [epages, setEpages] = useState<EPAGES>(EPAGES.LOGIN);
     return (
         <>
-            {epages === EPAGES.SIGNUP ? (
+            {epages === EPAGES.LOGIN ? (
+                <Login epages={setEpages} />
+            ) : epages === EPAGES.SIGNUP ? (
                 <SignUp epages={setEpages} />
             ) : epages === EPAGES.MENU ? (
                 <Menu epages={setEpages} />
