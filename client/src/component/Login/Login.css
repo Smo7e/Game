@@ -97,15 +97,22 @@
     margin-bottom: 2vh;
 }
 
-.checkbox{ 
+.checkboxLogin::before{ 
     align-items: left;
     align-items: center;
     border: 2px solid #000;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgb(255, 255, 255);
 }
 
-.checkboxText { 
+.checkboxLogin:checked { 
+    background-color: #000;
+    content: "\f00c";
+}
+
+
+.checkboxLoginText { 
     font-size: 1vw;
     margin: auto;
     margin-right: 20vw;
