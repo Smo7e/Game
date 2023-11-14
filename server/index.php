@@ -18,7 +18,11 @@ function result($params) {
                 return $app->logout($params);
             case 'signUp':
                 return $app->signUp($params);
-            //..
+            case 'sendMessage':
+                return $app->sendMessage($params);
+            case 'getMessages':
+                return $app->getMessages($params);
+                //..
             default:
                 return array(false, 466);
         }
