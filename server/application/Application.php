@@ -16,7 +16,7 @@ class Application {
     function __construct() {
         $this->db = new DB();
         $this->user = new User($this->db);
-        $this->chat = new Chat($this->db);
+        $this->chat = new Chat();
         $this->game = new Game();
     }
 
@@ -41,12 +41,27 @@ class Application {
         return array(false, 1001);
     }
 
+
     function logout($params) {
         $token = $params['token'];
         if ($token) {
             return $this->user->logout($token);
         }
         return array(false, 400);
+    }
+
+    function sendMessage($params) {
+        $token = $params['token'];
+        $message = $params['message'];
+        if ($token && $message) {
+            //if ($this->check(['token', 'message'])) {
+            $user = $this->user->getUser($token);
+            if ($user) {
+                //return $this->chat->sendMessage($user->id, $message);
+            }
+            return array(false, 455);
+        }
+        return array(false, 1001);
     }
 
     function signUp($params) {
@@ -56,35 +71,7 @@ class Application {
         if ($login && $password && $nickname) {
         return $this->user->signUp($login, $password, $nickname);
         } else {
-            return [false, 1001];
+            return (false, 1001);
         }
     }
-
-    function sendMessage($params) {
-        $token = $params['token'];
-        $message = $params['message'];
-        if ($token && $message) {
-            $user = $this->user->getUser($token);
-            if ($user) {
-                return $this->chat->sendMessage($user->id, $message);
-            }
-            return array(false, 455);
-        }
-        return array(false, 1001);
-    }
-
-    
-    function getMessages($params) {
-        $token = $params['token'];
-        $hash = $params['hash'];
-        if ($token && $hash) {
-            $user = $this->user->getUser($token);
-            if ($user) {
-                return $this->chat->getMessages($hash);
-            }
-            return array(false, 9000);
-        }
-        return array(false, 9000);
-    }
-
 }
