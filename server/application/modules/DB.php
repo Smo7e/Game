@@ -49,7 +49,6 @@ class DB {
 
     function updateToken($userId, $token) {
         $query = 'UPDATE users SET token=? WHERE id=?';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$token, $userId]);
+        $this->preparationQuery($query, [$token, $userId]);
     }
 }
