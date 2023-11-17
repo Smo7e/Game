@@ -15,6 +15,11 @@ class DB {
         $this->db = null;
     }
 
+    function preparationQuery($query, $arr){
+        $stmt = $this->db->prepare($query);
+        $stmt->execute($arr);
+        return $stmt;
+    }
 
     function getPersons($token) {
         $query = 'SELECT * FROM persons';
@@ -24,29 +29,22 @@ class DB {
 
     function getUserById($id) {
         $query = 'SELECT * FROM users WHERE id=?';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $this->preparationQuery($query, [$id])->fetch(PDO::FETCH_OBJ);
     }
 
     function getUserByLogin($login) {
         $query = 'SELECT * FROM users WHERE login=?';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$login]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $this->preparationQuery($query, [$login])->fetch(PDO::FETCH_OBJ);
     }
 
     function getUserByToken($token) {
         $query = 'SELECT * FROM users WHERE token=?';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$token]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $this->preparationQuery($query, [$token])->fetch(PDO::FETCH_OBJ);
     }
 
     function addUser($login, $password, $nickname) {
         $query = 'INSERT INTO users (login, password, name) VALUES (?, ?, ?)';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$login, $password, $nickname]);
+        $this->preparationQuery($query, [$login, $password, $nickname]);
     }
 
     function updateToken($userId, $token) {
