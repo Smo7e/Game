@@ -16,6 +16,8 @@ function result($params) {
                 return $app->login($params);
             case 'logout':
                 return $app->logout($params);
+            case 'signUp':
+                return $app->signUp($params);
             //..
             default:
                 return array(false, 466);

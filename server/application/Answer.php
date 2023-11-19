@@ -9,6 +9,7 @@ class Answer {
         '456' => 'hash mismatch',
         '469' => 'param method not setted',
         '466' => 'method not found',
+        '487' => 'this user already exists',
         '598' => 'arguments passed incorrectly',
         '1001' => 'missing parameters',
         '1002' => 'invalid token',

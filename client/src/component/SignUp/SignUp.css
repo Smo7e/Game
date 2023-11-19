@@ -93,15 +93,11 @@ img {
     color: white;
 }
 
-hr {
+.hr-SingUp {
     margin-left: 50px;
     margin-right: 50px;
     color: #000;
     background-color: #000;
-}
-
-h3 {
-    padding: auto;
 }
 
 .estakk {
@@ -114,6 +110,7 @@ h3 {
     line-height: normal;
     background-color: unset;
     transition: 0.2s;
+    cursor:default;
 }
 .estakk:hover {
     color: #ebe4e4;
