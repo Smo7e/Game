@@ -54,4 +54,36 @@ class DB {
         $stmt = $this->db->prepare($query);
         $stmt->execute([$token, $userId]);
     }
+
+    function sendMessage($userId, $message) {
+        $query = 'INSERT INTO messages (user_id, message, created) VALUES (?, ?, now())';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$userId, $message]);
+    }
+
+    function getMessages() {
+        $query = 'SELECT 
+                m.message AS message,
+                u.name AS name
+            FROM messages AS m
+            INNER JOIN users AS u
+            ON u.id=m.user_id
+            ORDER BY m.created DESC';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([]);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function updateChatHash($hash) {
+        $query = 'UPDATE game SET chat_hash=? WHERE id=1';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$hash]);
+    }
+
+    function getHashes() {
+        $query = 'SELECT * FROM game WHERE id=1';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }
