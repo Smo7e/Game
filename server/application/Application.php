@@ -14,7 +14,8 @@ class Application {
     private $lobby = null;
 
     function __construct() {
-        $this->db = new DB();
+        $config = json_decode(file_get_contents('./config/db/config.json'), true);
+        $this->db = new DB($config["DataBase"]);
         $this->user = new User($this->db);
         $this->chat = new Chat();
         $this->game = new Game();
