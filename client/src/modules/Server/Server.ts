@@ -6,7 +6,7 @@ export default class Server {
     private token: string | null = null;
     private mediator: Mediator;
 
-    private chatHash: string = '123';
+    private chatHash: string = "123";
     private chatInterval: ReturnType<typeof setInterval> | null = null;
 
     constructor(HOST: string, mediator: Mediator) {
@@ -59,8 +59,8 @@ export default class Server {
             this.startChatInterval();
             return {
                 id: answer.id,
-                name: answer.name
-            }
+                name: answer.name,
+            };
         }
         return answer;
     }
@@ -80,7 +80,6 @@ export default class Server {
 
     async getMessages(): Promise<Array<TMessage> | null> {
         const answer = await this.request<TMessages>("getMessages", { hash: this.chatHash });
-        console.log(answer?.hash)
         if (answer && answer.hash) {
             this.chatHash = answer.hash;
             return answer.messages;
