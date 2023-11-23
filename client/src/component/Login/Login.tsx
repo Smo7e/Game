@@ -23,34 +23,38 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
         }
     };
     return (
-        <div className="Login">
-            <div className="logoLogin"></div>
-            <div className="containerLogin">
-                <div className="containerLoginHeader">Войти</div>
-                <div>
-                    <input ref={loginRef} className="loginInput" placeholder="Логин" />
-                    <input ref={passwordRef} type="password" className="loginInput" placeholder="Пароль" />
-                </div>
-
-                <div className="checkboxLogin-container">
-                    <input type="checkbox" className="checkboxLogin" />
-                    <div className="checkboxLoginText">Не выходить из учетной записи</div>
-                </div>
-
-                <button className="loginButton" onClick={clickHandler}>
-                    Продолжить
-                </button>
-                <hr className="hrLogin" />
-
-                <div className="otherButtonsLogin">
-                    <button className="otherButtonLogin">Не можете войти?</button>
-                    <button className="otherButtonLogin" onClick={() => epages(EPAGES.SIGNUP)}>
-                        Создать учетную запись
-                    </button>
-                </div>
+        <div className="Login" id="test-login">
+          <div className="logoLogin"></div>
+          <div className="containerLogin" id="test-container">
+            <div className="containerLoginHeader" id="test-header">
+              Войти
             </div>
+            <div>
+              <input ref={loginRef} className="loginInput" placeholder="Логин" id="test-login-input" />
+              <input ref={passwordRef} type="password" className="loginInput" placeholder="Пароль" id="test-password-input" />
+            </div>
+    
+            <div className="checkboxLogin-container" id="test-checkbox-container">
+              <input type="checkbox" className="checkboxLogin" id="test-remember-checkbox" />
+              <div className="checkboxLoginText">Не выходить из учетной записи</div>
+            </div>
+    
+            <button className="loginButton" onClick={clickHandler} id="test-login-button">
+              Продолжить
+            </button>
+            <hr className="hrLogin"/>
+    
+            <div className="otherButtonsLogin" id="test-other-buttons">
+              <button className="otherButtonLogin" id="test-forgot-password-button">
+                Не можете войти?
+              </button>
+              <button className="otherButtonLogin" onClick={() => epages(EPAGES.SIGNUP)} id="test-create-account-button">
+                Создать учетную запись
+              </button>
+            </div>
+          </div>
         </div>
-    );
+      );
 };
 
 export default Login;
