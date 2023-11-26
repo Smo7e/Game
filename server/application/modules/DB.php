@@ -2,13 +2,11 @@
 class DB {
     private $db;
 
-    function __construct() {
-        $user = 'root';
-        $pass = '';
-        $db = 'studfront';
-        $host = '127.0.0.1';
-        $port = 3306;
+    function __construct($config) {
+        extract($config);
+
         $this->db = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
+
     }
 
     function __destruct() {
