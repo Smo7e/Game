@@ -3,17 +3,12 @@ class DB {
     private $db;
 
     function __construct($config) {
-        $user = $config["user"];
-        $pass = $config["pass"];
-        $db = $config["db"];
-        $host = $config["host"];
-        $port = $config["port"];
-        
-        try {
-            $this->db = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
-        }
+        extract($config);
+
+        $this->db = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
+
     }
-    
+
     function __destruct() {
         $this->db = null;
     }
