@@ -5,7 +5,7 @@
   "url": "http://localhost:3000/",
   "tests": [{
     "id": "a688c04e-b695-4187-82d2-97db5397b2db",
-    "name": "Test",
+    "name": "Text_Menu",
     "commands": [{
       "id": "b8464396-bfac-4e2c-accd-216a2ee92f83",
       "comment": "",
@@ -14,210 +14,183 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "5399e70b-9d4a-4d0c-958a-d8b1f6dc3acd",
+      "id": "94532eb3-aa56-4ec1-9bb6-f475da629b20",
+      "comment": "",
+      "command": "type",
+      "target": "id=test-login-input",
+      "targets": [],
+      "value": "vasya"
+    }, {
+      "id": "5b46ea1d-329d-48c9-9235-973ffd6a4f03",
+      "comment": "",
+      "command": "type",
+      "target": "id=test-password-input",
+      "targets": [],
+      "value": "123"
+    }, {
+      "id": "8ce73695-5b85-47a5-9fb6-bb23c39e52bf",
       "comment": "",
       "command": "click",
-      "target": "css=.reg-button",
-      "targets": [
-        ["css=.reg-button", "css:finder"],
-        ["xpath=//div[@id='root']/div/div[2]/button", "xpath:idRelative"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Регистрация')]", "xpath:innerText"]
-      ],
+      "target": "test-login-button",
+      "targets": [],
       "value": ""
     }, {
-      "id": "1a296dae-0cb0-4c78-af86-3ae14aea827c",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.mainMenu",
-      "targets": [
-        ["css=.mainMenu", "css:finder"],
-        ["xpath=//div[@id='root']/div", "xpath:idRelative"],
-        ["xpath=//div[3]/div", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "ef2f50a2-7273-4e03-b078-d84b26991588",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.photo-button",
-      "targets": [
-        ["css=.photo-button", "css:finder"],
-        ["xpath=//div[@id='root']/div/img", "xpath:idRelative"],
-        ["xpath=//div[3]/div/img", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "b71ae802-429a-497c-8974-9c3bfff476b5",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.button1",
-      "targets": [
-        ["css=.button1", "css:finder"],
-        ["xpath=//div[@id='root']/div/div/div", "xpath:idRelative"],
-        ["xpath=//div[3]/div/div/div", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "695a7e22-ed11-458c-a662-890f36c94242",
+      "id": "ff40ebfb-921c-4d3e-9376-85b2333d4bbf",
       "comment": "",
       "command": "verifyText",
-      "target": "css=.button1",
+      "target": "id=test-friends",
+      "targets": [],
+      "value": "Друзья"
+    }, {
+      "id": "b5800495-bc7b-41b5-9475-87a5edccfd69",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=test-play",
       "targets": [],
       "value": "Играть"
     }, {
-      "id": "72e9ea2f-d26a-436d-a858-dc7f8d4aa636",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.button2",
-      "targets": [
-        ["css=.button2", "css:finder"],
-        ["xpath=//div[@id='root']/div/div/div[2]", "xpath:idRelative"],
-        ["xpath=//div/div[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "3709563f-825d-4454-a2c3-8f2e8d465dd5",
+      "id": "078d0e52-f1d5-4008-a827-d21e9be959dd",
       "comment": "",
       "command": "verifyText",
-      "target": "css=.button2",
+      "target": "id=test-heroes",
       "targets": [],
       "value": "Герои"
     }, {
-      "id": "8eeb9009-d57e-4742-8244-3b373f69e537",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.button3",
-      "targets": [
-        ["css=.button3", "css:finder"],
-        ["xpath=//div[@id='root']/div/div/div[3]", "xpath:idRelative"],
-        ["xpath=//div/div[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "adb5acd1-0f3e-4bff-ad43-709f50f63c65",
+      "id": "f50080e0-8f0c-4ab7-a23a-cd482f7a8b84",
       "comment": "",
       "command": "verifyText",
-      "target": "css=.button3",
+      "target": "id=test-settings",
       "targets": [],
       "value": "Параметры"
     }, {
-      "id": "df41fc9a-2262-4d6d-9643-8635c5953c63",
+      "id": "c13a6d71-b4d0-40f7-91fd-e2a4ab3ca8d4",
       "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.profile-panel",
-      "targets": [
-        ["css=.profile-panel", "css:finder"],
-        ["xpath=//div[@id='root']/div/div[2]", "xpath:idRelative"],
-        ["xpath=//div[3]/div/div[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "5d3610a9-429c-4e8a-9fd0-4d1149e2b4a4",
+      "command": "verifyText",
+      "target": "id=test-change-account",
+      "targets": [],
+      "value": "Сменить аккаунт"
+    }]
+  }, {
+    "id": "51234d2c-8c94-42e2-a9ae-d035bb66294c",
+    "name": "Elements_Menu",
+    "commands": [{
+      "id": "b628cd25-9a15-4fdc-96ce-00e8eccc1050",
       "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.user-profile",
-      "targets": [
-        ["css=.user-profile", "css:finder"],
-        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
-        ["xpath=//div[2]/div", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "04415f08-c7a0-4af9-ad6d-d78392145190",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.new-profile-button",
-      "targets": [
-        ["css=.new-profile-button", "css:finder"],
-        ["xpath=//div[@id='root']/div/div[2]/div[4]", "xpath:idRelative"],
-        ["xpath=//div[2]/div[4]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "d4eb21b1-4e56-411c-a86e-4af2cbba2760",
-      "comment": "",
-      "command": "click",
-      "target": "css=.new-profile-button",
-      "targets": [
-        ["css=.new-profile-button", "css:finder"],
-        ["xpath=//div[@id='root']/div/div[2]/div[4]", "xpath:idRelative"],
-        ["xpath=//div[4]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "63034822-8555-48aa-bbe8-bade62d869ed",
-      "comment": "",
-      "command": "verifyElementPresent",
-      "target": "css=.text-button",
+      "command": "open",
+      "target": "",
       "targets": [],
       "value": ""
     }, {
-      "id": "8d86a247-f002-4da2-9a08-4a1e00ed8269",
+      "id": "6faae90e-0bc6-4f89-ba79-07a6fa0fa048",
       "comment": "",
-      "command": "verifyText",
-      "target": "css=.text-button",
-      "targets": [
-        ["css=.text-button", "css:finder"],
-        ["xpath=//div[@id='root']/div/div[2]/div[2]", "xpath:idRelative"],
-        ["xpath=//div[2]/div[2]", "xpath:position"]
-      ],
-      "value": "Друзья"
+      "command": "type",
+      "target": "id=test-login-input",
+      "targets": [],
+      "value": "vasya"
     }, {
-      "id": "fab7bcd6-8e7f-4d17-b5a3-e1c1c6baa1cb",
+      "id": "ae597bc6-e264-4b5e-8198-fdccc5c3d454",
       "comment": "",
-      "command": "verifyText",
-      "target": "css=.button-account",
-      "targets": [
-        ["css=.button-account", "css:finder"],
-        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Сменить аккаунт')]", "xpath:innerText"]
-      ],
-      "value": "Сменить аккаунт"
+      "command": "type",
+      "target": "id=test-password-input",
+      "targets": [],
+      "value": "123"
     }, {
-      "id": "2d1e06cf-bbcc-46bc-8918-5324f6f5832c",
+      "id": "77aeae01-fce9-4567-a517-dd855631d0df",
       "comment": "",
       "command": "click",
-      "target": "css=.button-account",
-      "targets": [
-        ["css=.button-account", "css:finder"],
-        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Сменить аккаунт')]", "xpath:innerText"]
-      ],
+      "target": "test-login-button",
+      "targets": [],
       "value": ""
     }, {
-      "id": "145255d0-8158-4b03-8e7c-35668a199d1e",
+      "id": "d4c939ac-77bb-4ee6-b636-ec1f2f20a6a6",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=test-logo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b71bc10-c97d-48d5-ad5e-114c69603db2",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=test-profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f252099-ad2c-4da4-be58-6375882016aa",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=test-hr1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ec3480b-e622-459f-a1f3-e55384e70dcd",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=test-hr2",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "740d52d3-eac6-4380-8c9f-ce30c2354d83",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=test-new-profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "83d34290-c753-470d-8a10-4356bcadb56f",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=test-change-account",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "81e3a1af-3f03-4c40-9f1c-f1e850a597d4",
+    "name": "Game_Menu",
+    "commands": [{
+      "id": "54a6b0a7-a0ab-440e-85de-b8c5d6546c85",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "44f3e725-c28a-49db-86c6-9a918bf7b08a",
+      "comment": "",
+      "command": "type",
+      "target": "id=test-login-input",
+      "targets": [],
+      "value": "vasya"
+    }, {
+      "id": "345a79db-e03d-4be6-86ea-ce1335834316",
+      "comment": "",
+      "command": "type",
+      "target": "id=test-password-input",
+      "targets": [],
+      "value": "123"
+    }, {
+      "id": "87cc4bdf-37af-490a-bf45-8f4755039f60",
       "comment": "",
       "command": "click",
-      "target": "css=.button1",
-      "targets": [
-        ["css=.button1", "css:finder"],
-        ["xpath=//div[@id='root']/div/div/div", "xpath:idRelative"],
-        ["xpath=//div[3]/div/div/div", "xpath:position"]
-      ],
+      "target": "test-login-button",
+      "targets": [],
       "value": ""
     }, {
-      "id": "a8fe6fc5-b36a-4eab-a8db-4a7e9a37d408",
+      "id": "a9fa0cbc-1d77-4f75-b9d2-48a061fbff49",
       "comment": "",
-      "command": "assertElementPresent",
-      "target": "css=canvas",
-      "targets": [
-        ["css=canvas", "css:finder"],
-        ["xpath=//div[@id='root']/div/div/canvas", "xpath:idRelative"],
-        ["xpath=//canvas", "xpath:position"]
-      ],
+      "command": "click",
+      "target": "test-play",
+      "targets": [],
       "value": ""
     }]
   }],
   "suites": [{
     "id": "90ee65b0-50ef-4a1e-9b65-e3a2e79cadd9",
-    "name": "Default Suite",
+    "name": "positive test suite",
     "persistSession": false,
-    "parallel": false,
+    "parallel": true,
     "timeout": 300,
-    "tests": ["a688c04e-b695-4187-82d2-97db5397b2db"]
+    "tests": ["a688c04e-b695-4187-82d2-97db5397b2db", "51234d2c-8c94-42e2-a9ae-d035bb66294c", "81e3a1af-3f03-4c40-9f1c-f1e850a597d4"]
   }],
   "urls": ["http://localhost:3000/"],
   "plugins": []

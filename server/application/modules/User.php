@@ -41,7 +41,9 @@ class User {
         $user = $this->db->getUserByLogin($login);
         if (!$user) {
             $this->db->addUser($login, $password, $nickname);
-            return true;
+            return array(
+                'name' =>$nickname ,
+            );
         }
         return array(false, 487);
     }
