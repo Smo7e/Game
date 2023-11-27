@@ -6,7 +6,7 @@ import Game from "./modules/Game/Game";
 import Menu from "./component/Menu/Menu";
 import Login from "./component/Login/Login";
 import Heroes from "./component/Heroes/Heroes";
-
+import Interface from "./component/Interface/Interface";
 
 import "./App.css";
 
@@ -32,7 +32,10 @@ const MainApp = () => {
             ) : epages === EPAGES.MENU ? (
                 <Menu epages={setEpages} />
             ) : epages === EPAGES.GAME ? (
-                <Game />
+                <>
+                    <Game />
+                    <Interface />
+                </>
             ) : epages === EPAGES.HEROES ? (
                 <Heroes epages={setEpages} />
             ) : (
