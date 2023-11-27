@@ -66,10 +66,7 @@ export default class Server {
 
     async logout() {
         const answer = await this.request<boolean>("logout");
-        if (answer) {
-            this.stopChatInterval();
-            this.token = null;
-        }
+        this.token = null;
         return answer;
     }
 
