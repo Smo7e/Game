@@ -39,7 +39,7 @@ class Application {
         if($login && $hash && $rnd) {
             return $this->user->login($login, $hash, $rnd);
         }
-        return array(false, 1001);
+        return array(false, 1012);
     }
 
     function logout($params) {
@@ -56,9 +56,8 @@ class Application {
         $nickname = $params['nickname'];
         if($login && $password && $nickname) {
             return $this->user->signUp($login, $password, $nickname);
-        } else {
-            return [false, 1001];
-        }
+        } 
+        return array(false, 1001);
     }
 
     function sendMessage($params) {
@@ -83,9 +82,9 @@ class Application {
             if($user) {
                 return $this->chat->getMessages($hash);
             }
-            return array(false, 9000);
+            return array(false, 455);
         }
-        return array(false, 9000);
+        return array(false, 1001);
     }
 
 }
