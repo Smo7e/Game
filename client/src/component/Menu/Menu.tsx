@@ -12,7 +12,7 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
         epages(EPAGES.LOGIN);
     };
     return (
-        <div className="mainMenu">
+        <div className="mainMenu" id="test-mainMemu">
             <img className="photo-button" src={logo} id="test-logo" />
 
             <div className="buttons-container">
