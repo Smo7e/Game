@@ -56,7 +56,6 @@ export default class Server {
         const answer = await this.request<TUserFull>("login", { login, hash, rnd });
         if (answer) {
             this.token = answer.token;
-            this.startChatInterval();
             return {
                 id: answer.id,
                 name: answer.name,
@@ -76,6 +75,9 @@ export default class Server {
 
     signUp(login: string, password: string, nickname: string): Promise<TUser | null> {
         return this.request<TUser>("signUp", { login, password, nickname });
+    }
+    sendMessage(message: string) {
+        return this.request("sendMessage", { token: this.token, message });
     }
 
     async getMessages(): Promise<Array<TMessage> | null> {
