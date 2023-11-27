@@ -56,9 +56,8 @@ class Application {
         $nickname = $params['nickname'];
         if($login && $password && $nickname) {
             return $this->user->signUp($login, $password, $nickname);
-        } else {
-            return [false, 1001];
         }
+        return array(false, 1001);
     }
 
     function sendMessage($params) {
