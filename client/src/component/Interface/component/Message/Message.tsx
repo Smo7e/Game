@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import "./Message.css";
 interface MessageProps {
     message: string;
