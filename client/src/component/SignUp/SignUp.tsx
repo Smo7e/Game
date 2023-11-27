@@ -27,7 +27,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
         if (password === verifyPassword && nickname && login) {
             const register = await server.signUp(login, password, nickname);
             if (register) {
-                epages(EPAGES.MENU);
+                epages(EPAGES.LOGIN);
             }
         }
     };
