@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from "react";
-import { EPAGES, MediatorContext } from "../../App";
-import { TMessage } from "../../modules/Server/types";
-
+import { EPAGES, ServerContext } from "../../App";
 import logo from "./image/logo.png";
-
 import "./Menu.css";
-
 interface IMenuProps {
     epages: Function;
 }
-
 const Menu: React.FC<IMenuProps> = ({ epages }) => {
+    const server = useContext(ServerContext);
+    const logoutHandler = async () => {
+        await server.logout();
+        epages(EPAGES.LOGIN);
+    };
     return (
         <div className="mainMenu">
             <img className="photo-button" src={logo} id="test-logo" />
@@ -39,7 +39,7 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
 
                 <div className="new-profile-button" id="test-new-profile"></div>
             </div>
-            <button className="button-account" id="test-change-account">
+            <button className="button-account" id="test-change-account" onClick={logoutHandler}>
                 Сменить аккаунт
             </button>
         </div>
