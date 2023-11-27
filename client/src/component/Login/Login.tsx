@@ -1,7 +1,9 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./Login.css";
 import { EPAGES, MediatorContext, ServerContext } from "../../App";
 import md5 from "md5";
+import ErrorMessage from "../../modules/ErrorMessage/ErrorMessage";
+import { TError } from "../../modules";
 interface ILoginProps {
     epages: Function;
 }
@@ -12,6 +14,13 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
     const loginRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
 
+    
+    const [error, setError] = useState<TError | null>(null);
+    const { SERVER_ERROR } = mediator.getEventTypes();
+    mediator.subscribe(SERVER_ERROR, (data: TError) => {
+        setError(data)
+    });
+
     const clickHandler = async () => {
         const login = loginRef.current!.value;
         const password = passwordRef.current!.value;
@@ -21,6 +30,7 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
         if (user) {
             epages(EPAGES.MENU);
         }
+
     };
     return (
         <div className="Login" id="test-login">
@@ -42,6 +52,8 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
             <button className="loginButton" onClick={clickHandler} id="test-login-button">
               Продолжить
             </button>
+            <ErrorMessage error={error} />
+            
             <hr className="hrLogin"/>
     
             <div className="otherButtonsLogin" id="test-other-buttons">
