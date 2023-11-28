@@ -34,7 +34,7 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
     };
     return (
         <div className="Login" id="test-login">
-          <div className="logoLogin"></div>
+          <div className="logoLogin" id="test-logo"></div>
           <div className="containerLogin" id="test-container">
             <div className="containerLoginHeader" id="test-header">
               Войти
@@ -46,7 +46,7 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
     
             <div className="checkboxLogin-container" id="test-checkbox-container">
               <input type="checkbox" className="checkboxLogin" id="test-remember-checkbox" />
-              <div className="checkboxLoginText">Не выходить из учетной записи</div>
+              <div className="checkboxLoginText" id="test-text-checkbox">Не выходить из учетной записи</div>
             </div>
     
             <button className="loginButton" onClick={clickHandler} id="test-login-button">
@@ -54,7 +54,7 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
             </button>
             <ErrorMessage error={error} />
             
-            <hr className="hrLogin"/>
+            <hr className="hrLogin" id="test-hrLogin"/>
     
             <div className="otherButtonsLogin" id="test-other-buttons">
               <button className="otherButtonLogin" id="test-forgot-password-button">

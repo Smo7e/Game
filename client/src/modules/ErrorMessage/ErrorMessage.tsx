@@ -14,9 +14,9 @@ const ErrorMessage: React.FC<IErrorMessageProps> = ({ error }) => {
       }
 
       return (
-            <div className="error-message">
-                <div className="error-code">Error Code: {error?.code}</div>
-                <div className="error-text">{error?.text}</div>
+            <div className="error-message" id="test-error-message">
+                <div className="error-code" id="test-error-code">Error Code: {error?.code}</div>
+                <div className="error-text" id="test-error-text">{error?.text}</div>
             </div>
     );
 };
