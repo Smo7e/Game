@@ -52,7 +52,12 @@ export default class Mediator {
     }
 
     unsubscribe(name: string, func: TFunction): void {
-
+        if (name &&
+            this.events[name] &&
+            func instanceof Function
+        ) {
+            this.events[name] = this.events[name].filter(handler => handler !== func);
+        }
     }
 
 
