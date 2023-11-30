@@ -18,7 +18,7 @@ class Application {
         $this->db = new DB($config["DataBase"]);
         $this->user = new User($this->db);
         $this->chat = new Chat($this->db);
-        $this->game = new Game();
+        $this->game = new Game($this->db);
     }
 
     private function checkParams() {
@@ -74,7 +74,6 @@ class Application {
         return array(false, 1001);
     }
 
-
     function getMessages($params) {
         $token = $params['token'];
         $hash = $params['hash'];
@@ -82,6 +81,37 @@ class Application {
             $user = $this->user->getUser($token);
             if($user) {
                 return $this->chat->getMessages($hash);
+            }
+            return array(false, 9000);
+        }
+        return array(false, 9000);
+    }
+
+    function getScene($params) {
+        $token = $params['token'];
+        $hashGamers = $params['hashGamers'];
+        $hashItems = true;
+        $hashMobs = true;
+        $hashMap = true;
+        if ($token && $hashGamers && $hashItems && $hashMobs && $hashMap) {
+            $user = $this->user->getUser($token);
+            if($user) {
+                return $this->game->getScene($user->id, $hashGamers, $hashItems, $hashMobs, $hashMap);
+            }
+            return array(false, 9000);
+        }
+        return array(false, 9000);
+    }
+
+    function move($params) {
+        $token = $params['token'];
+        $direction = $params['direction'];
+        $x = $params['x'];
+        $y = $params['y'];
+        if ($token && $direction && $x && $y) {
+            $user = $this->user->getUser($token);
+            if($user) {
+                return $this->game->move($user->id, $direction, $x, $y);
             }
             return array(false, 9000);
         }
