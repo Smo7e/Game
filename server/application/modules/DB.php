@@ -50,6 +50,12 @@ class DB {
         $this->preparationQuery($query, [$token, $userId]);
     }
 
+    function messagesPerDay(){
+        $twentyFourHoursAgo = time() - (24 * 60 * 60);
+        $query = 'SELECT * FROM messages WHERE created >= FROM_UNIXTIME($twentyFourHoursAgo)';
+        $stmt = $this->db->query($query);
+    }
+
     function sendMessage($userId, $message) {
         $query = 'INSERT INTO messages (user_id, message, created) VALUES (?, ?, now())';
         $stmt = $this->db->prepare($query);
