@@ -13,12 +13,14 @@ class Answer {
         '598' => 'arguments passed incorrectly',
         '1001' => 'missing parameters',
         '1002' => 'invalid token',
+        '1501' => 'Введите пароль и подтверждение пароля',
+        '1502' => 'Пароли не совпадают',
         '9000' => 'undefined error'
     );
 
     static function response($data) {
-        if ($data) {
-            if (count($data) === 2 && $data[0] === false) {
+        if($data) {
+            if(count($data) === 2 && $data[0] === false) {
                 $code = $data[1];
                 return array(
                     'result' => 'error',

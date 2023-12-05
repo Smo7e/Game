@@ -74,8 +74,8 @@ export default class Server {
         return answer;
     }
 
-    signUp(login: string, password: string, nickname: string): Promise<TUser | null> {
-        return this.request<TUser>("signUp", { login, password, nickname });
+    signUp(login: string, password: string, nickname: string, verifyPassword: string): Promise<TUser | null> {
+        return this.request<TUser>("signUp", { login, password, nickname, verifyPassword });
     }
 
     async getMessages(): Promise<Array<TMessage> | null> {
