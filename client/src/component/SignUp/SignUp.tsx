@@ -49,7 +49,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
     });
 
     return (
-        <div className="container-SignUp">
+        <div className="container-SignUp" id="test-container-SignUp">
             <img className="logo-SignUp" src={logo} />
             <div className="text-SignUp">СОЗДАТЬ УЧЕТНУЮ ЗАПИСЬ</div>
             <div className="form-SignUp">
@@ -66,7 +66,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
                 <br />
                 <ErrorMessage error={error} />
                 <hr className="hr-SingUp" />
-                <div className="estakk" onClick={() => epages(EPAGES.LOGIN)}>Уже есть аккаунт</div>
+                <div className="estakk" id="test-estakk" onClick={() => epages(EPAGES.LOGIN)}>Уже есть аккаунт</div>
             </div>
         </div>
     );
