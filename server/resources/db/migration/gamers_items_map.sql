@@ -2,7 +2,7 @@ CREATE TABLE gamers_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     item_id INT,
     gamer_id INT,
-    status ENUM('надето', 'в кармане'),
+    status VARCHAR(20),
     x FLOAT,
     y FLOAT,
     FOREIGN KEY (item_id) REFERENCES items(id),
