@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import md5 from "md5";
 import { TError } from "../../modules";
 import { EPAGES, ServerContext, MediatorContext } from "../../App";
 
@@ -22,7 +21,7 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
     const passwordRef = useRef<HTMLInputElement>(null);
     const verifyRef = useRef<HTMLInputElement>(null);
     const clickHandler = async () => {
-        setError(null)
+        setError(null);
         const login = loginRef.current!.value;
         const nickname = nickRef.current!.value;
         const password = passwordRef.current!.value;
