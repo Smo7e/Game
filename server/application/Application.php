@@ -54,11 +54,14 @@ class Application {
         $login = $params['login'];
         $password = $params['password'];
         $nickname = $params['nickname'];
-        if($login && $password && $nickname) {
-            return $this->user->signUp($login, $password, $nickname);
-        } else {
-            return [false, 1001];
+        $verifyPassword = $params['verifyPassword'];
+        if($login && $nickname) {
+            if($password || $verifyPassword) {
+                return $this->user->signUp($login, $password, $nickname, $verifyPassword);
+            }
+            return array(false, 1501);
         }
+        return array(false, 1001);
     }
 
     function sendMessage($params) {
