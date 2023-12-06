@@ -24,7 +24,7 @@ class User {
             }
             return array(false, 1012);
         }
-        return array(false, 1001);
+        return array(false, 1000);
     }
 
     function logout($token) {
