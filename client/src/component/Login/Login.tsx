@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Login.css";
 import { EPAGES, MediatorContext, ServerContext } from "../../App";
 import md5 from "md5";
@@ -16,12 +16,9 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
 
     
     const [error, setError] = useState<TError | null>(null);
-    const { SERVER_ERROR } = mediator.getEventTypes();
-    mediator.subscribe(SERVER_ERROR, (data: TError) => {
-        setError(data)
-    });
 
     const clickHandler = async () => {
+        setError(null);
         const login = loginRef.current!.value;
         const password = passwordRef.current!.value;
         const rnd = Math.round(Math.random() * 1000000);
@@ -30,8 +27,22 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
         if (user) {
             epages(EPAGES.MENU);
         }
-
     };
+
+    useEffect(() => {
+      const { SERVER_ERROR } = mediator.getEventTypes();
+
+      const serverErrorHandler = (error: TError) => {
+          setError(error);
+      };
+
+      mediator.subscribe(SERVER_ERROR, serverErrorHandler);
+
+      return () => {
+          mediator.unsubscribe(SERVER_ERROR, serverErrorHandler);
+      };
+  });
+
     return (
         <div className="Login" id="test-login">
           <div className="logoLogin" id="test-logo"></div>

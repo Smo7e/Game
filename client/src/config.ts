@@ -15,6 +15,7 @@ export const MEDIATOR = {
     EVENTS: {
         SERVER_ERROR: 'SERVER_ERROR',
         GET_MESSAGES: 'GET_MESSAGES',
+        GET_SCENE: 'GET_SCENE',
     },
     TRIGGERS: {
 
