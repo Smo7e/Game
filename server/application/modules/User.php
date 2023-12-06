@@ -22,9 +22,9 @@ class User {
                     'token' => $token
                 );
             }
-            return array(false, 456);
+            return array(false, 1012);
         }
-        return array(false, 455);
+        return array(false, 1000);
     }
 
     function logout($token) {

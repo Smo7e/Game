@@ -39,7 +39,7 @@ class Application {
         if($login && $hash && $rnd) {
             return $this->user->login($login, $hash, $rnd);
         }
-        return array(false, 1001);
+        return array(false, 1012);
     }
 
     function logout($params) {
@@ -85,9 +85,9 @@ class Application {
             if($user) {
                 return $this->chat->getMessages($hash);
             }
-            return array(false, 9000);
+            return array(false, 455);
         }
-        return array(false, 9000);
+        return array(false, 1001);
     }
 
     function getScene($params) {
