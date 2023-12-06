@@ -1,7 +1,9 @@
-import { useLoader } from "@react-three/fiber";
 import React from "react";
+import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
+
 import fonImage from "./image/fon.jpg";
+
 const Scene: React.FC = () => {
     const fon = useLoader(TextureLoader, fonImage);
     return (
