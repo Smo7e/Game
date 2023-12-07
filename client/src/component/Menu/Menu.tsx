@@ -16,7 +16,7 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
             <img className="photo-button" src={logo} id="test-logo" />
 
             <div className="buttons-container">
-                <div onClick={() => epages(EPAGES.GAME)} className="button1" id="test-play">
+                <div onClick={() => epages(EPAGES.LOBBY)} className="button1" id="test-play">
                     Играть
                 </div>
                 <div onClick={() => epages(EPAGES.HEROES)} className="button2" id="test-heroes">
