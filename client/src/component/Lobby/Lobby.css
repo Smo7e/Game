@@ -1,0 +1,1145 @@
+.container-Lobby {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  background-image: url("./image/fon.png");
+  background-size: cover;
+  z-index: 0;
+}
+
+.arrow-1 {
+  position: absolute;
+  top: 5vh;
+  left: 3vw;
+  width: 5.5vw;
+  height: 13vh;
+  background-image: url("./image/arrow-1.png");
+  background-color: transparent;
+  border: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.arrow-1:hover {
+  height: 15vh;
+  width: 6vw;
+  filter: brightness(1.9);
+}
+
+.baguetteM {
+  position: absolute;
+  right: 0;
+  top: 3vh;
+  width: 42.7vw;
+  height: 100vh;
+  background-image: url("./image/baguettebox.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  /* overflow-y: scroll; */
+}
+
+.coin { 
+  position: absolute; 
+  background-image: url("./image/coins.png"); 
+  left: 20vw; 
+  top: 10vh; 
+  font-family: Playfair Display; 
+  width: 3vw; 
+  height: 4.3vh; 
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  color: rgb(0, 0, 0); 
+  padding-left: 2.8vw; 
+  font-size: 1.8vw; 
+  z-index: 2; 
+  text-shadow: 1.8px 1px 1px rgb(255, 255, 255), -1.8px -1px 1px  rgb(255, 255, 255), 1.8px -1px 1px rgb(255, 255, 255), -1px 1px 1px  rgb(255, 255, 255);  
+  font-weight: bold;  
+}
+
+
+
+.panel {
+  left: 10vw;
+  z-index: 2;
+  top: 35vh;
+  display: inline-block;
+  width: 4.2vw;
+  height: 7.2vh;
+  background-color: grey;
+  border: groove;
+  border-color:   rgb(164, 164, 164);
+  position: relative;
+  box-shadow: 0.3vw 0 1vw 0.2vw rgb(0, 0, 0);
+}
+
+.panel img {
+  overflow: hidden;
+  width: 92%;
+  position: relative;
+  height: 92%;
+  border: groove;
+  box-shadow: 0.3vw 0 1vw 0.2vw rgb(0, 0, 0);
+  border-color:   rgb(164, 164, 164);
+  background-color: grey;
+  background-color: transparent; 
+}
+
+.image-rack1,
+.image-rack2 {
+  position: absolute;
+  margin-bottom: 0;
+  bottom: 0;
+  width: 40vw;
+  height: 25.3vh;
+  background-image: url("./image/rack.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-position: bottom;
+}
+
+.image-Sportik,
+.image-techguy,
+.image-humanitarian {
+  position: absolute;
+  bottom: 0;
+  background-position: bottom;
+  left: 8vw;
+  width: 38.5vw;
+  height: 63.3vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.image-techguy {
+  background-image: url("./image/techguy.png");
+}
+
+.image-humanitarian {
+  background-image: url("./image/humanitarian.png");
+}
+
+.image-Sportik {
+  background-image: url("./image/Sportik.png");
+}
+
+.image-rack1 {
+  left: -10.5vw;
+}
+
+.image-rack2 {
+  left: 26.5vw;
+}
+
+.friend:hover,
+.friend-2:hover {
+  cursor: pointer;
+  background-image: url("./image/friend2.png");
+}
+
+.friend,
+.friend-2 {
+  position: absolute;
+  cursor: pointer;
+  bottom: 25vh;
+  width: 9.5vw;
+  height: 22vh;
+  background-image: url("./image/friend.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 3;
+  left: 15vw;
+}
+
+.plays {
+  font-family: Playfair Display;
+  color: #228b22;
+  font-size: 2.8vw;
+  font-weight: 800;
+  position: relative;
+  left: 2vw;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0), 0 0 0 rgb(0, 0, 0), 0 1px 1px rgb(0, 0, 0),
+    -1px 0 1px rgb(0, 0, 0);
+}
+
+.plays::before {
+  content: "";
+  position: absolute;
+  top: 6.6vh;
+  left: -1vw;
+  right: 3vw;
+  height: 0.1vw;
+  background: #00008b;
+}
+
+.plus {
+  position: absolute;
+  cursor: pointer;
+  top: 1.5vh;
+  width: 2vw;
+  height: 5vh;
+  background-image: url("./image/plus.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 3;
+  left: 16vw;
+  border: none;
+  background-color: transparent;
+}
+
+.addafriend,
+.addafriend2 {
+  position: absolute;
+  left: 9.1vw;
+  bottom: 37vh;
+  width: 20vw;
+  height: 40vh;
+  background: linear-gradient(#00ffff , #191970);
+  z-index: 5;
+}
+
+.addafriend2 {
+  left: 46%;
+}
+
+.button {
+  width: 14vw;
+  height: 13.2vh;
+  left: 12.3vw;
+  top: 41.7vh;
+  color: #000;
+  font-family: Playfair Display;
+  font-size: 1.5vw;
+  font-weight: 800;
+  border: -2vw solid #000;
+  border-radius: 31px;
+  background: #d9d9d9;
+  position: relative;
+  overflow: hidden;
+  line-height: 18vh; 
+  z-index: 2;
+}
+
+.button::before {
+  content: ""; 
+  position: absolute; 
+  bottom: 6.5vh;
+  left: 0vw; 
+  right: 0vw; 
+  height: 0.2vw; 
+  background: #000; 
+  z-index: 1; 
+}
+.arrow-2,
+.arrow-3 {
+position: absolute;
+cursor: pointer;
+top: 50vh;
+width: 3vw;
+height: 10vh;
+z-index: 2;
+background-size: contain;
+/* background-position: center; */
+background-repeat: no-repeat;
+border: none; 
+background-color: transparent; 
+}
+
+.arrow-2 {
+left: 33.5vw;
+background-image: url("./image/arrow-3.png");
+}
+
+.arrow-3 {
+left: 17.3vw;
+background-image: url("./image/arrow-2.png");
+}
+.play {
+  left: 77vw;
+  top: 82vh;
+  font-family: Playfair Display;
+  color: #fff;
+  width: 15vw;
+  height: 10vh;
+  font-size: 2vw;
+  background-color: transparent;
+  border: none;
+  background-image: url("./image/imageB.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  font-weight:bold;
+  letter-spacing: 0.3em; 
+}
+.play:hover{
+  width: 18vw;
+  height: 12vh;
+  font-size: 2.4vw;
+  letter-spacing: 0.3em; 
+  color: rgba(17, 171, 27, 0.661);
+}
+
+.image{
+  position: absolute;  
+  width: 4vw;
+  height: 7vh;
+  left: 101%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.name{ 
+  position: absolute;
+  color: rgba(255, 255, 0, 1);
+  font-family: Playfair Display;
+  width: 300%;
+  display: block;
+  /* margin: 3%; */
+  left: 200%;
+  font-size: 1.2vw;
+  text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+  -1px 1px 0 rgb(0, 0, 0);
+}
+.shop{
+  position: absolute;
+  overflow-y: scroll;
+  left: 12%;
+  /* overflow: hidden; */
+  width: 37vw;
+  top: 17.5vh;
+  height: 48vh; 
+}
+.buy{
+  background-position: top;
+  position: relative;
+  display: block;
+  background-image: url("./image/buy.png");
+  width: 5vw;
+  height: 7vh;
+  margin: 2.5%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.description,
+.text {
+  top: 44% ;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-family: Piedra;
+  width: 350%;
+  display: block;
+  left: 200%;
+  margin: 0%;
+  font-size: 0.9vw;
+  text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+  -1px 1px 0 rgb(0, 0, 0);
+}
+
+.text {
+  top: 70% ;
+  width: 600%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media screen and (max-width: 1240px){
+  .panel {
+    top: 55%;
+  }
+}
+@media screen and (max-width: 450px){
+  .panel {
+    left: 18%;
+  }
+}
+@media screen and (max-width: 1200px) {
+.arrow-2{
+  left: 36.8vw;
+  }
+.arrow-3 {
+  left: 17.5vw;
+}
+.panel {
+  top: 55%;
+}
+.coin{
+  top: 8.5%;
+}
+.addafriend,
+.addafriend2 {
+  left: 8.5%;
+  bottom: 38%;
+  width: 20%; 
+  height: 40%;
+}
+.addafriend2{
+  left: 47.5%;
+}
+
+.friend,
+.friend-2{
+  bottom: 90%;
+  left:37%;
+}
+.image-rack1 {
+  left: -9%;
+}
+.image-rack2 {
+  left: 31%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 37%;
+  height: 25.3%;
+}
+
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 37.5vw;
+  height: 65.3vh;
+  left: 10%;
+}
+}
+@media screen and (max-width: 1130px) {
+.arrow-2{
+    left: 38.5vw;
+}
+.arrow-3 {
+  left: 19.8vw;
+}
+.panel {
+  top: 50%;
+}
+.coin{
+  top: 8%;
+}
+.friend,
+.friend-2{
+  bottom: 86%;
+  left:37%;
+}
+.image-rack1 {
+  left: -8%;
+}
+.image-rack2 {
+  left: 34%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 37%;
+  height: 26.3%;
+}
+
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 37.5vw;
+  height: 64.3vh;
+  left: 12%;
+}
+}
+  @media screen and (max-width: 1100px) {
+.arrow-2{
+  left: 39.5vw;
+}
+.arrow-3 {
+  left: 20.8vw;
+}
+.panel {
+   top: 50%;
+}
+.coin{
+  top: 8%;
+}
+.image-rack1 {
+  left: -8%;
+}
+.image-rack2 {
+  left: 35%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 37%;
+  height: 30.3%;
+}
+    
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 37.5vw;
+  height: 66.3vh;
+  left: 13%;
+}
+.baguetteM {
+  width: 40.7%;
+  height: 100%;
+}
+
+.friend,
+.friend-2{
+  bottom: 70%;
+}
+}
+    @media screen and (max-width: 1000px) {
+.arrow-2{
+  left: 43.6vw;
+}
+.arrow-3 {
+  left: 22vw;
+}
+.panel {
+  top: 45%;
+}
+.coin{
+  top: 7.5%;
+}
+.image-rack1 {
+  left: -10%;
+}
+.image-rack2 {
+   left: 37%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 44%;
+}
+      
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 37.5vw;
+  height: 66.3vh;
+  left: 15.8%;
+}
+.baguetteM {
+  width: 41.9%;
+  height: 100%;   
+}
+  
+.friend,
+.friend-2{
+  bottom: 65%;
+}
+}
+ @media screen and (max-width: 950px) {
+.arrow-2{
+  left: 43.8vw;
+}
+.arrow-3 {
+  left: 22vw;
+}
+.panel {
+  top: 45%;
+}
+.coin{
+  width: 2vw;  
+  height: 2.9vh;
+  top: 7.4%;
+  left: 50%;
+}
+.image-rack1 {
+  left: -9%;
+}
+.image-rack2 {
+  left: 37%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 42%;  
+}
+  
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 37.5vw;
+  height: 66.3vh;
+  left: 15.8%;
+}
+.baguetteM {
+
+  width: 42.7%;
+  height: 100%;
+
+}
+
+.friend,
+.friend-2{
+  bottom: 60%;
+}
+.button {
+  top: 70%;
+}
+ }
+@media screen and (max-width: 900px) {
+.arrow-2{
+  left: 47.9vw;
+}
+.arrow-3 {
+  left: 26vw;
+}
+.panel {
+  top: 43.7%;
+  width: 4vw;
+  height: 5vh;
+}
+.play{
+  left: 80.5vw;  
+}
+.button{
+  font-size: 1.9vw;
+  left: 26%;
+  width: 19vw;
+}
+.coin{
+  height: 2.5vh;
+  top: 7%;
+  left: 49%;
+}
+.image-rack1 {
+  left: -10%;
+}
+.image-rack2 {
+  left: 40%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 49%;
+}
+  
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 37.5vw;
+  height: 66.3vh;
+  left: 19.8%;
+}
+.baguetteM {
+  width: 42.9%;
+  height: 100%;
+}
+
+.friend,
+.friend-2{
+  bottom: 70%;
+  left: 37.3%;
+  width: 11.5vw;
+}
+}  
+@media screen and (max-width: 850px) {
+.arrow-2,
+.arrow-3 {
+  top: 42.8vw;
+}
+.panel {
+  top: 41%;
+}
+.coin{
+  top: 6.5%;
+  height: 2.5vh;
+}
+
+.friend,
+.friend-2{
+  bottom: 65%;
+}
+}  
+@media screen and (max-width: 800px) {
+.arrow-2,
+.arrow-3{
+  top: 55%;
+}
+.panel {
+  top: 44%;
+  left: 27%;
+}
+.coin{
+  top: 7%;
+  height: 2.4%;
+  width:4.2%;
+}
+.baguetteM {
+  width: 47.9%;
+  height: 100%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 44%;
+}
+.image-rack2 {
+  left: 43%;
+}      
+.image-rack1 {
+  left: -8%;
+}
+.image-Sportik, 
+.image-techguy, 
+.image-humanitarian {
+  width: 38.5vw;
+  height: 66.3vh;
+  left: 19.5%;
+}
+.friend,
+.friend-2{
+  left: 37%;
+  bottom: 47%;
+}
+}  
+@media screen and (max-width: 750px) {
+.baguetteM {
+  width: 53%;
+  height: 100%;
+}
+.arrow-2,
+.arrow-3 {
+  top: 52vw;
+}
+.panel {
+  left: 32%;
+  top: 46%;
+}
+.coin{
+  top: 8%;
+}
+.button {
+  left: 28%;
+  top: 70%;
+  width: 18vw;
+  height: 12.2vh;
+  line-height: 17vh; 
+  }
+.friend,
+.friend-2{
+  bottom:43%;
+}
+.image-rack1, 
+.image-rack2 {
+  width: 44%;
+}
+}  
+@media screen and (max-width: 700px) {
+.arrow-2,
+.arrow-3{
+  top: 59%;
+}
+.panel {
+  left: 26%;
+  width: 5vw;
+  top: 43%;
+}
+.coin{
+  top: 7%;
+}
+.button {
+  top:75%;
+}
+.friend,
+.friend-2{
+  bottom:35%;
+}
+}  
+@media screen and (max-width: 660px) {
+.baguetteM {
+  width: 56.7%;
+  height: 100%;
+} 
+.arrow-2,
+.arrow-3{
+  top: 66%;
+}
+.panel {
+  top: 38%;
+}
+.coin{
+  top: 8%;
+}
+.friend,
+.friend-2{
+  bottom:28%;
+}
+} 
+@media screen and (max-width: 680px) {
+  .baguetteM {
+    width: 60.7%;
+    height: 100%;
+  } 
+  .arrow-2,
+  .arrow-3{
+    top: 64%;
+  }
+  .panel {
+    top: 48%;
+  }
+  .coin{
+    top: 8%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .arrow-2,
+  .arrow-3{
+    top: 64%;
+  }
+  .panel {
+    top: 44%;
+  }
+  .coin{
+    top: 7.5%;
+  }
+  .friend,
+  .friend-2{
+    bottom:28%;
+  }
+  }  
+ @media screen and (max-width: 600px) {
+  .baguetteM {
+    width: 65.7%;
+    height: 100%;
+    } 
+  .arrow-2,
+  .arrow-3{
+    top: 66%;
+  }
+  .panel {
+    top: 45%;
+    width: 10%;
+    left:25%;
+  }
+  .coin{
+    top: 7.5%;
+  }
+ .friend,
+ .friend-2{
+  bottom:20%
+ }
+ .button {
+    top:80%;
+    width:43.3%;
+    height: 11vh;
+    line-height: 13vh;  
+
+} 
+} */ 
+/*@media screen and (max-width: 550px) {
+  .baguetteM {
+
+    width: 71.7%;
+    height: 100%;
+  
+    } 
+  .arrow-2,
+  .arrow-3{
+    top: 70%;
+  }
+  
+  .panel {
+    top:46%;
+  }
+  .coin{
+    top: 7%;
+
+  }
+ 
+}  
+@media screen and (max-width: 520px) {
+  .baguetteM {
+
+    width: 76.7%;
+    height: 100%;
+  
+    } 
+    .coin{
+      top: 8%;
+  
+    }
+  .panel {
+    top:47%;
+  }
+
+ 
+}  
+@media screen and (max-width: 500px) {
+  .arrow-2,
+  .arrow-3{
+    top: 73%;
+  }
+
+  .baguetteM {
+
+    width: 81.7%;
+    height: 100%;
+
+    }
+  .panel {
+    top: 47%;
+    left: 25%;
+    height:5%;
+    width: 8%;
+  }
+  .coin{
+    top: 7%;
+    width:5%;
+    height:3%;
+  }
+  .friend,
+  .friend-2{
+  bottom: -7%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .arrow-2,
+  .arrow-3{
+    top: 74%;
+  }
+  .arrow-2{
+    left:48% ;
+
+  }
+  .arrow-3{
+left: 23%;
+  }
+
+  .baguetteM {
+
+    width: 83.7%;
+    height: 100%;
+
+    }
+  .panel {
+    top: 44%;
+    left: 25%;
+    height:5%;
+    width: 8%;
+  }
+  .coin{
+    top: 7%;
+    width:5%;
+    height:3%;
+  }
+  .button{
+    top: 81%;
+  }
+  .friend,
+  .friend-2{
+  bottom: -10%;
+  }
+  .image-rack1, 
+  .image-rack2 {
+    width: 45%;
+  }
+  .image-rack1 {
+    left: 43.1%; 
+  }
+  .image-rack2 {
+    left: -9.1%; 
+  }
+  .image-Sportik, 
+  .image-techguy, 
+  .image-humanitarian {
+    width: 38.5vw;
+    left: 18.1%;
+  }
+}
+
+
+@media screen and (max-width: 430px) {
+  
+  .panel {
+    top: 40%;
+    left: 25%;
+    height:5%;
+    width: 8%;
+  }
+  .coin{
+    top: 6%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .arrow-2,
+  .arrow-3{
+    top: 77%;
+  }
+
+  .baguetteM {
+
+    width: 82.7%;
+    height: 100%;
+
+    }
+  .panel {
+    top: 37%;
+    left: 25%;
+    height:5%;
+    width: 8%;
+  }
+  .coin{
+    top: 6%;
+    width:4%;
+    height:2%;
+  }
+  .friend,
+  .friend-2{
+  bottom: -15%;
+  }
+.button{
+  top: 82%;
+}
+
+}
+@media screen and (max-width: 360px) {
+  .arrow-2,
+  .arrow-3 {
+    top: 79%;
+  }
+    .panel{
+    top: 33%;
+    left: 25%;
+    height:5%;
+    width: 8%;
+  }
+  .button {
+    top:82%;
+    height:10%;
+
+  }
+  .coin{
+    top: 6%;
+  }
+  .friend,
+.friend-2{
+bottom: -20%;
+}
+}
+@media screen and (max-width: 310px) {
+
+    .panel{
+    top: 27%;
+  }
+  .coin{
+    top: 4.5%;
+  }
+  .friend,
+  .friend-2{
+  bottom: -30%;
+  left:38%;
+  }  
+  }
+  @media screen and (max-width: 300px) {
+    .panel{
+      top: 27%;
+    }
+    .coin{
+      top: 4.5%;
+    }
+    
+  }  
+  @media screen and (max-width: 230px) {
+    .arrow-2,
+    .arrow-3 {
+      top: 84%;
+    }
+    .arrow-2{
+      left:48%;
+    }
+    .arrow-3 {
+      left:21%;
+      
+    }
+    .baguetteM {
+
+      width: 85.7%;
+      height: 100%;
+  
+      }
+    .button {
+      top:86%;
+      width: 38%;
+      height: 10%;
+    line-height: 5vh;  
+
+    }
+    .panel {
+      top: 22%;
+      left: 28%;
+      height:2%;
+      width: 7%;
+    }
+    .coin{
+      top: 4%;
+      height:1%;
+      width: 4%;
+    }
+    .friend,
+    .friend-2{
+    bottom: -30%;
+    }
+    .image-rack1, 
+    .image-rack2 {
+      height: 38%;
+    }
+    
+
+    .image-Sportik, 
+    .image-techguy, 
+    .image-humanitarian {
+      height: 80.5vw;
+    
+    }  
+  }
+  @media screen and (max-width: 200px) {
+
+    .arrow-2,
+    .arrow-3 {
+      top: 84%;
+    }
+    .arrow-2{
+      left:48%;
+    }
+    .arrow-3 {
+      left:21%;
+      
+    }
+    .baguetteM {
+
+      width: 85.7%;
+      height: 100%;
+  
+      }
+    .button {
+      top:86%;
+      width: 38%;
+      height: 10%;
+    line-height: 5vh;  
+
+    }
+    .panel {
+      top: 19%;
+      left: 28%;
+      height:2%;
+      width: 7%;
+    }
+    .coin{
+      top: 3.5%;
+      height:1%;
+      width: 4%;
+    }
+  } */
