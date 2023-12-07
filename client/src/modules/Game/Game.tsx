@@ -4,6 +4,7 @@ import { ServerContext, MediatorContext } from "../../App";
 import { TScene } from "../Server/types";
 import Player from "./Player";
 import Scene from "./Scene";
+import { Physics, RigidBody } from "@react-three/rapier";
 
 const Game: React.FC = () => {
     const server = useContext(ServerContext);
@@ -15,16 +16,15 @@ const Game: React.FC = () => {
 
         const getSceneHandler = (scene: TScene) => {
             console.log(scene);
-        }
+        };
 
         mediator.subscribe(GET_SCENE, getSceneHandler);
 
-        return() => {
+        return () => {
             // отписка!!!
             // mediator.unsubscribe(GET_SCENE, getSceneHandler);
-        }
+        };
     });
-
 
     return (
         <Canvas
@@ -36,8 +36,10 @@ const Game: React.FC = () => {
             }}
         >
             <ambientLight intensity={2} position={[0, 0, 5]} />
-            <Scene />
-            <Player />
+            <Physics gravity={[0, 0, -10]}>
+                <Scene />
+                <Player />
+            </Physics>
         </Canvas>
     );
 };
