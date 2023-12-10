@@ -19,14 +19,15 @@ class Application {
         $this->user = new User($this->db);
         $this->chat = new Chat($this->db);
         $this->game = new Game($this->db);
+        $this->lobby = new Lobby($this->db);
     }
 
     private function checkParams() {
         $arr = func_get_args();
-        if(count($arr) === 0)
+        if (count($arr) === 0)
             return false;
-        foreach($arr as $i) {
-            if(!$i)
+        foreach ($arr as $i) {
+            if (!$i)
                 return false;
         }
         return array(false, 1001);
@@ -36,7 +37,7 @@ class Application {
         $login = $params['login'];
         $hash = $params['hash'];
         $rnd = $params['rnd'];
-        if($login && $hash && $rnd) {
+        if ($login && $hash && $rnd) {
             return $this->user->login($login, $hash, $rnd);
         }
         return array(false, 1012);
@@ -44,7 +45,7 @@ class Application {
 
     function logout($params) {
         $token = $params['token'];
-        if($token) {
+        if ($token) {
             return $this->user->logout($token);
         }
         return array(false, 400);
@@ -55,8 +56,8 @@ class Application {
         $password = $params['password'];
         $nickname = $params['nickname'];
         $verifyPassword = $params['verifyPassword'];
-        if($login && $nickname) {
-            if($password || $verifyPassword) {
+        if ($login && $nickname) {
+            if ($password || $verifyPassword) {
                 return $this->user->signUp($login, $password, $nickname, $verifyPassword);
             }
             return array(false, 1501);
@@ -67,9 +68,9 @@ class Application {
     function sendMessage($params) {
         $token = $params['token'];
         $message = $params['message'];
-        if($token && $message) {
+        if ($token && $message) {
             $user = $this->user->getUser($token);
-            if($user) {
+            if ($user) {
                 return $this->chat->sendMessage($user->id, $message);
             }
             return array(false, 455);
@@ -80,14 +81,22 @@ class Application {
     function getMessages($params) {
         $token = $params['token'];
         $hash = $params['hash'];
-        if($token && $hash) {
+        if ($token && $hash) {
             $user = $this->user->getUser($token);
-            if($user) {
+            if ($user) {
                 return $this->chat->getMessages($hash);
             }
             return array(false, 455);
         }
         return array(false, 1001);
+    }
+
+    function getPersons($params) {
+        $token = $params['token'];
+        if ($token) {
+            return $this->lobby->getPersons($token);
+        }
+        return array(false, 1002);
     }
 
     function getScene($params) {
@@ -98,7 +107,7 @@ class Application {
         $hashMap = true;
         if ($token && $hashGamers && $hashItems && $hashMobs && $hashMap) {
             $user = $this->user->getUser($token);
-            if($user) {
+            if ($user) {
                 return $this->game->getScene($user->id, $hashGamers, $hashItems, $hashMobs, $hashMap);
             }
             return array(false, 9000);
@@ -113,7 +122,7 @@ class Application {
         $y = $params['y'];
         if ($token && $direction && $x && $y) {
             $user = $this->user->getUser($token);
-            if($user) {
+            if ($user) {
                 return $this->game->move($user->id, $direction, $x, $y);
             }
             return array(false, 9000);

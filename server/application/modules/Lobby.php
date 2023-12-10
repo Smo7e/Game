@@ -6,14 +6,14 @@ class Lobby {
         $this->db = $db;
     }
 
-    public function getPersons($params) {
-        $token = $params['token'];
-        if ($token) {
+    public function getPersons($token) {
+        $user = $this->db->getUserByToken($token);
+        if ($user) {
             return $this->db->getPersons($token);
         }
-        return array(false, 1002);
+        return array(false, 455);
     }
-    
+
     public function setPerson($params) {
         $id = $params['id'];
         $idPerson = $params['person_id'];
