@@ -1,11 +1,14 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
-import { SphereGeometry, TextureLoader } from "three";
+import { TextureLoader } from "three";
 import { sportikDown, sportikRight, sportikLeft, sportikUp } from "./index";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
+import { ServerContext } from "../../App";
+
 const Player: React.FC = () => {
+    const server = useContext(ServerContext);
     const personRef = useRef<RapierRigidBody>(null);
     const [directionPlayer, setdirectionPlayer] = useState(sportikDown[0]);
     const [currentFrame, setCurrentFrame] = useState(0);
@@ -18,7 +21,6 @@ const Player: React.FC = () => {
     const [cameraPosition, setCameraPosition] = useState(new Vector3(0, 0, 14));
     const playerSpeed = 5;
     const frameSpeed = 0.1;
-
     useFrame((state) => {
         if (!personRef.current) return;
         const { w, a, s, d } = controls;
@@ -45,12 +47,12 @@ const Player: React.FC = () => {
                 personRef.current?.setLinvel(new Vector3(playerSpeed, 0, 0), true);
                 move.x += playerSpeed;
             }
-
             personRef.current?.setLinvel(move, true);
             const cameraMove = new Vector3(personRef.current!.translation().x, personRef.current!.translation().y, 14);
             const newPosition = cameraPosition.lerp(cameraMove, 0.1);
             setCameraPosition(newPosition);
             state.camera.position.copy(newPosition);
+            server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y);
         }
     });
     const keydownHangler = (e: any) => {

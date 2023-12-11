@@ -1,28 +1,31 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ServerContext, MediatorContext } from "../../App";
 import { TScene } from "../Server/types";
 import Player from "./Player";
 import Scene from "./Scene";
-import { Physics, RigidBody } from "@react-three/rapier";
-
+import { Physics } from "@react-three/rapier";
+import Friends from "./Friends";
+import { TGamer } from "../Server/types";
 const Game: React.FC = () => {
     const server = useContext(ServerContext);
     const mediator = useContext(MediatorContext);
     const { GET_SCENE } = mediator.getEventTypes();
+    const [infoFriends, setInfoFriends] = useState<TGamer[] | null>(null);
 
     useEffect(() => {
         server.startGameInterval();
 
         const getSceneHandler = (scene: TScene) => {
-            console.log(scene);
+            if (scene.gamers != null) {
+                setInfoFriends(scene.gamers);
+            }
         };
-
         mediator.subscribe(GET_SCENE, getSceneHandler);
 
         return () => {
-            // отписка!!!
-            // mediator.unsubscribe(GET_SCENE, getSceneHandler);
+            mediator.unsubscribe(GET_SCENE, getSceneHandler);
+            server.stopGameInterval();
         };
     });
 
@@ -39,6 +42,7 @@ const Game: React.FC = () => {
             <Physics gravity={[0, 0, -10]}>
                 <Scene />
                 <Player />
+                <Friends infoFriends={infoFriends} />
             </Physics>
         </Canvas>
     );
