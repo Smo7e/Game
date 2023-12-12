@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 12 2023 г., 15:12
+-- Время создания: Дек 12 2023 г., 20:32
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -30,15 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `version` varchar(256) NOT NULL,
-  `chat_hash` varchar(256) NOT NULL
+  `chat_hash` varchar(256) NOT NULL,
+  `gamers_hash` varchar(256) NOT NULL,
+  `update_timestamp` int(11) NOT NULL DEFAULT 0,
+  `update_timeout` int(11) NOT NULL DEFAULT 300
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `game`
 --
 
-INSERT INTO `game` (`id`, `version`, `chat_hash`) VALUES
-(1, '1.0.0', '9111aa5bef3f0de7ffb46447f0fe687c');
+INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `update_timestamp`, `update_timeout`) VALUES
+(1, '1.0.0', '8b4c78eac40944896eaef63ea53a908e', 'f77db2fe395e0666297c622a93603b76', 1702365760, 300);
 
 -- --------------------------------------------------------
 
@@ -61,11 +64,40 @@ CREATE TABLE `gamers` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `gamers_items`
+--
+
+CREATE TABLE `gamers_items` (
+  `id` bigint(20) NOT NULL,
+  `item_id` bigint(20) DEFAULT NULL,
+  `gamer_id` bigint(20) DEFAULT NULL,
+  `status` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `x` float DEFAULT NULL,
+  `y` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `gamers_properties`
+--
+
+CREATE TABLE `gamers_properties` (
+  `id` bigint(20) NOT NULL,
+  `gamer_id` bigint(20) DEFAULT NULL,
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `items`
 --
 
 CREATE TABLE `items` (
-  `id` int(7) NOT NULL,
+  `id` bigint(7) NOT NULL,
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -142,6 +174,32 @@ CREATE TABLE `rangs` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `room`
+--
+
+CREATE TABLE `room` (
+  `id` bigint(20) NOT NULL,
+  `width` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `room_exits`
+--
+
+CREATE TABLE `room_exits` (
+  `id` bigint(20) NOT NULL,
+  `room_id` bigint(20) DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `goto_id` bigint(20) DEFAULT NULL,
+  `status` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -186,6 +244,21 @@ ALTER TABLE `gamers`
   ADD KEY `person_id` (`person_id`);
 
 --
+-- Индексы таблицы `gamers_items`
+--
+ALTER TABLE `gamers_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `gamer_id` (`gamer_id`);
+
+--
+-- Индексы таблицы `gamers_properties`
+--
+ALTER TABLE `gamers_properties`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gamer_id` (`gamer_id`);
+
+--
 -- Индексы таблицы `items`
 --
 ALTER TABLE `items`
@@ -208,6 +281,20 @@ ALTER TABLE `persons`
 --
 ALTER TABLE `rangs`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `room`
+--
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `room_exits`
+--
+ALTER TABLE `room_exits`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `room_id` (`room_id`),
+  ADD KEY `goto_id` (`goto_id`);
 
 --
 -- Индексы таблицы `users`
@@ -235,10 +322,22 @@ ALTER TABLE `gamers`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT для таблицы `gamers_items`
+--
+ALTER TABLE `gamers_items`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `gamers_properties`
+--
+ALTER TABLE `gamers_properties`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
@@ -250,6 +349,18 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `persons`
 --
 ALTER TABLE `persons`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `room`
+--
+ALTER TABLE `room`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `room_exits`
+--
+ALTER TABLE `room_exits`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
@@ -268,6 +379,26 @@ ALTER TABLE `users`
 ALTER TABLE `gamers`
   ADD CONSTRAINT `gamers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `gamers_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `gamers_items`
+--
+ALTER TABLE `gamers_items`
+  ADD CONSTRAINT `gamers_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`),
+  ADD CONSTRAINT `gamers_items_ibfk_2` FOREIGN KEY (`gamer_id`) REFERENCES `gamers` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `gamers_properties`
+--
+ALTER TABLE `gamers_properties`
+  ADD CONSTRAINT `gamers_properties_ibfk_1` FOREIGN KEY (`gamer_id`) REFERENCES `gamers` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `room_exits`
+--
+ALTER TABLE `room_exits`
+  ADD CONSTRAINT `room_exits_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`),
+  ADD CONSTRAINT `room_exits_ibfk_2` FOREIGN KEY (`goto_id`) REFERENCES `room` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
