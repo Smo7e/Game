@@ -21,15 +21,55 @@ class Application {
         $this->game = new Game($this->db);
     }
 
-    private function checkParams() {
-        $arr = func_get_args();
-        if(count($arr) === 0)
-            return false;
-        foreach($arr as $i) {
-            if(!$i)
+    private function check($params){
+        foreach($params as $param=>$value){
+            if($param === 'token' && (!is_string($value) || strlen($value) != 32)){
                 return false;
+            }
+            if($param === 'login' && (!is_string($value) || strlen($value) > 16 )){
+                return false;
+            }
+            if($param === 'password' && (!is_string($value) && strlen($value) > 16)){
+                return false;
+            }
+            if($param === 'nickname' && (!is_string($value) || strlen($value) > 16)){
+                return false;
+            }
+            if($param === 'verifyPassword' && (!is_string($value) && strlen($value) > 16)){
+                return false;
+            }    
+            if($param === 'message' && (!is_string($value) || strlen($value) > 256)){
+                return false;
+            }
+            if($param === 'messageTo' && !is_numeric($value)){
+                return false;
+            }
+            if($param === 'hash' && (!is_string($value) || !strlen($value) == 32)){
+                return false;
+            }
+            if($param === 'hashMap' && (!is_string($value) || !strlen($value) == 32) ){
+                return false;
+            }
+            if($param === 'hashItems' && (!is_string($value) || !strlen($value) == 32) ){
+                return false;
+            }
+            if($param === 'hashMobs' && (!is_string($value) || !strlen($value) == 32) ){
+                return false;
+            }
+            if($param === 'hashGamers' && (!is_string($value) || !strlen($value) == 32)){
+                return false;
+            }
+            if($param === 'direction' && !is_numeric($value)){
+                return false;
+            }
+            if($param === 'x' && !is_numeric($value)){
+                return false;
+            }
+            if($param === 'y' && !is_numeric($value)){
+                return false;
+            }          
         }
-        return array(false, 1001);
+        return true;
     }
 
     function login($params) {
