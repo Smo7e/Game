@@ -1,7 +1,7 @@
 {
   "id": "9257c282-16b3-4c14-88fa-bacb61e58745",
   "version": "2.0",
-  "name": "STUDFRONT",
+  "name": "Auto-test_SignUp",
   "url": "http://localhost:3000",
   "tests": [{
     "id": "902e6f67-a0dd-48cc-a7f4-e939f999ea93",
@@ -804,7 +804,7 @@
     }]
   }, {
     "id": "e693d0f7-4345-46da-9816-2f9c8b4605f5",
-    "name": "Test-Two-ParamsA",
+    "name": "Test-lack-of-Pass-and-VerifyPass",
     "commands": [{
       "id": "788126fa-10ed-4fb5-9c6f-eecceb4f1849",
       "comment": "",
@@ -895,7 +895,7 @@
     }]
   }, {
     "id": "d0db9904-12be-4775-821c-047970085f63",
-    "name": "Test-Two-ParamsB",
+    "name": "Test-lack-of-Nick-and-VerifyPass",
     "commands": [{
       "id": "362363ba-09d8-44ba-9f7c-8f502da50ca6",
       "comment": "",
@@ -986,7 +986,7 @@
     }]
   }, {
     "id": "42883170-c0d5-40f6-a5a3-24a31b15efc3",
-    "name": "Test-Two-ParamsC",
+    "name": "Test-lack-of-Nick-and-Pass",
     "commands": [{
       "id": "6057ae93-fa30-4cd9-902d-8c629389e946",
       "comment": "",
@@ -1077,7 +1077,7 @@
     }]
   }, {
     "id": "af8e4b4c-1e4e-4188-b51f-b59632d71525",
-    "name": "Test-Two-ParamsD",
+    "name": "Test-lack-of-Login-and-VerifyPass",
     "commands": [{
       "id": "3f34c941-f1d1-46ce-b8b9-7c76a14c7a4f",
       "comment": "",
@@ -1168,7 +1168,7 @@
     }]
   }, {
     "id": "d4a1d6bc-2867-40a4-962e-a0ccf8e53827",
-    "name": "Test-Two-ParamsE",
+    "name": "Test-lack-of-Login-and-Pass",
     "commands": [{
       "id": "0357cf1b-86ba-4ce7-b201-6795c0de1766",
       "comment": "",
@@ -1259,7 +1259,7 @@
     }]
   }, {
     "id": "53a88087-ce7a-489b-bfed-035fdeb99593",
-    "name": "Test-Two-ParamsF",
+    "name": "Test-lack-of-Login-and-Nick",
     "commands": [{
       "id": "a6722c82-a407-4320-8775-16dc53ba2256",
       "comment": "",
@@ -1350,7 +1350,7 @@
     }]
   }, {
     "id": "078922c6-1432-46cb-978b-b541ca16b3db",
-    "name": "Test-Three-ParamsA",
+    "name": "Test-lack-of-VerifyPassword",
     "commands": [{
       "id": "92558873-1a62-4790-a91b-fae8dbab0127",
       "comment": "",
@@ -1442,19 +1442,17 @@
       "id": "ebc13e45-4ce7-4458-a5c4-9293fafd33a7",
       "comment": "",
       "command": "verifyText",
-      "target": "id=test-error-text",
+      "target": "css=.page",
       "targets": [
-        ["id=test-error-text", "id"],
-        ["css=#test-error-text", "css:finder"],
-        ["xpath=//div[@id='test-error-text']", "xpath:attributes"],
-        ["xpath=//div[@id='test-error-message']/div[2]", "xpath:idRelative"],
-        ["xpath=//div[2]/div[2]/div[2]", "xpath:position"]
+        ["css=.page", "css:finder"],
+        ["xpath=//html[@id='app']/body/div[3]", "xpath:idRelative"],
+        ["xpath=//body/div[3]", "xpath:position"]
       ],
       "value": "Пароли не совпадают"
     }]
   }, {
     "id": "5b977ff8-d12c-4588-a17a-b65bdacd062d",
-    "name": "Test-Three-ParamsB",
+    "name": "Test-lack-of-Password",
     "commands": [{
       "id": "4ed5aa92-1b7b-47e1-bb34-c94459660ad1",
       "comment": "",
@@ -1558,7 +1556,7 @@
     }]
   }, {
     "id": "ccdb95aa-54f7-4c34-80d4-2b564b96cf49",
-    "name": "Test-Three-ParamsC",
+    "name": "Test-lack-of-Nickname",
     "commands": [{
       "id": "65aa6649-2f33-467c-b985-cbb2978fcd4e",
       "comment": "",
@@ -1662,7 +1660,7 @@
     }]
   }, {
     "id": "0cb36ef4-0515-4715-9026-7b70f8caa790",
-    "name": "Test-Three-ParamsD",
+    "name": "Test-lack-of-Login",
     "commands": [{
       "id": "eeca117b-1fd7-465e-a16c-749b803e923a",
       "comment": "",
