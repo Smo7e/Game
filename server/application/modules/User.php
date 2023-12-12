@@ -12,9 +12,9 @@ class User {
 
     function login($login, $hash, $rnd) {
         $user = $this->db->getUserByLogin($login);
-        if ($user) {
+        if($user) {
             $hashS = md5($user->password.$rnd);
-            if ($hash === $hashS) {
+            if($hash === $hashS) {
                 $token = md5($hash.rand());
                 $this->db->updateToken($user->id, $token);
                 return array(
@@ -22,28 +22,32 @@ class User {
                     'token' => $token
                 );
             }
-            return array(false, 456);
+            return array(false, 1012);
         }
-        return array(false, 455);
+        return array(false, 1000);
     }
 
     function logout($token) {
         $user = $this->db->getUserByToken($token);
-        if ($user) {
+        if($user) {
             $this->db->updateToken($user->id, null);
             return true;
         }
         return array(false, 455);
     }
 
-    function signUp($login, $password, $nickname) {
+    function signUp($login, $password, $nickname, $verifyPassword) {
         $password = md5($login.$password);
+        $verifyPassword = md5($login.$verifyPassword);
         $user = $this->db->getUserByLogin($login);
-        if (!$user) {
-            $this->db->addUser($login, $password, $nickname);
-            return array(
-                'name' =>$nickname ,
-            );
+        if(!$user) {
+            if($password === $verifyPassword) {
+                $this->db->addUser($login, $password, $nickname);
+                return array(
+                    'name' => $nickname,
+                );
+            }
+            return array(false, 1502);
         }
         return array(false, 487);
     }

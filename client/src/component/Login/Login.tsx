@@ -1,7 +1,9 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Login.css";
 import { EPAGES, MediatorContext, ServerContext } from "../../App";
 import md5 from "md5";
+import ErrorMessage from "../../modules/ErrorMessage/ErrorMessage";
+import { TError } from "../../modules";
 interface ILoginProps {
     epages: Function;
 }
@@ -12,7 +14,11 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
     const loginRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
 
+    
+    const [error, setError] = useState<TError | null>(null);
+
     const clickHandler = async () => {
+        setError(null);
         const login = loginRef.current!.value;
         const password = passwordRef.current!.value;
         const rnd = Math.round(Math.random() * 1000000);
@@ -22,9 +28,24 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
             epages(EPAGES.MENU);
         }
     };
+
+    useEffect(() => {
+      const { SERVER_ERROR } = mediator.getEventTypes();
+
+      const serverErrorHandler = (error: TError) => {
+          setError(error);
+      };
+
+      mediator.subscribe(SERVER_ERROR, serverErrorHandler);
+
+      return () => {
+          mediator.unsubscribe(SERVER_ERROR, serverErrorHandler);
+      };
+  });
+
     return (
         <div className="Login" id="test-login">
-          <div className="logoLogin"></div>
+          <div className="logoLogin" id="test-logo"></div>
           <div className="containerLogin" id="test-container">
             <div className="containerLoginHeader" id="test-header">
               Войти
@@ -36,13 +57,15 @@ const Login: React.FC<ILoginProps> = ({ epages }) => {
     
             <div className="checkboxLogin-container" id="test-checkbox-container">
               <input type="checkbox" className="checkboxLogin" id="test-remember-checkbox" />
-              <div className="checkboxLoginText">Не выходить из учетной записи</div>
+              <div className="checkboxLoginText" id="test-text-checkbox">Не выходить из учетной записи</div>
             </div>
     
             <button className="loginButton" onClick={clickHandler} id="test-login-button">
               Продолжить
             </button>
-            <hr className="hrLogin"/>
+            <ErrorMessage error={error} />
+            
+            <hr className="hrLogin" id="test-hrLogin"/>
     
             <div className="otherButtonsLogin" id="test-other-buttons">
               <button className="otherButtonLogin" id="test-forgot-password-button">

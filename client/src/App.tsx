@@ -6,6 +6,8 @@ import Game from "./modules/Game/Game";
 import Menu from "./component/Menu/Menu";
 import Login from "./component/Login/Login";
 import Heroes from "./component/Heroes/Heroes";
+import Interface from "./component/Interface/Interface";
+import Lobby from "./component/Lobby/Lobby";
 
 
 import "./App.css";
@@ -19,6 +21,7 @@ export enum EPAGES {
     GAME,
     MENU,
     HEROES,
+    LOBBY,
 }
 
 const MainApp = () => {
@@ -32,9 +35,14 @@ const MainApp = () => {
             ) : epages === EPAGES.MENU ? (
                 <Menu epages={setEpages} />
             ) : epages === EPAGES.GAME ? (
-                <Game />
+                <>
+                    <Game />
+                    <Interface />
+                </>
             ) : epages === EPAGES.HEROES ? (
                 <Heroes epages={setEpages} />
+            ) : epages === EPAGES.LOBBY ? (
+                <Lobby epages={setEpages} />        
             ) : (
                 <></>
             )}

@@ -2,20 +2,18 @@
 class DB {
     private $db;
 
-    function __construct() {
-        $user = 'root';
-        $pass = '';
-        $db = 'studfront';
-        $host = '127.0.0.1';
-        $port = 3306;
+    function __construct($config) {
+        extract($config);
+
         $this->db = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pass);
+
     }
 
     function __destruct() {
         $this->db = null;
     }
 
-    function preparationQuery($query, $arr) {
+    private function preparationQuery($query, $arr = []) {
         $stmt = $this->db->prepare($query);
         $stmt->execute($arr);
         return $stmt;
@@ -54,8 +52,7 @@ class DB {
 
     function sendMessage($userId, $message) {
         $query = 'INSERT INTO messages (user_id, message, created) VALUES (?, ?, now())';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$userId, $message]);
+        $this->preparationQuery($query, [$userId, $message]);
     }
 
     function getMessages() {
@@ -66,21 +63,45 @@ class DB {
             INNER JOIN users AS u
             ON u.id=m.user_id
             ORDER BY m.created DESC';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([]);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
 
     function updateChatHash($hash) {
         $query = 'UPDATE game SET chat_hash=? WHERE id=1';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$hash]);
+        $this->preparationQuery($query, [$hash]);
+    }
+
+    function updateGamersHash($hash) {
+        $query = 'UPDATE game SET gamers_hash=? WHERE id=1';
+        $this->preparationQuery($query, [$hash]);
+    }
+
+    function updateTimestamp($updateTimestamp) {
+        $query = 'UPDATE game SET update_timestamp=? WHERE id=1';
+        $this->preparationQuery($query, [$updateTimestamp]);
     }
 
     function getHashes() {
         $query = 'SELECT * FROM game WHERE id=1';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $this->preparationQuery($query, [])->fetch(PDO::FETCH_OBJ);
+    }
+
+    function getGamers() {
+        $query = 'SELECT 
+            u.name AS name,
+            g.person_id AS person_id,
+            g.status AS status,
+            g.x AS x,
+            g.y AS y,
+            g.direction AS direction
+        FROM gamers AS g
+        INNER JOIN users AS u
+        ON u.id=g.user_id';
+        return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function move($userId, $direction, $x, $y) {
+        $query = 'UPDATE gamers SET direction=?, x=?, y=? WHERE user_id=?';
+        $this->preparationQuery($query, [$direction, $x, $y, $userId]);
     }
 }
