@@ -6,9 +6,6 @@
 -- Время создания: Дек 12 2023 г., 20:32
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.1.33
--- Время создания: Дек 12 2023 г., 10:35
--- Версия сервера: 10.3.13-MariaDB
--- Версия PHP: 7.1.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -125,32 +122,6 @@ INSERT INTO `items` (`id`, `name`, `type`, `location`, `image`, `description`) V
 (10, 'Словарь', 'Книга', 'Русский язык, английский язык', 'https://drive.google.com/uc?id=1Sms2iIUvf2aN3-EHdLz8-jMTyJLHhom0', 'Увеличивает урон по “Русскому языку” и “Английскому языку” на 10 единиц'),
 (11, 'Ноутбук', 'Гаджет', 'Математика, программирование', 'https://drive.google.com/uc?id=1AmXmAyEcvSGUK0gL70VDyx_nLIhT7GQI', 'Увеличивает урон по “Программированию” и “Математике” на 10 единиц'),
 (12, 'Багет', 'Расходник', 'Багетница', 'https://drive.google.com/uc?id=17LFVpq1h5V_HrYuHz6zbYpK3rcXpPBIY', ' Восстанавливает здоровье на 25 единиц');
-INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `update_timestamp`, `update_timeout`) VALUES
-(1, '1.0.0', '8b4c78eac40944896eaef63ea53a908e', 'f77db2fe395e0666297c622a93603b76', 1702365760, 300);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `gamers`
---
-
-CREATE TABLE `gamers` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `person_id` int(11) NOT NULL,
-  `status` varchar(256) NOT NULL,
-  `x` int(11) NOT NULL DEFAULT 0,
-  `y` int(11) NOT NULL DEFAULT 0,
-  `direction` varchar(256) NOT NULL DEFAULT 'down'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `gamers`
---
-
-INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`) VALUES
-(1, 1, 1, 'stand', 0, 2, 'walk'),
-(2, 4, 1, 'walk', 22, 11, 'walk');
 
 -- --------------------------------------------------------
 
@@ -173,12 +144,7 @@ INSERT INTO `messages` (`id`, `user_id`, `message`, `created`) VALUES
 (1, 4, 'hahahha', '2023-11-14 10:29:24'),
 (2, 1, 'hihihi', '2023-11-14 10:29:53'),
 (3, 4, 'hohohohohooooo', '2023-11-14 10:33:36'),
-(4, 4, 'иди в попу!', '2023-11-14 11:08:25'),
-(5, 4, 'сам иди', '2023-11-29 08:27:05'),
-(6, 1, 'ща втащу!', '2023-11-29 08:27:13'),
-(7, 1, 'fdfgdfgsdg', '2023-12-12 11:17:54'),
-(8, 1, 'rtyr546', '2023-12-12 11:18:01'),
-(9, 4, '1111', '2023-12-12 11:20:28');
+(4, 4, 'иди в попу!', '2023-11-14 11:08:25');
 
 -- --------------------------------------------------------
 
@@ -251,7 +217,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`) VALUES
 (1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', '41e3fe36008ef0420e50c42547c1568b'),
-(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'c6da0739ff51490155feef23aacb611f'),
 (2, 'petya', '321', 'Petya Petroff', NULL),
 (4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '826c181183abdb683aaeb372c5d8da1c'),
 (5, '1', 'c51ce410c124a10e0db5e4b97fc2af39', '2', NULL),
@@ -259,7 +224,6 @@ INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`) VALUES
 (7, '123', '4297f44b13955235245b2497399d7a93', '123', NULL),
 (8, 'wef', 'b1444ebf2a132112bfaec62ed475ef82', 'ASFfvD', NULL),
 (11, 'vasya3', 'bbdfc6d64804b6c634d94e52f05505ca', '1231', NULL);
-(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', 'e51062d8aec60d17c83533a4a8ed89af');
 
 --
 -- Индексы сохранённых таблиц
@@ -298,12 +262,6 @@ ALTER TABLE `gamers_properties`
 -- Индексы таблицы `items`
 --
 ALTER TABLE `items`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `gamers`
---
-ALTER TABLE `gamers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -382,16 +340,10 @@ ALTER TABLE `items`
   MODIFY `id` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT для таблицы `gamers`
---
-ALTER TABLE `gamers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `persons`
