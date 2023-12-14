@@ -13,6 +13,11 @@ class Game
         return $this->db->getGamers();
     }
 
+    private function getItems($userId)
+    {
+        return $this->db->getItems();
+    }
+
     function updateScene($updateTimestamp, $updateTimeout) {
         if (time() - $updateTimestamp >= $updateTimeout) {
             $this->db->updateTimestamp(time());
@@ -58,7 +63,10 @@ class Game
             $result['hashGamers'] = $hashes->gamers_hash;
         }
         // проверяем хеш по предметам
-        //...
+        if ($hashes->items_hash !== $hashItems) {
+            $result['items'] = $this->getItems($userId);
+            $result['hashItems'] = $hashes->items_hash;
+        }
         // проверяем хеш по мобам
         //...
         // проверяем хеш по карте
