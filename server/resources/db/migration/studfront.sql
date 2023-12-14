@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 12 2023 г., 20:32
+-- Время создания: Дек 14 2023 г., 18:31
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -50,16 +50,22 @@ INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `update_timesta
 --
 
 CREATE TABLE `gamers` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
-  `person_id` bigint(20) DEFAULT NULL,
-  `experience` float DEFAULT NULL,
-  `hp` float DEFAULT NULL,
-  `money` float DEFAULT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `coordinate` point DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
+  `status` varchar(256) NOT NULL,
+  `x` int(11) NOT NULL DEFAULT 0,
+  `y` int(11) NOT NULL DEFAULT 0,
+  `direction` varchar(256) NOT NULL DEFAULT 'down'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `gamers`
+--
+
+INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`) VALUES
+(1, 1, 1, 'stand', 0, 2, 'walk'),
+(2, 4, 1, 'walk', 22, 11, 'walk');
 
 -- --------------------------------------------------------
 
@@ -144,7 +150,12 @@ INSERT INTO `messages` (`id`, `user_id`, `message`, `created`) VALUES
 (1, 4, 'hahahha', '2023-11-14 10:29:24'),
 (2, 1, 'hihihi', '2023-11-14 10:29:53'),
 (3, 4, 'hohohohohooooo', '2023-11-14 10:33:36'),
-(4, 4, 'иди в попу!', '2023-11-14 11:08:25');
+(4, 4, 'иди в попу!', '2023-11-14 11:08:25'),
+(5, 4, 'сам иди', '2023-11-29 08:27:05'),
+(6, 1, 'ща втащу!', '2023-11-29 08:27:13'),
+(7, 1, 'fdfgdfgsdg', '2023-12-12 11:17:54'),
+(8, 1, 'rtyr546', '2023-12-12 11:18:01'),
+(9, 4, '1111', '2023-12-12 11:20:28');
 
 -- --------------------------------------------------------
 
@@ -239,9 +250,7 @@ ALTER TABLE `game`
 -- Индексы таблицы `gamers`
 --
 ALTER TABLE `gamers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `person_id` (`person_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `gamers_items`
@@ -319,7 +328,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT для таблицы `gamers`
 --
 ALTER TABLE `gamers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `gamers_items`
@@ -343,7 +352,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `persons`
@@ -372,26 +381,6 @@ ALTER TABLE `users`
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
-
---
--- Ограничения внешнего ключа таблицы `gamers`
---
-ALTER TABLE `gamers`
-  ADD CONSTRAINT `gamers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `gamers_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `gamers_items`
---
-ALTER TABLE `gamers_items`
-  ADD CONSTRAINT `gamers_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`),
-  ADD CONSTRAINT `gamers_items_ibfk_2` FOREIGN KEY (`gamer_id`) REFERENCES `gamers` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `gamers_properties`
---
-ALTER TABLE `gamers_properties`
-  ADD CONSTRAINT `gamers_properties_ibfk_1` FOREIGN KEY (`gamer_id`) REFERENCES `gamers` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `room_exits`
