@@ -8,6 +8,11 @@
     * 2.1 [Функция checkParams](#21-Функция-checkParams)
     * 2.2 [Метод login](#22-Метод-login)
     * 2.3 [Метод logout](#23-Метод-logout)
+    * 2.4 [Метод signUp](#24-Метод-signup)
+    * 2.5 [Метод getMessage](#25-Метод-getMessage)
+    * 2.6 [Метод sendMessage](#26-Метод-sendMessage)
+    * 2.7 [Метод getScene](#27-Метод-getScene)
+    * 2.8 [Метод move ](#28-Метод-move)
 3. [index.php](#3-index.php)
     * 3.1 [Функция result](#31-Функция-result)
 
@@ -201,7 +206,7 @@ Correct => true
 ```
 ErrorDetail = { code: 9000, text: 'Неопределенная ошибка'} ошибка не определена.
 ```
-## 2.7. Метод move
+## 2.8. Метод move
 ### параметры
 |Параметр|Тип данных|Комментарий|
 |-|-|-|
