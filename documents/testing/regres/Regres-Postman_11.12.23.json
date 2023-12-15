@@ -1,0 +1,370 @@
+{
+	"id": "eda19f2f-be18-4ea4-b860-c73b64002e6c",
+	"name": "studefront",
+	"timestamp": "2023-12-11T21:51:16.276Z",
+	"collection_id": "31183820-f6515560-e808-446f-8631-33a763817749",
+	"folder_id": 0,
+	"environment_id": "31183820-bec20940-042e-4cf5-b11d-273ddda5781f",
+	"totalPass": 33,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-12-11T21:51:15.317Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "cb08807a-4a2b-4652-b13b-d476239324c4",
+			"name": "login by vasya",
+			"url": "http://studfront?method=login&login=vasya&hash=7c95e34107e38966f4ad80eea4d93f33&rnd=1001",
+			"time": 36,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"check status is 200": true,
+				"check response is json": true,
+				"check result property": true,
+				"check data property": true
+			},
+			"testPassFailCounts": {
+				"check status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"check response is json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"check result property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"check data property": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				36
+			],
+			"allTests": [
+				{
+					"check status is 200": true,
+					"check response is json": true,
+					"check result property": true,
+					"check data property": true
+				}
+			]
+		},
+		{
+			"id": "78b82242-9b8f-468a-afd8-b78443665820",
+			"name": "logout by vasya",
+			"url": "http://studfront?method=logout&token=aab4199d1f8501fc8b8af9bee0634374",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"check status is 200": true,
+				"check response is json": true,
+				"check result property": true,
+				"check data property": true
+			},
+			"testPassFailCounts": {
+				"check status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"check response is json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"check result property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"check data property": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"check status is 200": true,
+					"check response is json": true,
+					"check result property": true,
+					"check data property": true
+				}
+			]
+		},
+		{
+			"id": "b0275ab9-df7b-4bf7-a543-7ea19f053d6c",
+			"name": "signUp by randomLogin",
+			"url": "http://studfront?method=signUp&login=user9439&password=example_password&nickname=example_nicknam&verifyPassword=example_password",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Стату кода 200": true,
+				"Проверка, что ответ в формате JSON": true,
+				"Проверка, что переменная randomLogin из скрипта Pre-request Script существует и не пуста": true,
+				"Проверка наличия поля \"data\" в ответе": true,
+				"Проверка наличия поля \"name\" в свойстве \"data\"": true
+			},
+			"testPassFailCounts": {
+				"Стату кода 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что ответ в формате JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что переменная randomLogin из скрипта Pre-request Script существует и не пуста": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка наличия поля \"data\" в ответе": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка наличия поля \"name\" в свойстве \"data\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Стату кода 200": true,
+					"Проверка, что ответ в формате JSON": true,
+					"Проверка, что переменная randomLogin из скрипта Pre-request Script существует и не пуста": true,
+					"Проверка наличия поля \"data\" в ответе": true,
+					"Проверка наличия поля \"name\" в свойстве \"data\"": true
+				}
+			]
+		},
+		{
+			"id": "e5ad5a69-c311-458a-bdd9-ce2027ddf13a",
+			"name": "Test-sendMessage",
+			"url": "http://studfront?method=sendMessage&token=a75d05f2c0132d8e155d73b01e409ca4&message=Hello, this is a test message.",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус кода 200": true,
+				"Проверка, что ответ в формате JSON": true,
+				"Проверка наличия поля \"result\" в ответе": true,
+				"Проверка значения поля \"result\" в ответе": true,
+				"Проверка значения поля \"data\" в ответе": true
+			},
+			"testPassFailCounts": {
+				"Статус кода 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что ответ в формате JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка наличия поля \"result\" в ответе": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка значения поля \"result\" в ответе": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка значения поля \"data\" в ответе": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Статус кода 200": true,
+					"Проверка, что ответ в формате JSON": true,
+					"Проверка наличия поля \"result\" в ответе": true,
+					"Проверка значения поля \"result\" в ответе": true,
+					"Проверка значения поля \"data\" в ответе": true
+				}
+			]
+		},
+		{
+			"id": "c752c05b-5848-4723-9934-77b6e5beca8b",
+			"name": "Test-getScene",
+			"url": "http://studfront?method=getScene&token=d2257c92753a1342bc175c554d903ab2&hashGamers=7c95e34107e38966f4ad80eea4d93f33",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Стауст кода 200": true,
+				"Проверка, что ответ в формате JSON": true,
+				"Проверка, что результат \"result\" равен \"ok\"": true,
+				"Проверка, что поле \"data\" существует и содержит необходимые подполя": true,
+				"Проверка, что поле \"gamers\" содержит ожидаемое количество элементов и имеет правильные подполя": true
+			},
+			"testPassFailCounts": {
+				"Стауст кода 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что ответ в формате JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что результат \"result\" равен \"ok\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"data\" существует и содержит необходимые подполя": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"gamers\" содержит ожидаемое количество элементов и имеет правильные подполя": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Стауст кода 200": true,
+					"Проверка, что ответ в формате JSON": true,
+					"Проверка, что результат \"result\" равен \"ok\"": true,
+					"Проверка, что поле \"data\" существует и содержит необходимые подполя": true,
+					"Проверка, что поле \"gamers\" содержит ожидаемое количество элементов и имеет правильные подполя": true
+				}
+			]
+		},
+		{
+			"id": "4da59516-0846-4d4d-8fad-374e44254b79",
+			"name": "Test-getMessage",
+			"url": "http://studfront?method=getMessages&token=b1f1e5c52e98c7cccb4068932ecb843f&hash=7c95e34107e38966f4ad80eea4d93f33",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус кода 200": true,
+				"Проверка, что ответ в формате JSON": true,
+				"Проверка наличия поля \"result\" в ответе": true,
+				"Проверка, что поле \"result\" равно \"ok\"": true,
+				"Проверка, что поле \"data\" присутствует в ответе": true,
+				"Проверка, что поле \"messages\" присутствует в поле \"data\"": true,
+				"Проверка, что поле \"messages\" является массивом": true,
+				"Проверка, что поле \"hash\" присутствует в поле \"data\"": true,
+				"Проверка содержимого массива \"messages\"": true,
+				"Проверка содержимого поля \"hash\"": true
+			},
+			"testPassFailCounts": {
+				"Статус кода 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что ответ в формате JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка наличия поля \"result\" в ответе": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"result\" равно \"ok\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"data\" присутствует в ответе": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"messages\" присутствует в поле \"data\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"messages\" является массивом": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка, что поле \"hash\" присутствует в поле \"data\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка содержимого массива \"messages\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка содержимого поля \"hash\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Статус кода 200": true,
+					"Проверка, что ответ в формате JSON": true,
+					"Проверка наличия поля \"result\" в ответе": true,
+					"Проверка, что поле \"result\" равно \"ok\"": true,
+					"Проверка, что поле \"data\" присутствует в ответе": true,
+					"Проверка, что поле \"messages\" присутствует в поле \"data\"": true,
+					"Проверка, что поле \"messages\" является массивом": true,
+					"Проверка, что поле \"hash\" присутствует в поле \"data\"": true,
+					"Проверка содержимого массива \"messages\"": true,
+					"Проверка содержимого поля \"hash\"": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 99,
+	"collection": {
+		"requests": [
+			{
+				"id": "cb08807a-4a2b-4652-b13b-d476239324c4",
+				"method": "GET"
+			},
+			{
+				"id": "78b82242-9b8f-468a-afd8-b78443665820",
+				"method": "GET"
+			},
+			{
+				"id": "b0275ab9-df7b-4bf7-a543-7ea19f053d6c",
+				"method": "GET"
+			},
+			{
+				"id": "e5ad5a69-c311-458a-bdd9-ce2027ddf13a",
+				"method": "GET"
+			},
+			{
+				"id": "c752c05b-5848-4723-9934-77b6e5beca8b",
+				"method": "GET"
+			},
+			{
+				"id": "4da59516-0846-4d4d-8fad-374e44254b79",
+				"method": "GET"
+			}
+		]
+	}
+}
