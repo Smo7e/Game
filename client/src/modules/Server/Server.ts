@@ -88,8 +88,8 @@ export default class Server {
         return answer;
     }
 
-    signUp(login: string, password: string, nickname: string, verifyPassword: string): Promise<TUser | null> {
-        return this.request<TUser>("signUp", { login, password, nickname, verifyPassword });
+    signUp(login: string, nickname: string, hash: string, verifyHash: string): Promise<TUser | null> {
+        return this.request<TUser>("signUp", { login, nickname, hash, verifyHash });
     }
     sendMessage(message: string) {
         return this.request("sendMessage", { token: this.token, message });
