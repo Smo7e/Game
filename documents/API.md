@@ -2,21 +2,21 @@
 
 ## Оглавление
 
-[Метод login](#2-Метод-login)
+[Метод login](#Метод-login)
 
-[Метод logout](#2-Метод-logout)
+[Метод logout](#Метод-logout)
 
-[Метод signUp](#3-Метод-signUp)
+[Метод signUp](#Метод-signUp)
 
-[Метод getMessages](#4-Метод-getMessages)
+[Метод getMessages](#Метод-getMessages)
 
-[Метод sendMessage](#5-Метод-sendMessage)
+[Метод sendMessage](#Метод-sendMessage)
 
-[Метод getScene](#6-Метод-getScene)
+[Метод getScene](#Метод-getScene)
 
-[Метод move ](#7-Метод-move)
+[Метод move ](#Метод-move)
 
-[Метод getPersons](#8-Метод-getPersons)
+[Метод getPersons](#Метод-getPersons)
 
 ## Домен
 ```http://studfront```
