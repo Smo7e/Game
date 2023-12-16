@@ -1,22 +1,18 @@
 # Описание методов API
 
 ## Оглавление
+* [Описание методов API](#описание-методов-api)
+  * [Оглавление](#оглавление)
+  * [Домен](#домен)
+  * [Структуры данных](#структуры-данных)
+* [Метод login](#метод-login)
+* [Метод logout](#метод-logout)
+* [Метод signUp](#метод-signUp)
+* [Метод getMessages](#метод-getMessages)
+* [Метод sendMessage](#метод-sendMessage)
+* [Метод getScene](#метод-getScene)
+* [Метод move ](#метод-move)
 
-[Метод login](#Метод-login)
-
-[Метод logout](#Метод-logout)
-
-[Метод signUp](#Метод-signUp)
-
-[Метод getMessages](#Метод-getMessages)
-
-[Метод sendMessage](#Метод-sendMessage)
-
-[Метод getScene](#Метод-getScene)
-
-[Метод move ](#Метод-move)
-
-[Метод getPersons](#Метод-getPersons)
 
 ## Домен
 ```http://studfront```
