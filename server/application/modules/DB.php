@@ -50,12 +50,6 @@ class DB {
         $this->preparationQuery($query, [$token, $userId]);
     }
 
-    function messagesPerDay(){
-        $twentyFourHoursAgo = time() - (24 * 60 * 60);
-        $query = 'SELECT * FROM messages WHERE created >= FROM_UNIXTIME($twentyFourHoursAgo)';
-        $stmt = $this->db->query($query);
-    }
-
     function sendMessage($userId, $message) {
         $query = 'INSERT INTO messages (user_id, message, created) VALUES (?, ?, now())';
         $this->preparationQuery($query, [$userId, $message]);
@@ -68,6 +62,7 @@ class DB {
             FROM messages AS m
             INNER JOIN users AS u
             ON u.id=m.user_id
+            WHERE m.created >= DATE_SUB(NOW(), INTERVAL 1 DAY)
             ORDER BY m.created DESC';
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
