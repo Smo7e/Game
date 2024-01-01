@@ -18,9 +18,17 @@ class Lobby {
         $id = $params['id'];
         $idPerson = $params['person_id'];
         $token = $params['token'];
+    
         if ($id && $idPerson && $token) {
-            return $this->db->setPerson($id, $idPerson, $token);
+            $result = $this->db->setPerson($id, $idPerson, $token);
+    
+            if ($result) {
+                return $result;
+            } else {
+                return array(false, 1003); 
+            }
         }
+    
         return array(false, 1002);
     }
 }
