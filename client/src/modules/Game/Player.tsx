@@ -1,11 +1,15 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
-import { Mesh, TextureLoader } from "three";
+import { TextureLoader } from "three";
 import { sportikDown, sportikRight, sportikLeft, sportikUp } from "./index";
+import { RigidBody, RapierRigidBody } from "@react-three/rapier";
+import { Vector3 } from "three";
+import { ServerContext } from "../../App";
 
 const Player: React.FC = () => {
-    const personRef = useRef<Mesh>(null);
+    const server = useContext(ServerContext);
+    const personRef = useRef<RapierRigidBody>(null);
     const [directionPlayer, setdirectionPlayer] = useState(sportikDown[0]);
     const [currentFrame, setCurrentFrame] = useState(0);
     const [controls, setControls] = useState({
@@ -14,27 +18,41 @@ const Player: React.FC = () => {
         a: false,
         d: false,
     });
-    useFrame(() => {
+    const [cameraPosition, setCameraPosition] = useState(new Vector3(0, 0, 14));
+    const playerSpeed = 5;
+    const frameSpeed = 0.1;
+    useFrame((state) => {
+        if (!personRef.current) return;
         const { w, a, s, d } = controls;
-        if (w) {
-            setCurrentFrame((frame) => (frame + 0.1) % sportikUp.length);
-            setdirectionPlayer(sportikUp[Math.floor(currentFrame)]);
-            personRef.current!.position.y += 0.03;
-        }
-        if (s) {
-            setCurrentFrame((frame) => (frame + 0.1) % sportikDown.length);
-            setdirectionPlayer(sportikDown[Math.floor(currentFrame)]);
-            personRef.current!.position.y -= 0.03;
-        }
-        if (a) {
-            setCurrentFrame((frame) => (frame + 0.1) % sportikLeft.length);
-            setdirectionPlayer(sportikLeft[Math.floor(currentFrame)]);
-            personRef.current!.position.x -= 0.03;
-        }
-        if (d) {
-            setCurrentFrame((frame) => (frame + 0.1) % sportikRight.length);
-            setdirectionPlayer(sportikRight[Math.floor(currentFrame)]);
-            personRef.current!.position.x += 0.03;
+        if (w || a || s || d) {
+            const move = new Vector3();
+            if (w) {
+                setCurrentFrame((frame) => (frame + frameSpeed) % sportikUp.length);
+                setdirectionPlayer(sportikUp[Math.floor(currentFrame)]);
+                move.y += playerSpeed;
+            }
+            if (s) {
+                setCurrentFrame((frame) => (frame + frameSpeed) % sportikDown.length);
+                setdirectionPlayer(sportikDown[Math.floor(currentFrame)]);
+                move.y -= playerSpeed;
+            }
+            if (a) {
+                setCurrentFrame((frame) => (frame + frameSpeed) % sportikLeft.length);
+                setdirectionPlayer(sportikLeft[Math.floor(currentFrame)]);
+                move.x -= playerSpeed;
+            }
+            if (d) {
+                setCurrentFrame((frame) => (frame + frameSpeed) % sportikUp.length);
+                setdirectionPlayer(sportikRight[Math.floor(currentFrame)]);
+                personRef.current?.setLinvel(new Vector3(playerSpeed, 0, 0), true);
+                move.x += playerSpeed;
+            }
+            personRef.current?.setLinvel(move, true);
+            const cameraMove = new Vector3(personRef.current!.translation().x, personRef.current!.translation().y, 14);
+            const newPosition = cameraPosition.lerp(cameraMove, 0.1);
+            setCameraPosition(newPosition);
+            state.camera.position.copy(newPosition);
+            server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y);
         }
     });
     const keydownHangler = (e: any) => {
@@ -62,10 +80,12 @@ const Player: React.FC = () => {
     });
     return (
         <>
-            <mesh ref={personRef}>
-                <planeGeometry />
-                <meshStandardMaterial map={useLoader(TextureLoader, directionPlayer)} transparent />
-            </mesh>
+            <RigidBody gravityScale={10} position={[0, 0, 0]} ref={personRef} lockRotations mass={50}>
+                <mesh>
+                    <boxGeometry args={[1, 1, 1]} />
+                    <meshStandardMaterial map={useLoader(TextureLoader, directionPlayer)} transparent />
+                </mesh>
+            </RigidBody>
         </>
     );
 };

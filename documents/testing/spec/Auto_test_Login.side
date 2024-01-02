@@ -280,7 +280,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[2]/div[4]/div", "xpath:position"]
       ],
-      "value": "Error Code: 456"
+      "value": "Error Code: 1012"
     }, {
       "id": "d95b91a9-c91c-4a2d-9aab-ffdbe6ca251f",
       "comment": "",
@@ -293,7 +293,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[2]/div[4]/div", "xpath:position"]
       ],
-      "value": "hash mismatch"
+      "value": "Введите логин и пароль"
     }]
   }, {
     "id": "0d0e65a8-5d8b-49d0-9b68-2b4a9403e68f",
@@ -357,7 +357,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[4]/div", "xpath:position"]
       ],
-      "value": "Error Code: 456"
+      "value": "Error Code: 1012"
     }, {
       "id": "c07110c2-616d-4bde-999c-b1f2a63663c1",
       "comment": "",
@@ -370,7 +370,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[2]/div[4]/div", "xpath:position"]
       ],
-      "value": "hash mismatch"
+      "value": "Введите логин и пароль"
     }]
   }, {
     "id": "92e9ddba-249e-4ba1-b0fc-1c7b1b9b3565",
@@ -434,7 +434,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[4]/div", "xpath:position"]
       ],
-      "value": "Error Code: 1001"
+      "value": "Error Code: 1012"
     }, {
       "id": "3e82910c-5299-4291-b624-fa5a5ab3a990",
       "comment": "",
@@ -447,7 +447,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[2]/div[4]/div", "xpath:position"]
       ],
-      "value": "missing parameters"
+      "value": "Введите логин и пароль"
     }]
   }, {
     "id": "e05cf459-e4ab-4bb2-950b-90abf5b741dd",
@@ -511,7 +511,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[4]/div", "xpath:position"]
       ],
-      "value": "Error Code: 455"
+      "value": "Error Code: 1000"
     }, {
       "id": "718b9b2b-2247-4241-a4a8-141e90afe645",
       "comment": "",
@@ -524,7 +524,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[2]/div[4]/div", "xpath:position"]
       ],
-      "value": "user not exists"
+      "value": "Пожалуйста, проверьте свой логин и пароль"
     }]
   }, {
     "id": "1a92e471-473d-417c-8905-4eaa5c6db133",
@@ -588,7 +588,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[4]/div", "xpath:position"]
       ],
-      "value": "Error Code: 1001"
+      "value": "Error Code: 1012"
     }, {
       "id": "522e56e7-5261-4a8a-a1e6-67f40fcb0560",
       "comment": "",
@@ -601,7 +601,7 @@
         ["xpath=//div[@id='test-error-message']/div", "xpath:idRelative"],
         ["xpath=//div[2]/div[4]/div", "xpath:position"]
       ],
-      "value": "missing parameters"
+      "value": "Введите логин и пароль"
     }]
   }, {
     "id": "7e3fead4-1dc4-44f8-8788-c32921b55272",

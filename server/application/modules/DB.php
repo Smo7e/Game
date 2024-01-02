@@ -76,6 +76,11 @@ class DB {
         $this->preparationQuery($query, [$hash]);
     }
 
+    function updateTimestamp($updateTimestamp) {
+        $query = 'UPDATE game SET update_timestamp=? WHERE id=1';
+        $this->preparationQuery($query, [$updateTimestamp]);
+    }
+
     function getHashes() {
         $query = 'SELECT * FROM game WHERE id=1';
         return $this->preparationQuery($query, [])->fetch(PDO::FETCH_OBJ);

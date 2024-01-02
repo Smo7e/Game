@@ -105,15 +105,13 @@ export default class Server {
     }
 
     async getScene(): Promise<TScene | null> {
-        const answer = await this.request<TScene>(
-            "getScene", { hashGamers: this.hashGamers }
-        );
-        if (answer &&
-            answer.hashGamers &&
-            answer.hashGamers !== this.hashGamers
-        ) {
+        const answer = await this.request<TScene>("getScene", { hashGamers: this.hashGamers });
+        if (answer && answer.hashGamers && answer.hashGamers !== this.hashGamers) {
             this.hashGamers = answer.hashGamers as string;
         }
         return answer;
+    }
+    move(direction: string, x: number, y: number) {
+        return this.request("move", { direction, x, y });
     }
 }

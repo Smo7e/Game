@@ -1,21 +1,21 @@
 type TEVENT = {
-    [key: string]: string
+    [key: string]: string;
 };
 
 type TParams = {
-    EVENTS: TEVENT,
-    TRIGGERS: TEVENT,
-}
+    EVENTS: TEVENT;
+    TRIGGERS: TEVENT;
+};
 
 type TFunction = <T>(data: any) => T | void | null;
 
 type TEvents = {
-    [key: string]: Array<TFunction>
-}
+    [key: string]: Array<TFunction>;
+};
 
 type TTriggers = {
-    [key: string]: TFunction
-}
+    [key: string]: TFunction;
+};
 
 export default class Mediator {
     private events: TEvents;
@@ -28,11 +28,14 @@ export default class Mediator {
         this.EVENTS = EVENTS;
         this.TRIGGERS = TRIGGERS;
         this.events = {};
-        Object.keys(EVENTS)
-            .forEach(key => this.events[key] = []);
+        Object.keys(EVENTS).forEach((key) => (this.events[key] = []));
         this.triggers = {};
-        Object.keys(TRIGGERS)
-            .forEach(key => this.triggers[key] = () => { return null; });
+        Object.keys(TRIGGERS).forEach(
+            (key) =>
+                (this.triggers[key] = () => {
+                    return null;
+                })
+        );
     }
 
     /***************/
@@ -43,24 +46,20 @@ export default class Mediator {
     }
 
     subscribe(name: string, func: TFunction): void {
-        if (name &&
-            this.events[name] &&
-            func instanceof Function
-        ) {
+        if (name && this.events[name] && func instanceof Function) {
             this.events[name].push(func);
         }
     }
 
     unsubscribe(name: string, func: TFunction): void {
-
+        if (name && this.events[name] && func instanceof Function) {
+            this.events[name] = this.events[name].filter((handler) => handler !== func);
+        }
     }
-
 
     call<T>(name: string, data: T | null = null): void {
         if (name && this.events[name]) {
-            this.events[name].forEach(
-                func => func instanceof Function && func(data)
-            );
+            this.events[name].forEach((func) => func instanceof Function && func(data));
         }
     }
 
@@ -72,19 +71,13 @@ export default class Mediator {
     }
 
     set(name: string, func: TFunction): void {
-        if (name &&
-            this.triggers[name] &&
-            func instanceof Function
-        ) {
+        if (name && this.triggers[name] && func instanceof Function) {
             this.triggers[name] = func;
         }
     }
 
     get<T>(name: string, data: any = null): T | null {
-        if (name &&
-            this.triggers[name] &&
-            this.triggers[name] instanceof Function
-        ) {
+        if (name && this.triggers[name] && this.triggers[name] instanceof Function) {
             return this.triggers[name](data) as T;
         }
         return null;
