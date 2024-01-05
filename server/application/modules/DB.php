@@ -100,20 +100,6 @@ class DB {
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getItems() {
-        $query = 'SELECT 
-            u.name AS name,
-            i.name AS name,
-            i.type AS type,
-            i.location AS location,
-            i.image AS image,
-            i.description AS description
-        FROM items AS i
-        INNER JOIN users AS u
-        ON u.id=i.id';
-        return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
-    }
-
     function move($userId, $direction, $x, $y) {
         $query = 'UPDATE gamers SET direction=?, x=?, y=? WHERE user_id=?';
         $this->preparationQuery($query, [$direction, $x, $y, $userId]);
