@@ -50,6 +50,12 @@ class DB {
         $this->preparationQuery($query, [$token, $userId]);
     }
 
+    function getItems(){
+        $query = 'SELECT * FROM items';
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     function sendMessage($userId, $message) {
         $query = 'INSERT INTO messages (user_id, message, created) VALUES (?, ?, now())';
         $this->preparationQuery($query, [$userId, $message]);
