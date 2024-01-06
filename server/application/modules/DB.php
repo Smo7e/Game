@@ -62,6 +62,7 @@ class DB {
             FROM messages AS m
             INNER JOIN users AS u
             ON u.id=m.user_id
+            WHERE m.created >= DATE_SUB(NOW(), INTERVAL 1 DAY)
             ORDER BY m.created DESC';
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
