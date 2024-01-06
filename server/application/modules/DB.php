@@ -21,22 +21,13 @@ class DB {
 
     function getPersons($token) {
         $query = 'SELECT * FROM persons';
-        $stmt = $this->db->query($query);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
-    
-    function setPerson($id, $idPerson, $token) {
-        $query = 'INSERT INTO persons (id, person_id, token) VALUES (:id, :person_id, :token)';
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':person_id', $idPerson, PDO::PARAM_INT);
-        $stmt->bindParam(':token', $token, PDO::PARAM_STR);
-    
-       return $stmt->execute();
+        return $this->preparationQuery($query)->fetchAll(PDO::FETCH_OBJ);
     }
 
-
-    
+    function setPerson($idPerson, $token) {
+        $query = 'SELECT * FROM persons WHERE id=?';
+        return $this->preparationQuery($query, [$idPerson])->fetch(PDO::FETCH_OBJ);
+    }
 
     function getUserById($id) {
         $query = 'SELECT * FROM users WHERE id=?';

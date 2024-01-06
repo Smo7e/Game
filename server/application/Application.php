@@ -98,16 +98,14 @@ class Application {
         }
         return array(false, 1002);
     }
-    
+
     function setPerson($params) {
-        $id = $params['id'];
         $idPerson = $params['person_id'];
         $token = $params['token'];
-    
-        if ($id && $idPerson && $token) {
-            return $this->lobby->setPerson($params);
+        if ($token) {
+            return $this->lobby->setPerson($idPerson, $token);
         }
-        return array(false,1002);
+        return array(false, 1002);
     }
 
     function getScene($params) {

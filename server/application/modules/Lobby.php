@@ -14,21 +14,15 @@ class Lobby {
         return array(false, 455);
     }
 
-    public function setPerson($params) {
-        $id = $params['id'];
-        $idPerson = $params['person_id'];
-        $token = $params['token'];
-    
-        if ($id && $idPerson && $token) {
-            $result = $this->db->setPerson($id, $idPerson, $token);
-    
+    public function setPerson($idPerson, $token) {
+        $user = $this->db->getUserByToken($token);
+        if ($user) {
+            $result = $this->db->setPerson($idPerson, $token);
             if ($result) {
                 return $result;
-            } else {
-                return array(false, 1003); 
             }
+            return array(false, 1003);
         }
-    
-        return array(false, 1002);
+        return array(false, 455);
     }
 }
