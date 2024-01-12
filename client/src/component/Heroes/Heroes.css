@@ -1,7 +1,8 @@
-.container-Heroes{  
+.container-Heroes {
   position: absolute;
   min-height: 100%;
   min-width: 100%;
+  overflow: hidden;
   background-image: url("./image/fon.png");
   background-size: cover;
   z-index: 0;
@@ -27,11 +28,11 @@
   height: 73.3vh;
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .text-heroes {
-  top: 5%;
+  top: 2%;
   font-family: Playfair Display;
   display: flex;
   width: 19.1vw;
@@ -43,8 +44,8 @@
   transform: translateX(-50%);
   z-index: 1;
   border: none;
+  line-height: 1.3;
 }
-
 
 .panel-heroes {
   position: absolute;
@@ -53,7 +54,7 @@
   transform: translateX(-50%);
   width: 21.1vw;
   height: 47.6vh;
-  background: linear-gradient(180deg, #7E7A7A 10%, rgba(126, 122, 122, 0.00) 100%);
+  background: linear-gradient(180deg, #7e7a7a 10%, rgba(126, 122, 122, 0) 100%);
 }
 
 .arrow-1-heroes {
@@ -70,11 +71,10 @@
   background-repeat: no-repeat;
 }
 .arrow-1-heroes:hover {
-    height: 15%;
-    width: 6%;
-    filter: brightness(1.9);
-
-} 
+  height: 15%;
+  width: 6%;
+  filter: brightness(1.9);
+}
 .arrow-2-heroes,
 .arrow-3-heroes {
   position: absolute;
@@ -96,94 +96,615 @@
   left: 33vw;
   background-image: url("./image/arrow-2.2.png");
 }
+@media screen and (max-width: 1200px) {
+  .text-heroes {
+    font-size: 2vw;
+    width: 22vw;
+  }
+  .panel-heroes {
+    height: 48vh;
+    width: 28vw;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .text-heroes {
+    font-size: 2vw;
+    width: 22vw;
+  }
+  .panel-heroes {
+    height: 48vh;
+    width: 28vw;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    height: 78vh;
+    left: 33.5%;
+  }
+  .arrow-2-heroes {
+    right: 30vw;
+  }
+  .arrow-3-heroes {
+    left: 34vw;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .text-heroes {
+    font-size: 2vw;
+    width: 26vw;
+  }
+  .panel-heroes {
+    height: 48vh;
+    width: 28vw;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    height: 80vh;
+    left: 36.5%;
+  }
+  .arrow-2-heroes {
+    right: 25vw;
+  }
+  .arrow-3-heroes {
+    left: 35vw;
+  }
+}
 @media screen and (max-width: 900px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    width: 5%;
+    bottom: 18%;
+  }
+  .arrow-2-heroes {
+    right: 25vw;
+  }
+  .arrow-3-heroes {
+    left: 37vw;
+  }
+  .text-heroes {
+    font-size: 2.2vw;
+    width: 22.5vw;
+  }
+  .panel-heroes {
+    width: 26vw;
+    height: 42.2vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 37.8%;
+  }
+}
+@media screen and (max-width: 800px) {
   .arrow-2-heroes,
   .arrow-3-heroes {
     bottom: 20%;
   }
+  .arrow-2-heroes {
+    right: 16.5vw;
+  }
+  .arrow-3-heroes {
+    left: 35.7vw;
+  }
+  .text-heroes {
+    font-size: 2.3vw;
+    width: 26vw;
+  }
   .panel-heroes {
-    height: 42.6vh;
+    width: 29vw;
+    height: 37vh;
   }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.5%;
+    width: 49vw;
   }
+}
 @media screen and (max-width: 700px) {
   .arrow-2-heroes,
   .arrow-3-heroes {
-    bottom: 12%;
+    bottom: 20%;
+  }
+  .arrow-2-heroes {
+    right: 11vw;
+  }
+  .arrow-3-heroes {
+    left: 39vw;
+  }
+  .text-heroes {
+    font-size: 2.6vw;
+    width: 28vw;
   }
   .panel-heroes {
-  height: 32.6vh;
-}
+    width: 31vw;
+    height: 40.2vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 37.5%;
+    width: 55vw;
+  }
 }
 @media screen and (max-width: 600px) {
-.arrow-2-heroes,
-.arrow-3-heroes {
-  bottom: 7%;
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 20%;
+  }
+  .arrow-2-heroes {
+    right: 5vw;
+  }
+  .arrow-3-heroes {
+    left: 37vw;
+  }
+  .text-heroes {
+    font-size: 2.8vw;
+    width: 28vw;
+  }
+  .panel-heroes {
+    width: 31vw;
+    height: 41vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 39%;
+    width: 56.5vw;
+  }
 }
-.arrow-2-heroes {
-  right: 30vw;
+@media screen and (max-width: 540px) {
+  .text-heroes {
+    font-size: 3.1vw;
+    width: 28vw;
+  }
+  .panel-heroes {
+    width: 31vw;
+    height: 35vh;
+  }
 }
-.arrow-3-heroes {
-  left: 30vw;
-}
-.panel-heroes {
-  height: 27.6vh;
-}
+@media screen and (max-width: 600px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 20%;
+  }
+  .arrow-2-heroes {
+    right: 5vw;
+  }
+  .arrow-3-heroes {
+    left: 37vw;
+  }
+  .text-heroes {
+    font-size: 2.8vw;
+    width: 28vw;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 35%;
+    width: 65.5vw;
+  }
 }
 @media screen and (max-width: 500px) {
   .arrow-2-heroes,
   .arrow-3-heroes {
-    bottom:3%;
+    bottom: 17%;
+  }
+  .arrow-2-heroes {
+    right: 5vw;
+  }
+  .arrow-3-heroes {
+    left: 37vw;
+  }
+  .text-heroes {
+    font-size: 2.8vw;
+    width: 28vw;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 35%;
+    width: 65.5vw;
+  }
+}
+@media screen and (max-width: 450px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 12%;
+  }
+  .arrow-2-heroes {
+    right: 1vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 2.8vw;
+    width: 34vw;
   }
   .panel-heroes {
-    height: 27.6vh;
+    left: 21%;
+    width: 36vw;
+    height: 30vh;
   }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 39.8%;
+    width: 65.5vw;
   }
+}
 @media screen and (max-width: 400px) {
-    .arrow-2-heroes,
-    .arrow-3-heroes {
-      bottom: -1%;
-    }
-    .panel-heroes {
-      height: 19.6vh;
-    }
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 9%;
   }
-  @media screen and (max-width: 300px) {
-    .arrow-2-heroes,
-    .arrow-3-heroes {
-      bottom: -5%;
-    }
-    .panel-heroes {
-      height: 13.6vh;
-    }
+  .arrow-2-heroes {
+    right: 1vw;
   }
-  @media screen and (max-width: 200px) {
-    .arrow-2-heroes,
-    .arrow-3-heroes {
-      bottom: -7%;
-    }
-    .arrow-2-heroes {
-      right: 28vw;
-    }
-    .arrow-3-heroes {
-      left: 28vw;
-    }
-    .panel-heroes {
-      height: 9.6vh;
-    }
+  .arrow-3-heroes {
+    left: 43vw;
   }
-  @media screen and (max-width: 100px) {
-    .arrow-2-heroes,
-    .arrow-3-heroes {
-      bottom: -10%;
-    }
-    .arrow-2-heroes {
-      right: 20vw;
-    }
-    .arrow-3-heroes {
-      left: 25vw;
-    }
-    .panel-heroes {
-      height: 3.6vh;
-    }
+  .text-heroes {
+    font-size: 3vw;
+    width: 34vw;
   }
-
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 27vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 39.8%;
+    width: 65.5vw;
+  }
+}
+@media screen and (max-width: 350px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 6%;
+  }
+  .arrow-2-heroes {
+    right: 1vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 3vw;
+    width: 34vw;
+  }
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 24vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 39.8%;
+    width: 65.4vw;
+  }
+}
+@media screen and (max-width: 300px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 4%;
+  }
+  .arrow-2-heroes {
+    right: 1vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 3.2vw;
+    width: 34vw;
+  }
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 21vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 39.8%;
+    width: 65.3vw;
+  }
+}
+@media screen and (max-width: 250px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: 1%;
+  }
+  .arrow-2-heroes {
+    right: 1vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 3.3vw;
+    width: 34vw;
+  }
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 17vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 38%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 230px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: -2%;
+  }
+  .arrow-2-heroes {
+    right: 1vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 3.3vw;
+    width: 34vw;
+  }
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 15vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 38%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 200px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    bottom: -4%;
+  }
+  .arrow-2-heroes {
+    right: 1vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 3.3vw;
+    width: 34vw;
+  }
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 13vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 38%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 160px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 10%;
+  }
+  .arrow-2-heroes {
+    right: 0vw;
+  }
+  .arrow-3-heroes {
+    left: 43vw;
+  }
+  .text-heroes {
+    font-size: 3.3vw;
+    width: 34vw;
+  }
+  .panel-heroes {
+    left: 21%;
+    width: 37vw;
+    height: 13vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 37%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 150px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 10%;
+  }
+  .panel-heroes {
+    height: 11vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.6%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 130px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 9%;
+  }
+  .panel-heroes {
+    height: 10vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.4%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 120px) {
+  .panel-heroes {
+    height: 9vh;
+  }
+}
+@media screen and (max-width: 100px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 9%;
+  }
+  .panel-heroes {
+    height: 8vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.2%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 90px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 8%;
+  }
+  .arrow-3-heroes {
+    left: 46vw;
+  }  
+  .panel-heroes {
+    height: 7vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.2%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 80px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 7%;
+  }
+  .arrow-2-heroes {
+    right: 0vw;
+  }
+  .arrow-3-heroes {
+    left: 47vw;
+  }  
+  .panel-heroes {
+    height: 6vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.2%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 75px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 6.5%;
+  }
+  .arrow-2-heroes {
+    right: -2vw;
+  }
+  .arrow-3-heroes {
+    left: 47vw;
+  }  
+  .panel-heroes {
+    height: 6vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.2%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 70px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 6%;
+  }
+  .arrow-2-heroes {
+    right: -3vw;
+  }
+  .arrow-3-heroes {
+    left: 47vw;
+  }  
+  .panel-heroes {
+    height: 5vh;
+  }
+  .image-Sportik-heroes,
+  .image-techguy-heroes,
+  .image-humanitarian-heroes {
+    left: 36.2%;
+    width: 69vw;
+  }
+}
+@media screen and (max-width: 65px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 6%;
+  }
+  .arrow-2-heroes {
+    right: -4vw;
+  }
+  .arrow-3-heroes {
+    left: 47vw;
+  }  
+}
+@media screen and (max-width: 60px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 5.5%;
+  }
+  .arrow-2-heroes {
+    right: -6vw;
+  }
+  .arrow-3-heroes {
+    left: 47vw;
+  }  
+  .panel-heroes {
+    height: 4.5vh;
+  }
+}
+@media screen and (max-width: 55px) {
+  .arrow-2-heroes,
+  .arrow-3-heroes {
+    height: 8vw;
+    bottom: 5%;
+  }
+  .arrow-2-heroes {
+    right: -7vw;
+  }
+  .arrow-3-heroes {
+    left: 47vw;
+  }  
+  .panel-heroes {
+    height: 4.5vh;
+  }
+}
