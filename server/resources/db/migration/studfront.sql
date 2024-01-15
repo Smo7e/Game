@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 14 2023 г., 18:31
+-- Время создания: Дек 14 2023 г., 19:06
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -32,6 +32,7 @@ CREATE TABLE `game` (
   `version` varchar(256) NOT NULL,
   `chat_hash` varchar(256) NOT NULL,
   `gamers_hash` varchar(256) NOT NULL,
+  `items_hash` varchar(256) NOT NULL,
   `update_timestamp` int(11) NOT NULL DEFAULT 0,
   `update_timeout` int(11) NOT NULL DEFAULT 300
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,8 +41,8 @@ CREATE TABLE `game` (
 -- Дамп данных таблицы `game`
 --
 
-INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `update_timestamp`, `update_timeout`) VALUES
-(1, '1.0.0', '8b4c78eac40944896eaef63ea53a908e', 'f77db2fe395e0666297c622a93603b76', 1702365760, 300);
+INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `update_timestamp`, `update_timeout`) VALUES
+(1, '1.0.0', '8b4c78eac40944896eaef63ea53a908e', 'f77db2fe395e0666297c622a93603b76', '', 1702365760, 300);
 
 -- --------------------------------------------------------
 
