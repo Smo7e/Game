@@ -7,7 +7,7 @@ import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 import { ServerContext } from "../../App";
 const Player: React.FC = () => {
-    const moveSprite = useMemo(() => useSprites("thetechguy"), []);
+    const moveSprite = useSprites("thetechguy");
     const moveUp = moveSprite[3];
     const moveDown = moveSprite[1];
     const moveLeft = moveSprite[4];
