@@ -1,15 +1,17 @@
 # Описание методов API
 
 ## Оглавление
-1. [User.php](#1-User.php)
-    * 1.1 [Метод login](#11-Метод-login)
-    * 1.2 [Метод logout](#12-Метод-logout)
-2. [Application.php](#2-Application.php)
-    * 2.1 [Функция checkParams](#21-Функция-checkParams)
-    * 2.2 [Метод login](#22-Метод-login)
-    * 2.3 [Метод logout](#23-Метод-logout)
-3. [index.php](#3-index.php)
-    * 3.1 [Функция result](#31-Функция-result)
+* [Описание методов API](#описание-методов-api)
+  * [Оглавление](#оглавление)
+  * [Домен](#домен)
+  * [Структуры данных](#структуры-данных)
+* [Метод login](#метод-login)
+* [Метод logout](#метод-logout)
+* [Метод signUp](#метод-signUp)
+* [Метод getMessages](#метод-getMessages)
+* [Метод sendMessage](#метод-sendMessage)
+* [Метод getScene](#метод-getScene)
+* [Метод move ](#метод-move)
 
 
 ## Домен
@@ -46,10 +48,9 @@
 }
 ```
 
-## 1. User.php
 
 
-### 1.1. Метод login
+### Метод login
 ### адрес
 ```/?method=login```
 ### параметры
@@ -65,11 +66,11 @@ Correct => User
 ```
 ### Ошибки
 ```
-ErrorDetail = { code: 1001, text: 'missing parameters' } если переданы не все параметры
-ErrorDetail = { code: 456, text: 'hash mismatch' } ошибка авторизации
+ErrorDetail = { code: 1001, text: 'Недостаточно параметров' } если переданы не все параметры
+ErrorDetail = { code: 456, text: 'Неверный логин или пароль' } ошибка авторизации
 ```
 
-### 1.2. Метод logout
+### Метод logout
 ### адрес
 ```/?method=logout```
 ### параметры
@@ -83,17 +84,55 @@ Correct => true
 ```
 ### Ошибки
 ```
-ErrorDetail = { code: 400, text: 'token not found' } если токен не передан
+ErrorDetail = { code: 400, text: 'Токен не найден' } если токен не передан
 ```
 
 
-## 2. Application.php
-
-### 2.1. Функция checkParams
+### Метод signUp
+### адрес
+```/?method=signUp```
 ### параметры
 |Параметр|Тип данных|Комментарий|
 |-|-|-|
-|любой|различный|переменное количество аргументов|
+|login |string|логин пользователя|
+|nickname|string|никнейм пользователя|
+|hash |string| md5(md5(login+password)+rnd)|
+|verifyHash |string| подтверждение hash|
+
+### Успешный ответ
+```
+Correct => { "name" : "nickname" }
+```
+### Ошибки
+```
+ErrorDetail = { code: 1501, text: 'Введите пароль и подтверждение пароля' } если не введены данные в строках пароль и подтверждение пароля
+ErrorDetail = { code: 1001, text: 'Недостаточно параметров' } если недостаёт параметров
+```
+## Метод getMessages
+### адрес
+```/?method=getMessages```
+### параметры
+|Параметр|Тип данных|Комментарий|
+|-|-|-|
+|token |string |Аутентификационный токен |
+|hash |string |md5(md5(login+password)+rnd) |
+### Успешный ответ
+```
+Correct => true; {'messages' ; 'hash'} 
+```
+### Ошибки
+```
+ErrorDetail = { code: 455, text: 'Пользователь не авторизован' } если пользователь не авторизовался
+ErrorDetail = { code: 1001, text: 'Недостаточно параметров' } если недостаёт параметров
+```
+## Метод sendMessage
+### адрес
+```/?method=sendMessage```
+### параметры
+|Параметр|Тип данных|Комментарий|
+|-|-|-|
+|token |string |Аутентификационный токен |
+|message |string |текст сообщения |
 
 ### Успешный ответ
 ```
@@ -101,15 +140,37 @@ Correct => true
 ```
 ### Ошибки
 ```
-ErrorDetail = { code: 1001, text: 'missing parameters' } если параметры не переданы
-ErrorDetail = { code: 598, text: 'arguments passed incorrectly' } не верно передан аргумент
-```
+ErrorDetail = { code: 455, text: 'Пользователь не авторизован' } если пользователь не авторизовался
+ErrorDetail = { code: 1001, text: 'Недостаточно параметров' } если недостаёт параметров
 
-### 2.2. Метод login
+```
+## Метод getScene
+### адрес
+```/?method=getScene```
 ### параметры
 |Параметр|Тип данных|Комментарий|
 |-|-|-|
-|params|string|параметр пришедший по ссылке|
+|token |string |Аутентификационный токен |
+|hash |string |md5(md5(login+password)+rnd) |
+
+### Успешный ответ
+```
+Correct => {'gamers'; 'items'; 'mobs'; 'map'}
+```
+### Ошибки
+```
+ErrorDetail = { code: 9000, text: 'Неопределенная ошибка'} ошибка не определена.
+```
+## 7.Метод move
+### адрес
+```/?method=move```
+### параметры
+|Параметр|Тип данных|Комментарий|
+|-|-|-|
+|token |string |Аутентификационный токен |
+|direction |string |направление движения |
+|x |string |координаты на плоскости |
+|y |string |координаты на плоскости |
 
 ### Успешный ответ
 ```
@@ -117,44 +178,9 @@ Correct => true
 ```
 ### Ошибки
 ```
-ErrorDetail = { code: 1001, text: 'missing parameters' } если недостаёт параметров
-```
-
-### 2.3. Метод logout
-### параметры
-|Параметр|Тип данных|Комментарий|
-|-|-|-|
-|params|string|параметр пришедший по ссылке|
-
-### Успешный ответ
-```
-Correct => User
-```
-### Ошибки
-```
-ErrorDetail = { code: 400, text: 'token not found' } если токен не передан
-```
-
-
-
-
-## 3. index.php
-
-### 3.1. Функция result
-
-### параметры
-|Параметр|Тип данных|Комментарий|
-|-|-|-|
-|params|string|параметр пришедший по ссылке|
-
-### Успешный ответ
-```
-Correct => login
-Correct => logout
-```
-### Ошибки
-```
-ErrorDetail = { code: 466, text: 'method not found' }  если метод не найден
-ErrorDetail = { code: 469, text: 'param method not setted' } если параметры не определены
+ErrorDetail = { code: 9000, text: 'Неопределенная ошибка' } ошибка не определена
 
 ```
+
+
+

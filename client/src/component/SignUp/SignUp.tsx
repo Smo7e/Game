@@ -5,6 +5,7 @@ import { EPAGES, ServerContext, MediatorContext } from "../../App";
 import "./SignUp.css";
 import logo from "./image/logo.png";
 import ErrorMessage from "../../modules/ErrorMessage/ErrorMessage";
+import md5 from "md5";
 
 interface ISignProps {
     epages: Function;
@@ -25,10 +26,10 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
         setError(null);
         const login = loginRef.current!.value;
         const nickname = nickRef.current!.value;
-        const password = passwordRef.current!.value;
-        const verifyPassword = verifyRef.current!.value;
+        const hash = md5(login + passwordRef.current!.value);
+        const verifyHash = md5(login + verifyRef.current!.value);
 
-        const register = await server.signUp(login, password, nickname, verifyPassword);
+        const register = await server.signUp(login, nickname, hash, verifyHash);
         if (register) {
             epages(EPAGES.MENU);
         }
@@ -58,10 +59,30 @@ const SignUp: React.FC<ISignProps> = ({ epages }) => {
                 <div className="text-register" id="test-text-register">
                     Регистрация
                 </div>
-                <input ref={loginRef} className="input-SignUp" placeholder="Логин" id="test-input-login" />
-                <input ref={nickRef} className="input-SignUp" placeholder="Никнейм" id="test-input-nick" />
-                <input ref={passwordRef} className="input-SignUp" placeholder="Пароль" id="test-input-password" />
-                <input ref={verifyRef} className="input-SignUp" placeholder="Подтвердите пароль" id="test-input-verify" />
+                <input
+                    ref={loginRef}
+                    className="input-SignUp"
+                    placeholder="Логин"
+                    id="test-input-login"
+                />
+                <input
+                    ref={nickRef}
+                    className="input-SignUp"
+                    placeholder="Никнейм"
+                    id="test-input-nick"
+                />
+                <input
+                    ref={passwordRef}
+                    className="input-SignUp"
+                    placeholder="Пароль"
+                    id="test-input-password"
+                />
+                <input
+                    ref={verifyRef}
+                    className="input-SignUp"
+                    placeholder="Подтвердите пароль"
+                    id="test-input-verify"
+                />
                 <button onClick={clickHandler} className="reg-button" id="test-reg-button">
                     Регистрация
                 </button>

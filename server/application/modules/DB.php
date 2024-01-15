@@ -40,9 +40,9 @@ class DB {
         return $this->preparationQuery($query, [$token])->fetch(PDO::FETCH_OBJ);
     }
 
-    function addUser($login, $password, $nickname) {
-        $query = 'INSERT INTO users (login, password, name) VALUES (?, ?, ?)';
-        $this->preparationQuery($query, [$login, $password, $nickname]);
+    function addUser($login, $nickname, $password) {
+        $query = 'INSERT INTO users (login, name, password ) VALUES (?, ?, ?)';
+        $this->preparationQuery($query, [$login, $nickname, $password]);
     }
 
     function updateToken($userId, $token) {
