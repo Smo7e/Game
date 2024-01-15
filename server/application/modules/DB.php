@@ -19,7 +19,7 @@ class DB {
         return $stmt;
     }
 
-    function getPersons($token) {
+    function getPersons() {
         $query = 'SELECT * FROM persons';
         return $this->preparationQuery($query)->fetchAll(PDO::FETCH_OBJ);
     }

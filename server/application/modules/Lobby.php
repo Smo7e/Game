@@ -9,7 +9,7 @@ class Lobby {
     public function getPersons($token) {
         $user = $this->db->getUserByToken($token);
         if ($user) {
-            return $this->db->getPersons($token);
+            return $this->db->getPersons();
         }
         return array(false, 455);
     }
