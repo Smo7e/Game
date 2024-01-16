@@ -111,4 +111,9 @@ class DB {
         $query = 'UPDATE gamers SET direction=?, x=?, y=?, status=? WHERE user_id=?';
         $this->preparationQuery($query, [$direction, $x, $y, $userId, $status]);
     }
+
+    function updatePersonId($userId, $newPersonId) {
+        $query = 'UPDATE gamers SET person_id=? WHERE id=?';
+        $this->preparationQuery($query, [$newPersonId, $userId]);
+    }
 }
