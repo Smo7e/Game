@@ -107,8 +107,8 @@ class DB {
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function move($userId, $direction, $x, $y) {
-        $query = 'UPDATE gamers SET direction=?, x=?, y=? WHERE user_id=?';
-        $this->preparationQuery($query, [$direction, $x, $y, $userId]);
+    function move($userId, $direction, $x, $y, $status) {
+        $query = 'UPDATE gamers SET direction=?, x=?, y=?, status=? WHERE user_id=?';
+        $this->preparationQuery($query, [$direction, $x, $y, $userId, $status]);
     }
 }
