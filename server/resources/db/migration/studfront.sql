@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 14 2023 г., 19:06
+-- Время создания: Янв 16 2024 г., 16:17
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -212,6 +212,20 @@ CREATE TABLE `room_exits` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `statistics`
+--
+
+CREATE TABLE `statistics` (
+  `id` bigint(20) NOT NULL,
+  `kills` int(11) DEFAULT NULL,
+  `death` int(11) DEFAULT NULL,
+  `experience` int(11) DEFAULT NULL,
+  `damage` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -307,6 +321,12 @@ ALTER TABLE `room_exits`
   ADD KEY `goto_id` (`goto_id`);
 
 --
+-- Индексы таблицы `statistics`
+--
+ALTER TABLE `statistics`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -371,6 +391,12 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT для таблицы `room_exits`
 --
 ALTER TABLE `room_exits`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `statistics`
+--
+ALTER TABLE `statistics`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
