@@ -1,16 +1,21 @@
-import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useContext, useEffect, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { useRef } from "react";
-import { TextureLoader } from "three";
-import { sportikDown, sportikRight, sportikLeft, sportikUp } from "./index";
+
+import useSprites from "../hooks/Sprites/useSprites";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 import { ServerContext } from "../../App";
-
 const Player: React.FC = () => {
+    const moveSprite = useSprites("thetechguy");
+    const moveUp = moveSprite[3];
+    const moveDown = moveSprite[1];
+    const moveLeft = moveSprite[4];
+    const moveRight = moveSprite[2];
+
     const server = useContext(ServerContext);
     const personRef = useRef<RapierRigidBody>(null);
-    const [directionPlayer, setdirectionPlayer] = useState(sportikDown[0]);
+    const [directionPlayer, setdirectionPlayer] = useState(moveDown[0]);
     const [currentFrame, setCurrentFrame] = useState(0);
     const [controls, setControls] = useState({
         w: false,
@@ -27,23 +32,23 @@ const Player: React.FC = () => {
         if (w || a || s || d) {
             const move = new Vector3();
             if (w) {
-                setCurrentFrame((frame) => (frame + frameSpeed) % sportikUp.length);
-                setdirectionPlayer(sportikUp[Math.floor(currentFrame)]);
+                setCurrentFrame((frame) => (frame + frameSpeed) % moveUp.length);
+                setdirectionPlayer(moveUp[Math.floor(currentFrame)]);
                 move.y += playerSpeed;
             }
             if (s) {
-                setCurrentFrame((frame) => (frame + frameSpeed) % sportikDown.length);
-                setdirectionPlayer(sportikDown[Math.floor(currentFrame)]);
+                setCurrentFrame((frame) => (frame + frameSpeed) % moveDown.length);
+                setdirectionPlayer(moveDown[Math.floor(currentFrame)]);
                 move.y -= playerSpeed;
             }
             if (a) {
-                setCurrentFrame((frame) => (frame + frameSpeed) % sportikLeft.length);
-                setdirectionPlayer(sportikLeft[Math.floor(currentFrame)]);
+                setCurrentFrame((frame) => (frame + frameSpeed) % moveLeft.length);
+                setdirectionPlayer(moveLeft[Math.floor(currentFrame)]);
                 move.x -= playerSpeed;
             }
             if (d) {
-                setCurrentFrame((frame) => (frame + frameSpeed) % sportikUp.length);
-                setdirectionPlayer(sportikRight[Math.floor(currentFrame)]);
+                setCurrentFrame((frame) => (frame + frameSpeed) % moveRight.length);
+                setdirectionPlayer(moveRight[Math.floor(currentFrame)]);
                 personRef.current?.setLinvel(new Vector3(playerSpeed, 0, 0), true);
                 move.x += playerSpeed;
             }
@@ -83,7 +88,7 @@ const Player: React.FC = () => {
             <RigidBody gravityScale={10} position={[0, 0, 0]} ref={personRef} lockRotations mass={50}>
                 <mesh>
                     <boxGeometry args={[1, 1, 1]} />
-                    <meshStandardMaterial map={useLoader(TextureLoader, directionPlayer)} transparent />
+                    <meshStandardMaterial map={directionPlayer} transparent />
                 </mesh>
             </RigidBody>
         </>
