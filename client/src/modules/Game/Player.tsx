@@ -12,11 +12,7 @@ const Player: React.FC = memo(() => {
 
     const personRef = useRef<RapierRigidBody>(null);
 
-    const moveSprite = useSprites("thetechguy");
-    const moveUp = moveSprite[3];
-    const moveDown = moveSprite[1];
-    const moveLeft = moveSprite[4];
-    const moveRight = moveSprite[2];
+    const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites("trusov");
 
     const controls = useControls();
     const [cameraPosition, setCameraPosition] = useState(new Vector3(0, 0, 14));
@@ -49,7 +45,6 @@ const Player: React.FC = memo(() => {
                 direction = moveRight;
             }
             setCurrentFrame((currentFrame + frameSpeed) % frameLegth);
-            console.log(currentFrame, frameLegth, frameSpeed);
 
             setDirectionPlayer(direction[Math.floor(currentFrame)]);
 

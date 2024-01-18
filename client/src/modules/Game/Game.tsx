@@ -33,10 +33,11 @@ const Game: React.FC = () => {
         <Canvas
             camera={{
                 position: [0, 0, 14],
-                zoom: 2,
+                zoom: 65,
                 near: 0.1,
                 far: 1000,
             }}
+            orthographic
         >
             <ambientLight intensity={2} position={[0, 0, 5]} />
             <Physics gravity={[0, 0, -10]}>

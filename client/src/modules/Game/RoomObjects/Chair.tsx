@@ -33,7 +33,7 @@ const Chair: React.FC<IChairProps> = ({ position, type }) => {
             <RigidBody position={position} lockTranslations lockRotations>
                 <mesh>
                     <boxGeometry args={[0.1, 0.2, 0.5]} />
-                    <meshStandardMaterial color="red" transparent opacity={0.5} />
+                    <meshStandardMaterial color="red" transparent opacity={0} />
                 </mesh>
             </RigidBody>
         </>
