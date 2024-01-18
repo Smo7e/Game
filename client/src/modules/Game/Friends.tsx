@@ -1,9 +1,12 @@
+import { useFrame } from "@react-three/fiber";
 import { TGamer } from "../Server/types";
+import { memo } from "react";
 interface IPropsFriends {
     infoFriends: TGamer[] | null;
 }
-const Friends: React.FC<IPropsFriends> = ({ infoFriends }) => {
+const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
     if (!infoFriends) return <></>;
+
     return (
         <>
             {infoFriends!.length === 2 ? (
@@ -27,5 +30,5 @@ const Friends: React.FC<IPropsFriends> = ({ infoFriends }) => {
             )}
         </>
     );
-};
+});
 export default Friends;
