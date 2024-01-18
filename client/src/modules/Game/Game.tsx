@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ServerContext, MediatorContext } from "../../App";
-import { TScene } from "../Server/types";
+import { TGamer, TScene } from "../Server/types";
 import Player from "./Player";
 import Scene from "./Scene";
 import { Physics } from "@react-three/rapier";
 import Friends from "./Friends";
-import { TGamer } from "../Server/types";
+import Boss from "./Boss";
 const Game: React.FC = () => {
     const server = useContext(ServerContext);
     const mediator = useContext(MediatorContext);
@@ -43,6 +43,7 @@ const Game: React.FC = () => {
                 <Scene />
                 <Player />
                 <Friends infoFriends={infoFriends} />
+                <Boss />
             </Physics>
         </Canvas>
     );
