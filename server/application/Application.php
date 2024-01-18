@@ -111,10 +111,11 @@ class Application {
         $direction = $params['direction'];
         $x = $params['x'];
         $y = $params['y'];
-        if ($token && $direction && $x && $y) {
+        $status = $params['status'];
+        if ($token && $direction && $x && $y && $status) {
             $user = $this->user->getUser($token);
             if ($user) {
-                return $this->game->move($user->id, $direction, $x, $y);
+                return $this->game->move($user->id, $direction, $x, $y, $status);
             }
             return array(false, 9000);
         }
