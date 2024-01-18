@@ -115,3 +115,7 @@ export default class Server {
         return this.request("move", { direction, x, y });
     }
 }
+
+    getItems() {   
+        return this.request("getItems" , {});   
+}   
