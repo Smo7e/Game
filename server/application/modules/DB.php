@@ -118,7 +118,7 @@ class DB {
     }
 
     function deleteGamers(){
-        $query = 'DELETE FROM gamers';
+        $query = 'TRUNCATE TABLE gamers';
         $stmt = $this->db->prepare($query);
         $stmt->execute();
     }
