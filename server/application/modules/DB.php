@@ -116,4 +116,16 @@ class DB {
         $query = 'UPDATE gamers SET person_id=? WHERE id=?';
         $this->preparationQuery($query, [$newPersonId, $userId]);
     }
+
+    function deleteGamers(){
+        $query = 'DELETE FROM gamers';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+    }
+
+    function AddGamers() {
+        $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, ?, "stand", 0, 0, "down")';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+    }
 }
