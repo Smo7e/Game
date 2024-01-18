@@ -119,13 +119,11 @@ class DB {
 
     function deleteGamers(){
         $query = 'TRUNCATE TABLE gamers';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
+        $this->preparationQuery($query, []);
     }
 
     function AddGamers() {
         $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, ?, "stand", 0, 0, "down")';
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
+        $this->preparationQuery($query, []);
     }
 }
