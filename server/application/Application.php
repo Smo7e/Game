@@ -5,6 +5,7 @@ require_once('application\modules\Chat.php');
 require_once('application\modules\User.php');
 require_once('application\modules\Game.php');
 require_once('application\modules\Lobby.php');
+require_once('application\modules\Statistics.php');
 
 class Application {
     private $user = null;
@@ -13,12 +14,15 @@ class Application {
     private $db = null;
     private $lobby = null;
 
+    private $statistics = null;
+
     function __construct() {
         $config = json_decode(file_get_contents('./config/db/config.json'), true);
         $this->db = new DB($config["DataBase"]);
         $this->user = new User($this->db);
         $this->chat = new Chat($this->db);
         $this->game = new Game($this->db);
+        $this->statistics = new Statistics($this->db);
     }
 
     private function checkParams() {
