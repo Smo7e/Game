@@ -2,11 +2,13 @@ import { useFrame } from "@react-three/fiber";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 
 import useSprites from "../hooks/sprites/useSprites";
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useContext, useEffect, useRef } from "react";
 import { Mesh, MeshStandardMaterial, PlaneGeometry, Texture, Vector3 } from "three";
 import usePositionMatrix from "../hooks/positionMatrix/usePositionMatrix";
+import { ServerContext } from "../../App";
 
 const Boss: React.FC = memo(() => {
+    const server = useContext(ServerContext);
     const bossRef = useRef<RapierRigidBody>(null);
     const bossPositionRef = useRef<Mesh>(null);
     const spriteRef = useRef<MeshStandardMaterial>(null);
@@ -17,14 +19,12 @@ const Boss: React.FC = memo(() => {
 
     let directionPlayer: Texture = moveDown[0];
     const position = usePositionMatrix();
-
     let canPosition = 1;
-    let nowPosition = [0, 1];
+    let nowPosition = [0, 0];
     let newPosition = new Vector3();
     let distances = 0;
     useFrame(() => {
         if (!bossRef.current) return;
-
         let x;
         let y;
         if (canPosition) {
@@ -86,6 +86,8 @@ const Boss: React.FC = memo(() => {
         }
         bossRef.current.setLinvel(move, true);
         bossPositionRef.current?.position.set(bossCoord.x, bossCoord.y, 1);
+        server.moveMobs(bossCoord.x, bossCoord.y);
+
         currentFrame = (currentFrame + frameSpeed) % frameLength;
         directionPlayer = direction[Math.floor(currentFrame)];
         if (spriteRef.current) {
