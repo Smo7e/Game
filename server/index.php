@@ -35,6 +35,9 @@ function result($params) {
             // получение сцены
             case 'getScene':
                 return $app->getScene($params);
+
+            case 'moveMobs':
+                return $app->moveMobs($params);
             default:
                 return array(false, 466);
         }

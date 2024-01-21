@@ -82,6 +82,10 @@ class DB {
         $query = 'UPDATE game SET gamers_hash=? WHERE id=1';
         $this->preparationQuery($query, [$hash]);
     }
+    function updateMobsHash($hash) {
+        $query = 'UPDATE game SET mobs_hash=? WHERE id=1';
+        $this->preparationQuery($query, [$hash]);
+    }
 
     function updateTimestamp($updateTimestamp) {
         $query = 'UPDATE game SET update_timestamp=? WHERE id=1';
@@ -106,10 +110,18 @@ class DB {
         ON u.id=g.user_id';
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
+    function getMobs() {
+        $query = 'SELECT * FROM mobs';
+        return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
+    }
 
     function move($userId, $direction, $x, $y, $status) {
         $query = 'UPDATE gamers SET direction=?, x=?, y=?, status=? WHERE user_id=?';
         $this->preparationQuery($query, [$direction, $x, $y, $userId, $status]);
+    }
+    function moveMobs($x, $y) {
+        $query = 'UPDATE mobs SET x=?, y=? WHERE id=1';
+        $this->preparationQuery($query, [$x, $y]);
     }
 
     function updatePersonId($userId, $newPersonId) {
