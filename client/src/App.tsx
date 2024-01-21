@@ -8,6 +8,8 @@ import Login from "./component/Login/Login";
 import Heroes from "./component/Heroes/Heroes";
 import Interface from "./component/Interface/Interface";
 import Lobby from "./component/Lobby/Lobby";
+// import FriendsLobby2 from "./component/FriendsLobby2/FriendsLobby2";
+// import FriendsLobby from "./component/FriendsLobby/FriendsLobby";
 
 
 import "./App.css";
@@ -22,6 +24,8 @@ export enum EPAGES {
     MENU,
     HEROES,
     LOBBY,
+    // FRIENDSLOBBY,
+    // FRIENDSLOBBY2,
 }
 
 const MainApp = () => {
@@ -42,7 +46,7 @@ const MainApp = () => {
             ) : epages === EPAGES.HEROES ? (
                 <Heroes epages={setEpages} />
             ) : epages === EPAGES.LOBBY ? (
-                <Lobby epages={setEpages} />        
+                <Lobby epages={setEpages} />               
             ) : (
                 <></>
             )}
