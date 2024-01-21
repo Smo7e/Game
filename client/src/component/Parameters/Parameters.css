@@ -29,11 +29,11 @@
 .rectangle {
   position: absolute;
   width: 60%;
-  height: 71%;
-  top: 14%;
+  height: 65%;
+  top: 18%;
   left: 25%;
   background-color: white;
-  border-radius: 120px;
+  border-radius: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,9 +43,9 @@
 .inner-rectangle {
   position: absolute;
   width: 98%;
-  height: 98%;
+  height: 97%;
   background-color: rgb(193, 193, 193);
-  border-radius: 120px;
+  border-radius: 75px;
   z-index: 2;
 }
 .line {
@@ -58,7 +58,8 @@
 }
 .text-container {
   position: absolute;
-  top: 62%;
+  top: 58%;
+  padding: 0 auto;
   width: 40%;
   left: 27%;
   transform: translate(-50%, -50%);
@@ -66,37 +67,14 @@
   flex-direction: column;
   align-items: center;
   color: black;
-  font-family: Playfair Display;
-  font-size: 5.5vh;
+  font-family: "Playfair Display";
+  font-size:5vh;
   text-align: center;
   font-weight: bold;
 }
 
 .text {
-  margin-bottom: 120px;
-}
-
-
-
-
-.lineM {
-  position: absolute;
-  left: 125%;
-  width: 90%;
-  height: 4px;
-  background-color: white;
-  top: 35%;
-  transform: translateY(-50%);
-}
-.lineM::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -5px;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 15px;
-  background-color: white;
+  margin-bottom: 15vh;
 }
 .second-rectangle {
   position: absolute;
@@ -104,14 +82,16 @@
   height: 14%;
   top: 62%;
   left: 144%;
-  background-color: white;
   border-radius: 1px;
+  font-size: 3.5vh;
   z-index: 1;
-  font-family: Press Start 2P;
+  font-family: "Press Start 2P";
   display: flex;
 }
 
 .left-side {
+  border: 4px solid white; 
+  font-family: "Press Start 2P";
   flex: 1;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
@@ -122,10 +102,12 @@
 }
 
 .right-side {
+  font-family: "Press Start 2P";
   flex: 1;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   display: flex;
+  border: 4px solid white; 
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -144,52 +126,95 @@
 .numbersZ {
   position: absolute;
   left: 160%;
-  top:9%;
-  width: 20%;
+  top: 9%;
+  font-family: Arial, sans-serif;
+  width: 25%;
   height: 7%;
   background-color: black;
-  border-radius: 45%;
+  border-radius: 42%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 20px;
+  font-size: 4vh;
+  font-weight: 100;
+  font-stretch: expanded; /* Увеличение ширины цифр */
 }
+
+
 
 .numbersM {
   position: absolute;
   left: 160%;
-  width: 20%;
+  width: 25%;
   top:38%;
   height: 7%;
   background-color: black;
-  border-radius: 45%;
+  border-radius: 42%;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 20px;
+  font-size: 4vh;
+  font-weight: 100;
+  font-stretch: expanded; /* Увеличение ширины цифр */
 }
 
 
-.lineZ {
-  position: absolute;
+
+.line.fullscreen {
+  height: 100%;
+  width: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.volume-slider {
+  position:  absolute;
   left: 125%;
   width: 90%;
+  top: 5%;
+  -webkit-appearance: none;
+  border-radius: 0;
   height: 4px;
-  background-color: white;
-  top: 6%;
-  transform: translateY(-50%);
+  background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.lineZ::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -5px;
-  transform: translateX(-50%);
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
   width: 5px;
-  height: 15px;
+  height: 12px;
+  border-radius: 0%;
+  background: white;
+  cursor: pointer;
+}
+.lineM {
+  -webkit-appearance: none;
+  border-radius: 0;
+  height: 4px;
+  background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+  position:  absolute;
+  left: 125%;
+  width: 90%;
   background-color: white;
+  top: 35%;
 }
 
+.lineM::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 5px;
+  height: 12px;
+  border-radius: 0%;
+  background: white;
+  cursor: pointer;
+}
