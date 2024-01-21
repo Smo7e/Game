@@ -122,8 +122,7 @@ export default class Server {
     moveMobs(x: number, y: number) {
         return this.request("moveMobs", { x, y });
     }
+    getItems() {
+        return this.request("getItems", {});
+    }
 }
-
-    getItems() {   
-        return this.request("getItems" , {});   
-}   
