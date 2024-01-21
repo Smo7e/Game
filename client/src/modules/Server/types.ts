@@ -32,11 +32,19 @@ export type TGamer = {
     y: number;
     direction: string;
 };
+export type TMobs = {
+    id: number;
+    person_id: number;
+    status: string;
+    x: number;
+    y: number;
+};
 
 export type TScene = {
     gamers: Array<TGamer> | null;
-    items: null;
+    items: Array<TMobs> | null;
     mobs: null;
     map: null;
     hashGamers?: string;
+    hashMobs?: string;
 };

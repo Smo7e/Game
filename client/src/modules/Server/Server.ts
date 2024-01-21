@@ -10,6 +10,8 @@ export default class Server {
     private chatInterval: ReturnType<typeof setInterval> | null = null;
 
     private hashGamers: string = "123";
+    private hashMobs: string = "123";
+
     private gameInterval: ReturnType<typeof setInterval> | null = null;
 
     constructor(HOST: string, mediator: Mediator) {
@@ -105,14 +107,20 @@ export default class Server {
     }
 
     async getScene(): Promise<TScene | null> {
-        const answer = await this.request<TScene>("getScene", { hashGamers: this.hashGamers });
+        const answer = await this.request<TScene>("getScene", { hashGamers: this.hashGamers, hashMobs: this.hashMobs });
         if (answer && answer.hashGamers && answer.hashGamers !== this.hashGamers) {
             this.hashGamers = answer.hashGamers as string;
+        }
+        if (answer && answer.hashMobs && answer.hashMobs !== this.hashMobs) {
+            this.hashMobs = answer.hashMobs as string;
         }
         return answer;
     }
     move(direction: string, x: number, y: number) {
         return this.request("move", { direction, x, y });
+    }
+    moveMobs(x: number, y: number) {
+        return this.request("moveMobs", { x, y });
     }
 }
 

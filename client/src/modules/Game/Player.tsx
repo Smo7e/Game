@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import React, { useContext, useState, memo } from "react";
+import React, { useContext, useState, memo, useEffect } from "react";
 import { useRef } from "react";
 
 import useSprites from "../hooks/sprites/useSprites";
@@ -9,7 +9,6 @@ import { ServerContext } from "../../App";
 import useControls from "../hooks/controls/useControls";
 const Player: React.FC = memo(() => {
     const server = useContext(ServerContext);
-
     const personRef = useRef<RapierRigidBody>(null);
 
     const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites("trusov");

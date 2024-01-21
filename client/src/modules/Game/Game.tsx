@@ -1,17 +1,19 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ServerContext, MediatorContext } from "../../App";
-import { TGamer, TScene } from "../Server/types";
+import { TGamer, TMobs, TScene } from "../Server/types";
 import Player from "./Player";
 import Scene from "./Scene";
 import { Physics } from "@react-three/rapier";
 import Friends from "./Friends";
 import Boss from "./Boss";
+import Bullets from "./Bullets";
 const Game: React.FC = () => {
     const server = useContext(ServerContext);
     const mediator = useContext(MediatorContext);
     const { GET_SCENE } = mediator.getEventTypes();
     const [infoFriends, setInfoFriends] = useState<TGamer[] | null>(null);
+    const [infoMobs, setInfoMobs] = useState<TMobs[] | null>(null);
 
     useEffect(() => {
         server.startGameInterval();
@@ -19,6 +21,9 @@ const Game: React.FC = () => {
         const getSceneHandler = (scene: TScene) => {
             if (scene.gamers != null) {
                 setInfoFriends(scene.gamers);
+            }
+            if (scene.mobs != null) {
+                setInfoMobs(scene.mobs);
             }
         };
         mediator.subscribe(GET_SCENE, getSceneHandler);
@@ -45,6 +50,7 @@ const Game: React.FC = () => {
                 <Player />
                 <Friends infoFriends={infoFriends} />
                 <Boss />
+                <Bullets infoFriends={infoFriends} infoMobs={infoMobs} />
             </Physics>
         </Canvas>
     );

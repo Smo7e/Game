@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { RigidBody } from "@react-three/rapier";
@@ -8,7 +8,7 @@ import Office421 from "./Rooms/Office421";
 import Office317 from "./Rooms/Offise317";
 import Office424 from "./Rooms/Office224";
 
-const Scene: React.FC = () => {
+const Scene: React.FC = memo(() => {
     const fon = useLoader(TextureLoader, floor1);
     return (
         <>
@@ -37,6 +37,6 @@ const Scene: React.FC = () => {
             <Wall position={[0.2, -23.6, 0]} args={[7, 0.5, 1]} />
         </>
     );
-};
+});
 
 export default Scene;
