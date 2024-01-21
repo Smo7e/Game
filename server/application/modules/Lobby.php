@@ -13,4 +13,8 @@ class Lobby {
         }
         return array(false, 1002);
     }
+
+    function getItems(){
+        return $this->db->getItems();
+    }
 }
