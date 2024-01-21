@@ -24,6 +24,8 @@ function result($params) {
                 return $app->sendMessage($params);
             case 'getMessages':
                 return $app->getMessages($params);
+            case 'getItems':
+                return $app->getItems();
             // игровые команды
             case 'move':
                 return $app->move($params);

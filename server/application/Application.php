@@ -19,6 +19,7 @@ class Application {
         $this->user = new User($this->db);
         $this->chat = new Chat($this->db);
         $this->game = new Game($this->db);
+        $this->lobby = new Lobby($this->db);
     }
 
     private function checkParams() {
@@ -120,6 +121,10 @@ class Application {
             return array(false, 9000);
         }
         return array(false, 9000);
+    }
+
+    function getItems(){
+        return $this->lobby->getItems();
     }
 
 }
