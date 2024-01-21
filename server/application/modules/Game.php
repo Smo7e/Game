@@ -74,9 +74,9 @@ class Game
         return $result;
     }
 
-    function move($userId, $direction, $x, $y)
+    function move($userId, $direction, $x, $y, $status)
     {
-        $this->db->move($userId, $direction, $x, $y);
+        $this->db->move($userId, $direction, $x, $y, $status);
         $hash = md5(rand(0, 100000));
         $this->db->updateGamersHash($hash);
         return true;

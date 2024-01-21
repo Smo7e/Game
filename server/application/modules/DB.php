@@ -107,8 +107,23 @@ class DB {
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function move($userId, $direction, $x, $y) {
-        $query = 'UPDATE gamers SET direction=?, x=?, y=? WHERE user_id=?';
-        $this->preparationQuery($query, [$direction, $x, $y, $userId]);
+    function move($userId, $direction, $x, $y, $status) {
+        $query = 'UPDATE gamers SET direction=?, x=?, y=?, status=? WHERE user_id=?';
+        $this->preparationQuery($query, [$direction, $x, $y, $userId, $status]);
+    }
+
+    function updatePersonId($userId, $newPersonId) {
+        $query = 'UPDATE gamers SET person_id=? WHERE id=?';
+        $this->preparationQuery($query, [$newPersonId, $userId]);
+    }
+
+    function deleteGamers(){
+        $query = 'TRUNCATE TABLE gamers';
+        $this->preparationQuery($query, []);
+    }
+
+    function AddGamers() {
+        $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, ?, "stand", 0, 0, "down")';
+        $this->preparationQuery($query, []);
     }
 }
