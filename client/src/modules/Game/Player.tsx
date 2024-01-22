@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import React, { useContext, useState, memo, useEffect } from "react";
 import { useRef } from "react";
 
-import useSprites from "../hooks/sprites/useSprites";
+import useSprites from "../hooks/Sprites/useSprites";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 import { MediatorContext, ServerContext } from "../../App";
@@ -49,17 +49,32 @@ const Player: React.FC = memo(() => {
             setDirectionPlayer(direction[Math.floor(currentFrame)]);
 
             personRef.current?.setLinvel(move, true);
-            const cameraMove = new Vector3(personRef.current!.translation().x, personRef.current!.translation().y, 14);
+            const cameraMove = new Vector3(
+                personRef.current!.translation().x,
+                personRef.current!.translation().y,
+                14
+            );
             const newPosition = cameraPosition.lerp(cameraMove, 0.1);
             setCameraPosition(newPosition);
             state.camera.position.copy(newPosition);
-            server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y, "alive");
+            server.move(
+                "walk",
+                personRef.current!.translation().x,
+                personRef.current!.translation().y,
+                "alive"
+            );
         }
     });
 
     return (
         <>
-            <RigidBody gravityScale={10} position={[0, 0, 0]} ref={personRef} lockRotations mass={50}>
+            <RigidBody
+                gravityScale={10}
+                position={[0, 0, 0]}
+                ref={personRef}
+                lockRotations
+                mass={50}
+            >
                 <mesh>
                     <boxGeometry args={[1, 1, 1]} />
                     <meshStandardMaterial map={directionPlayer} transparent />

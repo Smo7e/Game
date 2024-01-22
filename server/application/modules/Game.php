@@ -1,24 +1,19 @@
 <?php
-class Game
-{
+class Game {
     private $db;
 
-    public function __construct($db)
-    {
+    public function __construct($db) {
         $this->db = $db;
     }
 
-    private function getGamers($userId)
-    {
+    private function getGamers($userId) {
         return $this->db->getGamers();
     }
-    private function getMobs()
-    {
+    private function getMobs() {
         return $this->db->getMobs();
     }
 
-    private function getItems($userId)
-    {
+    private function getItems($userId) {
         return $this->db->getItems();
     }
 
@@ -51,8 +46,7 @@ class Game
         }
     }
 
-    function getScene($userId, $hashGamers, $hashItems, $hashMobs, $hashMap)
-    {
+    function getScene($userId, $hashGamers, $hashItems, $hashMobs, $hashMap) {
         $result = array(
             'gamers' => null,
             'items' => null,
@@ -84,15 +78,13 @@ class Game
         return $result;
     }
 
-    function move($userId, $direction, $x, $y, $status)
-    {
+    function move($userId, $direction, $x, $y, $status) {
         $this->db->move($userId, $direction, $x, $y, $status);
         $hash = md5(rand(0, 100000));
         $this->db->updateGamersHash($hash);
         return true;
     }
-    function moveMobs($x, $y)
-    {
+    function moveMobs($x, $y) {
         $this->db->moveMobs($x, $y);
         $hash = md5(rand(0, 100000));
         $this->db->updateMobsHash($hash);

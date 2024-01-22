@@ -6,12 +6,29 @@ class Lobby {
         $this->db = $db;
     }
 
-    public function getPersons($params) {
-        $token = $params['token'];
-        if ($token) {
-            return $this->db->getPersons($token);
+    public function addFriend($userId, $friendId) {
+        $user = $this->db->getFriends($userId);
+        if ($user) {
+            $friends = json_decode($user['friends'], true);
+            if (!in_array($friendId, $friends)) {
+                $friend = $this->db->getUserById($friendId);
+                if ($friend) {
+                    $this->db->addFriend($userId, $friendId, $friends);
+                    return true;
+                }
+                return array(false, 488);
+            }
+            return array(false, 500);
         }
-        return array(false, 1002);
+        return array(false, 499);
+    }
+
+    public function getFriends($userId) {
+        $friendId = $this->db->getFriends($userId);
+        if ($friendId) {
+            return json_decode($friendId['friends'], true);
+        }
+        return [];
     }
     function addGamers($userId){
         $this->db->addGamers($userId);
