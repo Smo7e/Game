@@ -45,6 +45,8 @@ function result($params) {
                 return $app->getUserById($params);
             case 'getUserByToken':
                 return $app->getUserByToken($params);
+            case 'getGamers':
+                return $app->getGamers();
             case 'addGamers':
                 return $app->addGamers($params);
             case 'deleteGamers':

@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
@@ -36,7 +36,7 @@ CREATE TABLE `game` (
   `mobs_hash` varchar(256) NOT NULL,
   `update_timestamp` int(11) NOT NULL DEFAULT 0,
   `update_timeout` int(11) NOT NULL DEFAULT 300
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `game`
@@ -59,7 +59,7 @@ CREATE TABLE `gamers` (
   `x` float NOT NULL DEFAULT 0,
   `y` float NOT NULL DEFAULT 0,
   `direction` varchar(256) NOT NULL DEFAULT 'down'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `gamers`
@@ -141,7 +141,7 @@ CREATE TABLE `messages` (
   `user_id` int(11) NOT NULL,
   `message` varchar(256) NOT NULL,
   `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `messages`
@@ -321,19 +321,19 @@ CREATE TABLE `users` (
   `name` varchar(256) NOT NULL,
   `token` varchar(256) DEFAULT NULL,
   `friends` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`, `friends`) VALUES
-(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'f069a835e9ce570c730ee56d170c6a23', '[2,4,5,11,12,6,7,8]'),
+(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'd330911f486cad8540875bd81d3dcaf9', '[2,4,5,11,12,6,7,8]'),
 (2, 'petya', '321', 'Petya Petroff', NULL, '[]'),
 (4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '826c181183abdb683aaeb372c5d8da1c', '[9, 10, 5]'),
 (5, '1', 'c51ce410c124a10e0db5e4b97fc2af39', '2', NULL, '[]'),
 (6, '12', '78bf4f00f81a36b57950e239f1df91c1', '12', NULL, '[]'),
-(7, '123', '4297f44b13955235245b2497399d7a93', '123', NULL, '[]'),
+(7, '123', '4297f44b13955235245b2497399d7a93', '123', '3af2f63a80244c18b0d050178ea031d2', '[]'),
 (8, 'wef', 'b1444ebf2a132112bfaec62ed475ef82', 'ASFfvD', NULL, '[]'),
 (11, 'vasya3', 'bbdfc6d64804b6c634d94e52f05505ca', '1231', NULL, '[]'),
 (12, 'user962', '8b69ff1f195992bc7cb9390dc90ddff5', 'example_nicknam', NULL, '[]'),

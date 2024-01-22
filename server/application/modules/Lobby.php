@@ -34,6 +34,9 @@ class Lobby {
         $this->db->addGamers($userId);
         
     }
+   function getGamers(){
+        return $this->db->getGamers();
+   }
     function updatePersonId( $userId,$newPersonId){
         $a = json_decode($userId,true);
        $this->db->updatePersonId($a,$newPersonId);

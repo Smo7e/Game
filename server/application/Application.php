@@ -155,6 +155,9 @@ class Application {
         $userId = $params['userId'];
         return $this->lobby->getGamerById($userId);
     }
+    function getGamers(){
+        return $this->lobby->getGamers();
+    }
     function getUserByToken($params){
         $token = $params['token'];
         if($token){
