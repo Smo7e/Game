@@ -18,7 +18,7 @@ const FriendLobby2: React.FC<IFriendLobby2Props> = ({ setPanel, gamers }) => {
         <>
             {gamers.length === 1 ? (
                 <div id="test-image-rack2" className="image-rack2">
-                    <div onClick={() => setPanel(EPANEL.ADDAFRIEND1)} id="test-friend" className="friend"></div>
+                    <div onClick={() => setPanel(EPANEL.ADDAFRIEND2)} id="test-friend" className="friend"></div>
                 </div>
             ) : gamers.length === 3 &&
               mediator.user.name === mediator.gamers[2].name &&

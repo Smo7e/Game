@@ -135,24 +135,13 @@
     color: #228b22;
     font-size: 2.8vw;
     font-weight: 800;
-    position: relative;
     left: 2vw;
     text-shadow: 1px 1px 1px rgb(0, 0, 0), 0 0 0 rgb(0, 0, 0), 0 1px 1px rgb(0, 0, 0), -1px 0 1px rgb(0, 0, 0);
 }
 
-.plays::before {
-    content: "";
-    position: absolute;
-    top: 6.6vh;
-    left: -1vw;
-    right: 3vw;
-    height: 0.1vw;
-    background: #00008b;
-}
 .plus {
-    position: absolute;
+    margin-left: 10px;
     cursor: pointer;
-    top: 1.5vh;
     width: 2vw;
     height: 5vh;
     background-image: url("./image/plus.png");

@@ -81,17 +81,21 @@ const Lobby: React.FC<ILobbyProps> = ({ epages }) => {
                 <HumanitarianLobby lobby={setLobby} gamerNumber={0} />
             ) : lobby === ELOBBY.TECHGUY ? (
                 <TechguyLobby lobby={setLobby} gamerNumber={0} />
-            ) : null}
+            ) : (
+                <></>
+            )}
 
             {panel === EPANEL.ADDAFRIEND1 ? (
                 <div ref={panelRef} id="test-Addafriend1">
-                    <Addafriend1 />
+                    <Addafriend1 friends={mediator.friends} />
                 </div>
             ) : panel === EPANEL.ADDAFRIEND2 ? (
                 <div ref={panelRef} id="test-Addafriend2">
-                    <Addafriend2 />
+                    <Addafriend2 friends={mediator.friends} />
                 </div>
-            ) : null}
+            ) : (
+                <></>
+            )}
 
             <button onClick={gameHadler} id="test-play" className="play">
                 ИГРАТЬ

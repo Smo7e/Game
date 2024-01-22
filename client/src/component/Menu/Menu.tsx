@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { EPAGES, ServerContext } from "../../App";
+import { EPAGES, MediatorContext, ServerContext } from "../../App";
 import logo from "./image/logo.png";
 import "./Menu.css";
 import { TFriend } from "../../modules/Server/types";
@@ -8,9 +8,11 @@ interface IMenuProps {
 }
 const Menu: React.FC<IMenuProps> = ({ epages }) => {
     const server = useContext(ServerContext);
+    const mediator = useContext(MediatorContext);
+
     const idRef = useRef<HTMLInputElement>(null);
     const [friends, setFriends] = useState<number[]>([]);
-    const [friend, setFriend] = useState<TFriend[]>([{ id: 0, name: "тут" }]);
+    const [friend, setFriend] = useState<TFriend[]>([{ id: 0, name: "У Вас нету друзей,пхахахахахха!" }]);
 
     const clickHandler = async () => {
         const id = idRef.current!.value;
@@ -36,11 +38,23 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
                         }
                     })
                 );
+                mediator.friends = updatedFriends;
                 setFriend(updatedFriends as TFriend[]);
             }
         };
         fetchFriends();
     }, [friends]);
+    const lobbyHandler = async () => {
+        await server.deleteGamers();
+        await server.addGamers();
+        epages(EPAGES.LOBBY);
+    };
+    const userSave = async () => {
+        await server.getUserByToken().then((result): any => {
+            mediator.user = result;
+        });
+    };
+    userSave();
 
     const logoutHandler = async () => {
         await server.logout();
@@ -52,7 +66,7 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
             <img className="photo-button" src={logo} id="test-logo" />
 
             <div className="buttons-container">
-                <div onClick={() => epages(EPAGES.LOBBY)} className="button1" id="test-play">
+                <div onClick={lobbyHandler} className="button1" id="test-play">
                     Играть
                 </div>
                 <div onClick={() => epages(EPAGES.HEROES)} className="button2" id="test-heroes">
