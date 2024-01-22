@@ -35,9 +35,18 @@ function result($params) {
             // получение сцены
             case 'getScene':
                 return $app->getScene($params);
-
+            case 'getUserByToken':
+                return $app->getUserByToken($params);
             case 'moveMobs':
                 return $app->moveMobs($params);
+            case 'addGamers':
+                return $app->addGamers($params);
+            case 'deleteGamers':
+                return $app->deleteGamers($params);
+            case 'updatePersonId':
+                return $app->updatePersonId($params);
+            case 'getGamerById':
+                return $app->getGamerById($params);
             default:
                 return array(false, 466);
         }

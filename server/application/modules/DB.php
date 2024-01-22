@@ -125,8 +125,12 @@ class DB {
     }
 
     function updatePersonId($userId, $newPersonId) {
-        $query = 'UPDATE gamers SET person_id=? WHERE id=?';
+        $query = 'UPDATE gamers SET person_id=? WHERE user_id=?';
         $this->preparationQuery($query, [$newPersonId, $userId]);
+    }
+    function getGamerById($userId){
+        $query = 'SELECT * FROM gamers WHERE user_id=?';
+        return $this->preparationQuery($query, [ $userId])->fetch(PDO::FETCH_OBJ);
     }
 
     function deleteGamers(){
@@ -134,8 +138,9 @@ class DB {
         $this->preparationQuery($query, []);
     }
 
-    function AddGamers() {
-        $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, ?, "stand", 0, 0, "down")';
-        $this->preparationQuery($query, []);
+    function addGamers($userId) {
+        $a = json_decode($userId,true);
+        $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, 0, "stand", 0, 0, "down")';
+        $this->preparationQuery($query, [$a]);
     }
 }

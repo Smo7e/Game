@@ -26,11 +26,11 @@ function useSprites(name: string) {
         return arr2;
     };
     switch (name) {
-        case "sportik":
+        case "0":
             return result(spriteSportik);
-        case "thetechguy":
+        case "1":
             return result(spriteThetechguy);
-        case "humanities":
+        case "2":
             return result(spriteHumanities);
         case "golovizin":
             return result(spriteGolovizin);

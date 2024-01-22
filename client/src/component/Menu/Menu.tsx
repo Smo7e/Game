@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { EPAGES, ServerContext } from "../../App";
+import { EPAGES, MediatorContext, ServerContext } from "../../App";
 import logo from "./image/logo.png";
 import "./Menu.css";
 interface IMenuProps {
@@ -7,16 +7,30 @@ interface IMenuProps {
 }
 const Menu: React.FC<IMenuProps> = ({ epages }) => {
     const server = useContext(ServerContext);
+    const mediator = useContext(MediatorContext);
+
     const logoutHandler = async () => {
         await server.logout();
         epages(EPAGES.LOGIN);
     };
+    const lobbyHandler = async () => {
+        await server.deleteGamers();
+        await server.addGamers();
+        epages(EPAGES.LOBBY);
+    };
+    const userSave = async () => {
+        await server.getUserByToken().then((result): any => {
+            mediator.user = result;
+        });
+    };
+    userSave();
+
     return (
         <div className="mainMenu" id="test-mainMemu">
             <img className="photo-button" src={logo} id="test-logo" />
 
             <div className="buttons-container">
-                <div onClick={() => epages(EPAGES.LOBBY)} className="button1" id="test-play">
+                <div onClick={lobbyHandler} className="button1" id="test-play">
                     Играть
                 </div>
                 <div onClick={() => epages(EPAGES.HEROES)} className="button2" id="test-heroes">

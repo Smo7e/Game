@@ -5,13 +5,14 @@ import { useRef } from "react";
 import useSprites from "../hooks/sprites/useSprites";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
-import { ServerContext } from "../../App";
+import { MediatorContext, ServerContext } from "../../App";
 import useControls from "../hooks/controls/useControls";
 const Player: React.FC = memo(() => {
     const server = useContext(ServerContext);
-    const personRef = useRef<RapierRigidBody>(null);
+    const mediator = useContext(MediatorContext);
 
-    const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites("trusov");
+    const personRef = useRef<RapierRigidBody>(null);
+    const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites(mediator.gamer.person_id);
 
     const controls = useControls();
     const [cameraPosition, setCameraPosition] = useState(new Vector3(0, 0, 14));
