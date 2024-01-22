@@ -16,6 +16,7 @@ const Boss: React.FC = memo(() => {
     var currentFrame = 0;
     var frameSpeed = 0.1;
     var frameLength = 9;
+    let limitationОfSending = 0;
 
     let directionPlayer: Texture = moveDown[0];
     const position = usePositionMatrix();
@@ -88,7 +89,9 @@ const Boss: React.FC = memo(() => {
         }
         bossRef.current.setLinvel(move, true);
         bossPositionRef.current?.position.set(bossCoord.x, bossCoord.y, 1);
-        server.moveMobs(bossCoord.x, bossCoord.y);
+        if (limitationОfSending % 50 === 0) {
+            server.moveMobs(bossCoord.x, bossCoord.y);
+        }
 
         currentFrame = (currentFrame + frameSpeed) % frameLength;
         directionPlayer = direction[Math.floor(currentFrame)];
@@ -98,6 +101,7 @@ const Boss: React.FC = memo(() => {
                 spriteRef.current.map = directionPlayer;
             }
         }
+        limitationОfSending += 1;
     });
     function rndNumber(min: number, max: number) {
         return Math.floor(Math.random() * (max - min + 1) + min);

@@ -17,7 +17,6 @@ const Game: React.FC = () => {
 
     useEffect(() => {
         server.startGameInterval();
-
         const getSceneHandler = (scene: TScene) => {
             if (scene.gamers != null) {
                 setInfoFriends(scene.gamers);
@@ -33,7 +32,6 @@ const Game: React.FC = () => {
             server.stopGameInterval();
         };
     });
-
     return (
         <Canvas
             camera={{
@@ -48,8 +46,10 @@ const Game: React.FC = () => {
             <Physics gravity={[0, 0, -10]}>
                 <Scene />
                 <Player />
-                <Friends infoFriends={infoFriends} />
+                {infoFriends && infoFriends.length === 2 ? <Friends infoFriends={infoFriends} /> : <></>}
+
                 <Boss />
+
                 <Bullets infoFriends={infoFriends} infoMobs={infoMobs} />
             </Physics>
         </Canvas>

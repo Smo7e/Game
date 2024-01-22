@@ -52,4 +52,7 @@ class User {
         }
         return array(false, 487);
     }
+    function getUserByToken($token){
+        return $this->db->getUserByToken($token);
+    }
 }

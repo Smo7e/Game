@@ -124,6 +124,21 @@ export default class Server {
         }
         return answer;
     }
+    async getUserByToken() {
+        return await this.request("getUserByToken", {});
+    }
+    async addGamers() {
+        return await this.request("addGamers", {});
+    }
+    async deleteGamers() {
+        return await this.request("deleteGamers", {});
+    }
+    async updatePersonId(newPersonId: number) {
+        return await this.request("updatePersonId", { newPersonId: newPersonId });
+    }
+    async getGamerById(userId: number) {
+        return await this.request("getGamerById", { userId: userId });
+    }
     move(direction: string, x: number, y: number, status: string) {
         return this.request("move", { direction, x, y, status });
     }

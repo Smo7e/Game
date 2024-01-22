@@ -43,6 +43,16 @@ function result($params) {
                 return $app->moveMobs($params);
             case 'getUserById':
                 return $app->getUserById($params);
+            case 'getUserByToken':
+                return $app->getUserByToken($params);
+            case 'addGamers':
+                return $app->addGamers($params);
+            case 'deleteGamers':
+                return $app->deleteGamers($params);
+            case 'updatePersonId':
+                return $app->updatePersonId($params);
+            case 'getGamerById':
+                return $app->getGamerById($params);
             default:
                 return array(false, 466);
         }

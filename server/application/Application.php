@@ -137,6 +137,49 @@ class Application {
         }
         return array(false, 1001);
     }
+    function updatePersonId($params) {
+        $token = $params['token'];
+        $newPersonId = $params['newPersonId'];
+        if($token){
+            $user = $this->user->getUser($token);
+            if($user){
+               return $this->lobby->updatePersonId($user->id,$newPersonId);
+                //return true;
+
+            }
+            return array(false, 455);
+        }
+        return array(false, 1001);
+    }
+    function getGamerById($params){
+        $userId = $params['userId'];
+        return $this->lobby->getGamerById($userId);
+    }
+    function getUserByToken($params){
+        $token = $params['token'];
+        if($token){
+            return $this->user->getUserByToken($token);
+        }
+        return array(false, 1001);
+    }
+    function addGamers($params){
+        $token = $params['token'];
+        
+        if($token){
+            $user = $this->user->getUser($token);
+            if($user){
+                $this->lobby->addGamers($user->id);
+                return true;
+            }
+            return array(false, 455);
+        }
+        return array(false,1001);
+    }
+    function deleteGamers($params){
+        $this->lobby->deleteGamers();
+        return true;
+    }
+    
 
     function move($params) {
         $token = $params['token'];
@@ -154,7 +197,6 @@ class Application {
         return array(false, 1001);
     }
     function moveMobs($params) {
-        $token = $params['token'];
         $x = $params['x'];
         $y = $params['y'];
         if ( $x && $y) {
