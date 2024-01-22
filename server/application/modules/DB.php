@@ -117,7 +117,7 @@ class DB {
 
     function move($userId, $direction, $x, $y, $status) {
         $query = 'UPDATE gamers SET direction=?, x=?, y=?, status=? WHERE user_id=?';
-        $this->preparationQuery($query, [$direction, $x, $y, $userId, $status]);
+        $this->preparationQuery($query, [$direction, $x, $y, $status,$userId]);
     }
     function moveMobs($x, $y) {
         $query = 'UPDATE mobs SET x=?, y=? WHERE id=1';
