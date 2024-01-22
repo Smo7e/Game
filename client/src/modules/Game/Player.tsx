@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import React, { useContext, useState, memo, useEffect } from "react";
 import { useRef } from "react";
 
-import useSprites from "../hooks/sprites/useSprites";
+import useSprites from "../hooks/Sprites/useSprites";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 import { ServerContext } from "../../App";
