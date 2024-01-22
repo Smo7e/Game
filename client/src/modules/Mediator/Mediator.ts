@@ -22,11 +22,18 @@ export default class Mediator {
     private EVENTS: TEVENT;
     private triggers: TTriggers;
     private TRIGGERS: TEVENT;
+    user: any;
+    gamer: any;
+    gamers: any;
 
     constructor(params: TParams) {
         const { EVENTS, TRIGGERS } = params;
         this.EVENTS = EVENTS;
         this.TRIGGERS = TRIGGERS;
+        this.user = null;
+        this.gamer = 0;
+        this.gamers = 0;
+
         this.events = {};
         Object.keys(EVENTS).forEach((key) => (this.events[key] = []));
         this.triggers = {};

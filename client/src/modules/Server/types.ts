@@ -24,6 +24,11 @@ export type TMessages = {
     hash: string;
 };
 
+export type TFriend = {
+    id: number;
+    name: string;
+};
+
 export type TGamer = {
     name: string;
     person_id: number;

@@ -10,10 +10,7 @@ interface IPropsBullets {
 }
 const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
     const [bulletsRefs, setbulletsRefs] = useState<any>([]);
-    const [arrBullet, setArrBullet] = useState<any>([
-        [0, 0, 0, 10],
-        [0, 0, 0, -10],
-    ]);
+    const [arrBullet, setArrBullet] = useState<any>([]);
 
     const bulletsSpeed = 0.1;
 
@@ -34,28 +31,28 @@ const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
             setArrBullet([
                 infoFriends && infoFriends[0]
                     ? [
-                          infoMobs ? infoMobs[0].x - 0 : 0,
-                          infoMobs ? infoMobs[0].y - 0 : 1,
-                          infoFriends ? infoFriends[0].x - 0 : 0,
-                          infoFriends ? infoFriends[0].y - 0 : 0,
+                          infoMobs ? infoMobs[0].x - 0 : 200,
+                          infoMobs ? infoMobs[0].y - 0 : 200,
+                          infoFriends ? infoFriends[0].x - 0 : 200,
+                          infoFriends ? infoFriends[0].y - 0 : 200,
                       ]
                     : null,
 
                 infoFriends && infoFriends[1]
                     ? [
-                          infoMobs ? infoMobs[0].x - 0 : 0,
-                          infoMobs ? infoMobs[0].y - 0 : 1,
-                          infoFriends ? infoFriends[1].x - 0 : 0,
-                          infoFriends ? infoFriends[1].y - 0 : 0,
+                          infoMobs ? infoMobs[0].x - 0 : 200,
+                          infoMobs ? infoMobs[0].y - 0 : 200,
+                          infoFriends ? infoFriends[1].x - 0 : 200,
+                          infoFriends ? infoFriends[1].y - 0 : 200,
                       ]
                     : null,
 
                 infoFriends && infoFriends[2]
                     ? [
-                          infoMobs ? infoMobs[0].x - 0 : 0,
-                          infoMobs ? infoMobs[0].y - 0 : 1,
-                          infoFriends ? infoFriends[2].x - 0 : 0,
-                          infoFriends ? infoFriends[2].y - 0 : 0,
+                          infoMobs ? infoMobs[0].x - 0 : 200,
+                          infoMobs ? infoMobs[0].y - 0 : 200,
+                          infoFriends ? infoFriends[2].x - 0 : 200,
+                          infoFriends ? infoFriends[2].y - 0 : 200,
                       ]
                     : null,
             ]);
@@ -75,7 +72,7 @@ const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
                 infoFriends?.forEach((gamer) => {
                     const dist = Math.pow(arrBullet[i][0] - gamer.x, 2) + Math.pow(arrBullet[i][1] - gamer.y, 2);
                     if (dist < 1) {
-                        console.log("попадание");
+                        //console.log("попадание");
                     }
                 });
                 delete arrBullet[i];

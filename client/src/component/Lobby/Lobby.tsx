@@ -1,34 +1,48 @@
-import React, { useState, useEffect, useRef } from "react";
-import { EPAGES } from "../../App";
-import SportikLobby from "./component/Sportik";
-import HumanitarianLobby from "./component/Humanitarian";
-import TechguyLobby from "./component/Techguy";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { EPAGES, MediatorContext, ServerContext } from "../../App";
+import SportikLobby from "./component/SportikLobby";
+import HumanitarianLobby from "./component/HumanitarianLobby";
+import TechguyLobby from "./component/TechguyLobby";
 import ShopLobby from "./component/Shop";
 
 import Addafriend1 from "./panel/Addafriend1";
 import Addafriend2 from "./panel/Addafriend2";
 
 import "./Lobby.css";
+import FriendLobby1 from "./component/FriendLobby1";
+import FriendLobby2 from "./component/FriendLobby2";
 
 interface ILobbyProps {
     epages: Function;
 }
 
-export enum LOBBY {
+export enum ELOBBY {
     SPORTIK,
     HUMANITARIAN,
     TECHGUY,
 }
 
-export enum PANEL {
+export enum EPANEL {
     ADDAFRIEND1,
     ADDAFRIEND2,
 }
 
 const Lobby: React.FC<ILobbyProps> = ({ epages }) => {
-    const [lobby, setLobby] = useState<LOBBY>(LOBBY.SPORTIK);
-    const [panel, setPanel] = useState<PANEL>();
+    const server = useContext(ServerContext);
+    const mediator = useContext(MediatorContext);
+
+    const [lobby, setLobby] = useState<ELOBBY>(ELOBBY.SPORTIK);
+    const [panel, setPanel] = useState<EPANEL>();
+    const [gamers, setGamers] = useState<any>(null);
     const panelRef = useRef<HTMLDivElement>(null);
+
+    const gameHadler = async () => {
+        await server.getGamerById(mediator.user.id).then((result): any => {
+            mediator.gamer = result;
+        });
+
+        epages(EPAGES.GAME);
+    };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -36,57 +50,50 @@ const Lobby: React.FC<ILobbyProps> = ({ epages }) => {
                 setPanel(undefined);
             }
         };
+        const interval = setInterval(async () => {
+            await server.getGamers().then((result): any => {
+                mediator.gamers = result;
+                if (mediator.gamer != gamers) {
+                    setGamers(result);
+                }
+            });
+            // console.log(mediator.gamers);
+        }, 800);
+
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            return clearInterval(interval);
         };
     }, []);
 
     return (
         <div id="test-container-Lobby" className="container-Lobby">
-            <button
-                onClick={() => epages(EPAGES.MENU)}
-                id="test-arrow-1"
-                className="arrow-1"
-            ></button>
+            <button onClick={() => epages(EPAGES.MENU)} id="test-arrow-1" className="arrow-1"></button>
 
             <ShopLobby />
 
-            <div id="test-image-rack1" className="image-rack1">
-                <div
-                    onClick={() => setPanel(PANEL.ADDAFRIEND1)}
-                    id="test-friend"
-                    className="friend"
-                ></div>
-            </div>
-
-            {lobby === LOBBY.SPORTIK ? (
-                <SportikLobby lobby={setLobby} />
-            ) : lobby === LOBBY.HUMANITARIAN ? (
-                <HumanitarianLobby lobby={setLobby} />
-            ) : lobby === LOBBY.TECHGUY ? (
-                <TechguyLobby lobby={setLobby} />
+            <FriendLobby1 gamers={gamers} setPanel={setPanel} />
+            <FriendLobby2 gamers={gamers} setPanel={setPanel} />
+            {lobby === ELOBBY.SPORTIK ? (
+                <SportikLobby lobby={setLobby} gamerNumber={0} />
+            ) : lobby === ELOBBY.HUMANITARIAN ? (
+                <HumanitarianLobby lobby={setLobby} gamerNumber={0} />
+            ) : lobby === ELOBBY.TECHGUY ? (
+                <TechguyLobby lobby={setLobby} gamerNumber={0} />
             ) : null}
 
-            {panel === PANEL.ADDAFRIEND1 ? (
+            {panel === EPANEL.ADDAFRIEND1 ? (
                 <div ref={panelRef} id="test-Addafriend1">
                     <Addafriend1 />
                 </div>
-            ) : panel === PANEL.ADDAFRIEND2 ? (
+            ) : panel === EPANEL.ADDAFRIEND2 ? (
                 <div ref={panelRef} id="test-Addafriend2">
                     <Addafriend2 />
                 </div>
             ) : null}
 
-            <div id="test-image-rack2" className="image-rack2">
-                <div
-                    onClick={() => setPanel(PANEL.ADDAFRIEND2)}
-                    id="test-friend-2"
-                    className="friend-2"
-                ></div>
-            </div>
-
-            <button onClick={() => epages(EPAGES.GAME)} id="test-play" className="play">
+            <button onClick={gameHadler} id="test-play" className="play">
                 ИГРАТЬ
             </button>
         </div>

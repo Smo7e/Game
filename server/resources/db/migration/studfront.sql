@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 14 2023 г., 19:06
--- Версия сервера: 10.4.12-MariaDB
+-- Время создания: Янв 22 2024 г., 21:26
+-- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -33,16 +33,17 @@ CREATE TABLE `game` (
   `chat_hash` varchar(256) NOT NULL,
   `gamers_hash` varchar(256) NOT NULL,
   `items_hash` varchar(256) NOT NULL,
+  `mobs_hash` varchar(256) NOT NULL,
   `update_timestamp` int(11) NOT NULL DEFAULT 0,
   `update_timeout` int(11) NOT NULL DEFAULT 300
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `game`
 --
 
-INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `update_timestamp`, `update_timeout`) VALUES
-(1, '1.0.0', '8b4c78eac40944896eaef63ea53a908e', 'f77db2fe395e0666297c622a93603b76', '', 1702365760, 300);
+INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `mobs_hash`, `update_timestamp`, `update_timeout`) VALUES
+(1, '1.0.0', 'f7b7838b7e99419f3517f44296651324', '76922c89884d1b9a048be7fb505f2eb5', '', 'b19684264b21249ebb88234399473bbc', 1705946495, 300);
 
 -- --------------------------------------------------------
 
@@ -55,18 +56,17 @@ CREATE TABLE `gamers` (
   `user_id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
   `status` varchar(256) NOT NULL,
-  `x` int(11) NOT NULL DEFAULT 0,
-  `y` int(11) NOT NULL DEFAULT 0,
+  `x` float NOT NULL DEFAULT 0,
+  `y` float NOT NULL DEFAULT 0,
   `direction` varchar(256) NOT NULL DEFAULT 'down'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `gamers`
 --
 
 INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`) VALUES
-(1, 1, 1, 'stand', 0, 2, 'walk'),
-(2, 4, 1, 'walk', 22, 11, 'walk');
+(1, 7, 0, 'alive', 12.551, -4.52945, 'walk');
 
 -- --------------------------------------------------------
 
@@ -141,7 +141,7 @@ CREATE TABLE `messages` (
   `user_id` int(11) NOT NULL,
   `message` varchar(256) NOT NULL,
   `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `messages`
@@ -156,7 +156,32 @@ INSERT INTO `messages` (`id`, `user_id`, `message`, `created`) VALUES
 (6, 1, 'ща втащу!', '2023-11-29 08:27:13'),
 (7, 1, 'fdfgdfgsdg', '2023-12-12 11:17:54'),
 (8, 1, 'rtyr546', '2023-12-12 11:18:01'),
-(9, 4, '1111', '2023-12-12 11:20:28');
+(9, 4, '1111', '2023-12-12 11:20:28'),
+(10, 1, 'Hello, this is a test message.', '2024-01-21 16:17:58'),
+(11, 1, 'Hello, this is a test message.', '2024-01-21 16:18:42'),
+(12, 1, 'Hello, this is a test message.', '2024-01-21 20:52:40'),
+(13, 1, '5', '2024-01-21 20:52:45'),
+(14, 1, '57654', '2024-01-21 20:52:54');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mobs`
+--
+
+CREATE TABLE `mobs` (
+  `id` int(11) NOT NULL,
+  `x` float NOT NULL DEFAULT 0,
+  `y` float NOT NULL DEFAULT 0,
+  `status` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `mobs`
+--
+
+INSERT INTO `mobs` (`id`, `x`, `y`, `status`) VALUES
+(1, 15.7749, -12.5815, 'alive');
 
 -- --------------------------------------------------------
 
@@ -170,6 +195,58 @@ CREATE TABLE `persons` (
   `name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `questions_russian`
+--
+
+CREATE TABLE `questions_russian` (
+  `id` int(11) NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer_3` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer_4` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correct_answer` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `questions_russian`
+--
+
+INSERT INTO `questions_russian` (`id`, `question`, `answer_1`, `answer_2`, `answer_3`, `answer_4`, `correct_answer`) VALUES
+(1, 'Отметьте слово, в котором все согласные звуки звонкие', '1) встреча', '2) подвал', '3) дальний', '4) гость', 3),
+(2, 'В каком ряду во всех словах ударение падает на второй слог?', '1) эксперт, сняла, начать', '2) обзвонит, доверху, прибыл', '3) заняла, добела, затемно', '4) поняла, кухонный, досуг', 1),
+(3, 'В каком ряду не все слова являются синонимами?', '1) влажный, мокрый, промозглый, сырой', '2) жаркий, знойный, палящий, вьюжный', '3) великан, богатырь, гигант, исполин', '4) внешность, вид, наружность, облик', 2),
+(4, 'Каким словом можно заменить слово доказательство?', '1) окончание', '2) аргумент', '3) факт', '4) предложение', 2),
+(5, 'Подберите антоним к прилагательному в словосочетании «свежий хлеб»', '1) мягкий', '2) чёрствый', '3) старый', '4) белый', 2),
+(6, 'Значение какого слова меняется в зависимости от места ударения?', '1) кошки', '2) крошки', '3) кружки', '4) пряжки', 3),
+(7, 'В каком ряду неправильно употреблены паронимы?', '1) отборный рис, отборочный тур', '2) практическая работа, практичная обувь', '3) звериное преступление, зверские следы', '4) добротная мебель, добрый человек', 3),
+(8, 'Какой тип речи состоит из тезисов, аргументов – доказательств и вывода?', '1) описание', '2) рассуждение', '3) повествование', '4) все типы речи', 2),
+(9, 'Отметьте фразеологизм с речевой ошибкой', '1) хлопать ушами', '2) считать ворон', '3) бежать сломив голову', '4) биться об стенку', 3),
+(10, 'Определите лексическое значение слова импровизация', '1) музыкальное произведение, сочинённое во время исполнения', '2) воспроизведение с возможной точностью', '3) первое удачное публичное выступление', '4) деятельность на каком-либо поприще', 1),
+(11, 'В каком ряду во всех корнях пишется гласная О?', '1) свеча наг…рела, оз…рить счастьем, лёгкое к…сание', '2) покл…няться красоте, сл…жить обязанности, насквозь вым…кнуть', '3) укл…ниться от курса, выр…внить дорожку, р…стительный жир\r\n\r\n', '4) быстро отск…чить, непром…каемый плащ, пл…вники рыбы', 2),
+(12, 'Укажите ряд, в котором все пропущенные буквы можно проверить ударением', '1) сп…ши (на урок), выск…чка, об…жал (малыша)', '2) пл…вчиха, посв…тить стихотворение, министерство просв…щения', '3) с…рдечный, запл…тить (долг), поз…лочённый', '4) ум…лять о пощаде, зам…реть, д…льфин', 3),
+(13, 'В каком ряду во всех словах пишется Ь?', '1) роскош(ь), пореж(ь)те, рубеж(ь), достич(ь)', '2) желч(ь), вос(ь)мью, съеш(ь)те, наотмаш(ь)', '3) вскач(ь), лиш(ь), фонар(ь)щик, невмоч(ь)', '4) вер(ь)фи, брит(ь)ся, фальш(ь), приготов(ь)те', 2),
+(14, 'В каком ряду во всех словах на месте пропуска пишется одна и та же буква?', '1) во …рождение, …делать, во …местить, ра…щелина', '2) и… числять, и…пользовать, ра…пробовать, ра…смешить', '3) во…становить, во…раст, …горяча, …дравствуйте', '4) …дание, …дача, во…клицательный, ра…жигающий', 2),
+(15, 'В каком ряду на месте пропусков не пишется И?', '1) след лисиц…, ножниц…', '2) акц…я, лекц…онный материал', '3) ц…тата, ц…трусовые деревья', '4) душистый нарц…сс, получить компенсац…ю', 1),
+(16, 'Укажите ряд, в котором все существительные в предложном падеже имеют на конце И', '1) в госпитал.., на кроват.., в тетрад.., о счасть..', '2) о времен.., на площад.., в постел.., в жизн..', '3) в рощ.., на яблон.., в ущель.., в осен..', '4) в плать.., о медвед.., в метел.., в памят..', 2),
+(17, 'В каком ряду во всех словах пишется одна и та же буква?', '1) расстила…щаяся по долине, вид…щий насквозь, уверя…щий в своей правоте', '2) беле…щий парус, мысл…щий отвлечённо, недремл…щий глаз', '3) запива…щий лекарство, кол…щееся растение, ворку…щие голуби', '4) жал…щие пчёлы, стро…щийся дом, зна…щий правду', 3),
+(18, 'Тип языковых норм, который регулирует выбор вариантов построения словосочетаний и предложений -', '1) морфологический', '2) лексический', '3) стилистический', '4) синтаксический', 4),
+(19, 'Какой пример соответствует лексической сочетаемости слов?', '1) одержать поражение', '2) высокая стоимость', '3) оказать внимание', '4) заклятый друг', 2),
+(20, 'В каком предложении выделенные слова пишутся слитно?', '1) Надо было (ВО)ВРЕМЯ собрать малину и (В)НАЧАЛЕ августа вырезать сухие кусты.', '2) Очень хотелось, ЧТО(БЫ) всё шло по плану, (ПО)ТОМУ что от этого зависело многое.', '3) Путник устал (ДО)ТОГО, что уже (СО)ВСЕМ обессилел.', '4) Арег согласен (СО)ВСЕМ, что говорит отец, Ара, (НА)ПРОТИВ, с ним не соглашается.', 2),
+(21, 'В каком из вариантов правильно указано сказуемое?\r\nО, я как брат обняться с бурей был бы рад.', '1) был бы', '2) обняться был бы рад', '3) был бы рад', '4) рад обняться', 2),
+(22, 'Укажите грамматическую основу предложения.\r\nМне необходимо сойти на этой остановке.', '1) мне необходимо', '2) необходимо сойти', '3) необходимо сойти на остановке', '4) мне необходимо сойти', 2),
+(23, 'Укажите предложение, в котором определение нужно обособить.', '1) Город задыхался от запаха буйно цветущей белой акации.', '2) На опустевшей платформе блестели длинные полосы дождевой воды.', '3) Резкие голоса увлечённых спором людей нарушали тишину.', '4) Он говорил о кавказской жизни полной дикой красоты.\r\n\r\n', 4),
+(24, 'Не является отраслью современной стилистики:', '1) морфологическая стилистика', '2) практическая стилистика', '3) функциональная стилистика', '4) стилистика текста', 1),
+(25, ' Укажите фразеологизм, в значении \"смущать\":', '1) держать в курсе', '2) зайти в тупик', '3) вгонять в краску', '4) войти в силу', 3),
+(26, 'Укажите ряд, в котором наречия пишутся раздельно', '1) (за)частую, (из)дали', '2) (в)высь, (на)верх', '3) (на)глаз, (на)корточках', '4) (на)прокат, (в)брод', 3),
+(27, 'Полилог – это…', '1) развёрнутое высказывание одного лица, обращенное к слушателям или к самому себе', '2) столкновение мнений или позиций, в ходе которого приводят аргументы в поддержку своих убеждений', '3) разновидность диалога, разговор между несколькими лицами', '4) разговор двух или нескольких лиц, их совместное речевое общение, речевая деятельность', 3),
+(28, 'В каком ряду все слова — числительные?', '1) четырёх, удвоить, утроили, один', '2) тройка, пятнадцатый, первый, десятка', '3) второй, двадцать, седьмой, двенадцать', '4) шестому, пятёрка, четвёрка, пятьдесят', 3),
+(29, 'Укажите числительное, в котором в именительном падеже не нужно писать мягкий знак', '1) двенадцати', '2) двумстам', '3) тринадцати', '4) пятидесяти', 2),
+(30, 'В каком ряду оба деепричастия несовершенного вида?', '1) стараясь, раздвинув', '2) кашляя, дрожа', '3) полюбив, скучая', '4) шутя, склонившись', 2);
 
 -- --------------------------------------------------------
 
@@ -212,6 +289,28 @@ CREATE TABLE `room_exits` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `statistics`
+--
+
+CREATE TABLE `statistics` (
+  `id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `kills` int(11) DEFAULT NULL,
+  `death` int(11) DEFAULT NULL,
+  `experience` int(11) DEFAULT NULL,
+  `damage` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `statistics`
+--
+
+INSERT INTO `statistics` (`id`, `user_id`, `kills`, `death`, `experience`, `damage`) VALUES
+(1, 0, 24, 2, 1000, 8000);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -220,22 +319,25 @@ CREATE TABLE `users` (
   `login` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `name` varchar(256) NOT NULL,
-  `token` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `token` varchar(256) DEFAULT NULL,
+  `friends` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`) VALUES
-(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', '41e3fe36008ef0420e50c42547c1568b'),
-(2, 'petya', '321', 'Petya Petroff', NULL),
-(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '826c181183abdb683aaeb372c5d8da1c'),
-(5, '1', 'c51ce410c124a10e0db5e4b97fc2af39', '2', NULL),
-(6, '12', '78bf4f00f81a36b57950e239f1df91c1', '12', NULL),
-(7, '123', '4297f44b13955235245b2497399d7a93', '123', NULL),
-(8, 'wef', 'b1444ebf2a132112bfaec62ed475ef82', 'ASFfvD', NULL),
-(11, 'vasya3', 'bbdfc6d64804b6c634d94e52f05505ca', '1231', NULL);
+INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`, `friends`) VALUES
+(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'd330911f486cad8540875bd81d3dcaf9', '[2,4,5,11,12,6,7,8]'),
+(2, 'petya', '321', 'Petya Petroff', NULL, '[]'),
+(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '826c181183abdb683aaeb372c5d8da1c', '[9, 10, 5]'),
+(5, '1', 'c51ce410c124a10e0db5e4b97fc2af39', '2', NULL, '[]'),
+(6, '12', '78bf4f00f81a36b57950e239f1df91c1', '12', NULL, '[]'),
+(7, '123', '4297f44b13955235245b2497399d7a93', '123', '3af2f63a80244c18b0d050178ea031d2', '[]'),
+(8, 'wef', 'b1444ebf2a132112bfaec62ed475ef82', 'ASFfvD', NULL, '[]'),
+(11, 'vasya3', 'bbdfc6d64804b6c634d94e52f05505ca', '1231', NULL, '[]'),
+(12, 'user962', '8b69ff1f195992bc7cb9390dc90ddff5', 'example_nicknam', NULL, '[]'),
+(14, 'kostya', '4e0ad448e475a757e711499d86dce379', 'Kosya', NULL, '[]');
 
 --
 -- Индексы сохранённых таблиц
@@ -281,9 +383,21 @@ ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `mobs`
+--
+ALTER TABLE `mobs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `persons`
 --
 ALTER TABLE `persons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `questions_russian`
+--
+ALTER TABLE `questions_russian`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -305,6 +419,12 @@ ALTER TABLE `room_exits`
   ADD PRIMARY KEY (`id`),
   ADD KEY `room_id` (`room_id`),
   ADD KEY `goto_id` (`goto_id`);
+
+--
+-- Индексы таблицы `statistics`
+--
+ALTER TABLE `statistics`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -329,7 +449,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT для таблицы `gamers`
 --
 ALTER TABLE `gamers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `gamers_items`
@@ -353,13 +473,25 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `mobs`
+--
+ALTER TABLE `mobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `persons`
 --
 ALTER TABLE `persons`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `questions_russian`
+--
+ALTER TABLE `questions_russian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `room`
@@ -374,10 +506,16 @@ ALTER TABLE `room_exits`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT для таблицы `statistics`
+--
+ALTER TABLE `statistics`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
