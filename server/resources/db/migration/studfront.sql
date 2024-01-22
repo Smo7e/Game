@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 22 2024 г., 20:30
+-- Время создания: Янв 22 2024 г., 21:26
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -33,6 +33,7 @@ CREATE TABLE `game` (
   `chat_hash` varchar(256) NOT NULL,
   `gamers_hash` varchar(256) NOT NULL,
   `items_hash` varchar(256) NOT NULL,
+  `mobs_hash` varchar(256) NOT NULL,
   `update_timestamp` int(11) NOT NULL DEFAULT 0,
   `update_timeout` int(11) NOT NULL DEFAULT 300
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,8 +42,8 @@ CREATE TABLE `game` (
 -- Дамп данных таблицы `game`
 --
 
-INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `update_timestamp`, `update_timeout`) VALUES
-(1, '1.0.0', 'f7b7838b7e99419f3517f44296651324', 'ca20d2c65021caa26418db7ab05bac2f', '', 1705867258, 300);
+INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `mobs_hash`, `update_timestamp`, `update_timeout`) VALUES
+(1, '1.0.0', 'f7b7838b7e99419f3517f44296651324', '76922c89884d1b9a048be7fb505f2eb5', '', 'b19684264b21249ebb88234399473bbc', 1705946495, 300);
 
 -- --------------------------------------------------------
 
@@ -55,10 +56,17 @@ CREATE TABLE `gamers` (
   `user_id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
   `status` varchar(256) NOT NULL,
-  `x` int(11) NOT NULL DEFAULT 0,
-  `y` int(11) NOT NULL DEFAULT 0,
+  `x` float NOT NULL DEFAULT 0,
+  `y` float NOT NULL DEFAULT 0,
   `direction` varchar(256) NOT NULL DEFAULT 'down'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `gamers`
+--
+
+INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`) VALUES
+(1, 7, 0, 'alive', 12.551, -4.52945, 'walk');
 
 -- --------------------------------------------------------
 
@@ -154,6 +162,26 @@ INSERT INTO `messages` (`id`, `user_id`, `message`, `created`) VALUES
 (12, 1, 'Hello, this is a test message.', '2024-01-21 20:52:40'),
 (13, 1, '5', '2024-01-21 20:52:45'),
 (14, 1, '57654', '2024-01-21 20:52:54');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mobs`
+--
+
+CREATE TABLE `mobs` (
+  `id` int(11) NOT NULL,
+  `x` float NOT NULL DEFAULT 0,
+  `y` float NOT NULL DEFAULT 0,
+  `status` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `mobs`
+--
+
+INSERT INTO `mobs` (`id`, `x`, `y`, `status`) VALUES
+(1, 15.7749, -12.5815, 'alive');
 
 -- --------------------------------------------------------
 
@@ -355,6 +383,12 @@ ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `mobs`
+--
+ALTER TABLE `mobs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `persons`
 --
 ALTER TABLE `persons`
@@ -415,7 +449,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT для таблицы `gamers`
 --
 ALTER TABLE `gamers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `gamers_items`
@@ -440,6 +474,12 @@ ALTER TABLE `items`
 --
 ALTER TABLE `messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `mobs`
+--
+ALTER TABLE `mobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `persons`
