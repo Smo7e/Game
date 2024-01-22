@@ -131,6 +131,9 @@ export default class Server {
     async getGamerById(userId: number) {
         return await this.request("getGamerById", { userId: userId });
     }
+    async getGamers() {
+        return await this.request("getGamers", {});
+    }
     move(direction: string, x: number, y: number, status: string) {
         return this.request("move", { direction, x, y, status });
     }
