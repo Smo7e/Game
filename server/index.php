@@ -26,10 +26,6 @@ function result($params) {
                 return $app->getMessages($params);
             case 'getItems':
                 return $app->getItems();
-            case 'addFriend':
-                return $app->addFriend($params);
-            case 'getFriends':
-                return $app->getFriends($params);
             // игровые команды
             case 'move':
                 return $app->move($params);
@@ -39,12 +35,10 @@ function result($params) {
             // получение сцены
             case 'getScene':
                 return $app->getScene($params);
-            case 'moveMobs':
-                return $app->moveMobs($params);
-            case 'getUserById':
-                return $app->getUserById($params);
             case 'getUserByToken':
                 return $app->getUserByToken($params);
+            case 'moveMobs':
+                return $app->moveMobs($params);
             case 'getGamers':
                 return $app->getGamers();
             case 'addGamers':

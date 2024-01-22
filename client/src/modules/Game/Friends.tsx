@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { TGamer } from "../Server/types";
 import { createRef, memo, useEffect, useState } from "react";
 import { RigidBody } from "@react-three/rapier";
-import useSprites from "../hooks/Sprites/useSprites";
+import useSprites from "../hooks/sprites/useSprites";
 import { Vector3 } from "three";
 
 interface IPropsFriends {
@@ -49,26 +49,17 @@ const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
                 move.y -= friendSpeed;
             }
 
-            if (
-                friendsCoord.x + eps >= infoFriends[i].x &&
-                friendsCoord.x - eps <= infoFriends[i].x
-            ) {
+            if (friendsCoord.x + eps >= infoFriends[i].x && friendsCoord.x - eps <= infoFriends[i].x) {
                 move.x = 0;
             }
-            if (
-                friendsCoord.y + eps >= infoFriends[i].y &&
-                friendsCoord.y - eps <= infoFriends[i].y
-            ) {
+            if (friendsCoord.y + eps >= infoFriends[i].y && friendsCoord.y - eps <= infoFriends[i].y) {
                 move.y = 0;
             }
             friendsCoord.set(friendsCoord.x + move.x, friendsCoord.y + move.y, 0);
             if (i === 0) {
                 let direction = moveDown;
                 if (move.x != 0 || move.y != 0) {
-                    if (
-                        Math.abs(infoFriends[i].y - friendsCoord.y) >
-                        Math.abs(infoFriends[i].x - friendsCoord.x)
-                    ) {
+                    if (Math.abs(infoFriends[i].y - friendsCoord.y) > Math.abs(infoFriends[i].x - friendsCoord.x)) {
                         if (infoFriends[i].y > friendsCoord.y) {
                             direction = moveUp;
                         } else {
@@ -88,10 +79,7 @@ const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
             if (i === 1) {
                 let direction = moveDown1;
                 if (move.x != 0 || move.y != 0) {
-                    if (
-                        Math.abs(infoFriends[i].y - friendsCoord.y) >
-                        Math.abs(infoFriends[i].x - friendsCoord.x)
-                    ) {
+                    if (Math.abs(infoFriends[i].y - friendsCoord.y) > Math.abs(infoFriends[i].x - friendsCoord.x)) {
                         if (infoFriends[i].y > friendsCoord.y) {
                             direction = moveUp1;
                         } else {
@@ -117,10 +105,7 @@ const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
                 .map((el, i) => (
                     <mesh ref={friendsRefs[i]} key={i}>
                         <planeGeometry args={[1, 1]} />
-                        <meshStandardMaterial
-                            map={i === 0 ? directionFriends : directionFriends2}
-                            transparent
-                        />
+                        <meshStandardMaterial map={i === 0 ? directionFriends : directionFriends2} transparent />
                     </mesh>
                 ))}
         </>

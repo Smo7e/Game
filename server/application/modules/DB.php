@@ -50,7 +50,7 @@ class DB {
         $this->preparationQuery($query, [$token, $userId]);
     }
 
-    function getItems() {
+    function getItems(){
         $query = 'SELECT * FROM items';
         $stmt = $this->db->query($query);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -69,19 +69,8 @@ class DB {
             INNER JOIN users AS u
             ON u.id=m.user_id
             WHERE m.created >= DATE_SUB(NOW(), INTERVAL 1 DAY)
-            ORDER BY m.created ASC';
+            ORDER BY m.created DESC';
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    function getFriends($userId) {
-        $selectQuery = 'SELECT `friends` FROM `users` WHERE `id` = ?;';
-        return $this->preparationQuery($selectQuery, [$userId])->fetch(PDO::FETCH_ASSOC);
-    }
-
-    function addFriend($userId, $friendId, $currentFriends) {
-        $currentFriends[] = (int) $friendId;
-        $updateQuery = 'UPDATE `users` SET `friends` = ? WHERE `id` = ?;';
-        $this->preparationQuery($updateQuery, [json_encode($currentFriends), $userId]);
     }
 
     function updateChatHash($hash) {
