@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 
-import useSprites from "../hooks/sprites/useSprites";
+import useSprites from "../hooks/Sprites/useSprites";
 import React, { memo, useContext, useEffect, useRef } from "react";
 import { Mesh, MeshStandardMaterial, PlaneGeometry, Texture, Vector3 } from "three";
 import usePositionMatrix from "../hooks/positionMatrix/usePositionMatrix";
@@ -80,7 +80,9 @@ const Boss: React.FC = memo(() => {
             }
         }
 
-        distances = Math.sqrt(Math.pow(bossCoord.x - newPosition.x, 2) + Math.pow(bossCoord.y - newPosition.y, 2));
+        distances = Math.sqrt(
+            Math.pow(bossCoord.x - newPosition.x, 2) + Math.pow(bossCoord.y - newPosition.y, 2)
+        );
         if (distances < 0.06) {
             canPosition = 1;
         }
@@ -124,7 +126,13 @@ const Boss: React.FC = memo(() => {
     return (
         <>
             {/* <CheckPosition /> */}
-            <RigidBody gravityScale={10} position={[8, -3, 0]} ref={bossRef} lockRotations mass={50}>
+            <RigidBody
+                gravityScale={10}
+                position={[8, -3, 0]}
+                ref={bossRef}
+                lockRotations
+                mass={50}
+            >
                 <mesh>
                     <boxGeometry args={[0.8, 0.8, 1]} />
                     <meshStandardMaterial transparent opacity={0} />

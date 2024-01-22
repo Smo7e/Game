@@ -91,6 +91,37 @@ class Application {
         return array(false, 1001);
     }
 
+    function addFriend($params) {
+        $token = $params['token'];
+        $friendId = $params['id'];
+        if ($token && $friendId) {
+            $user = $this->user->getUser($token);
+            if ($user) {
+                return $this->lobby->addFriend($user->id, $friendId);
+            }
+            return array(false, 455);
+        }
+        return array(false, 1001);
+    }
+
+    function getFriends($params) {
+        $token = $params['token'];
+        if ($token) {
+            $user = $this->user->getUser($token);
+            if ($user) {
+                return $this->lobby->getFriends($user->id);
+            }
+            return array(false, 455);
+        }
+        return array(false, 1001);
+    }
+    function getUserById($params) {
+        $token = $params['token'];
+        $idFriend = $params['idFriend'];
+        return $this->user->getUserById($idFriend);
+
+    }
+
     function getScene($params) {
         $token = $params['token'];
         $hashGamers = $params['hashGamers'];

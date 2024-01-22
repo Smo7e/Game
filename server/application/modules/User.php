@@ -9,6 +9,9 @@ class User {
     function getUser($token) {
         return $this->db->getUserByToken($token);
     }
+    function getUserById($idFriend) {
+        return $this->db->getUserById($idFriend);
+    }
 
     function login($login, $hash, $rnd) {
         $user = $this->db->getUserByLogin($login);

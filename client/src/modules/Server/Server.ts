@@ -106,6 +106,14 @@ export default class Server {
         return answer as null;
     }
 
+    addFriend(id: string) {
+        return this.request("addFriend", { id, token: this.token });
+    }
+
+    getFriends(): Promise<Array<number> | null> {
+        return this.request("getFriends", { token: this.token });
+    }
+
     async getScene(): Promise<TScene | null> {
         const answer = await this.request<TScene>("getScene", { hashGamers: this.hashGamers, hashMobs: this.hashMobs });
         if (answer && answer.hashGamers && answer.hashGamers !== this.hashGamers) {
@@ -121,5 +129,8 @@ export default class Server {
     }
     moveMobs(x: number, y: number) {
         return this.request("moveMobs", { x, y });
+    }
+    getUserById(idFriend: number) {
+        return this.request("getUserById", { idFriend: idFriend });
     }
 }
