@@ -12,6 +12,10 @@ class Game
     {
         return $this->db->getGamers();
     }
+    private function getMobs()
+    {
+        return $this->db->getMobs();
+    }
 
     private function getItems($userId)
     {
@@ -56,19 +60,25 @@ class Game
             'map' => null
         );
         $hashes = $this->db->getHashes();
+
         $this->updateScene($hashes->update_timestamp, $hashes->update_timeout);
         // проверяем хеш по игрокам
         if ($hashes->gamers_hash !== $hashGamers) {
             $result['gamers'] = $this->getGamers($userId);
             $result['hashGamers'] = $hashes->gamers_hash;
         }
+
         // проверяем хеш по предметам
         if ($hashes->items_hash !== $hashItems) {
             $result['items'] = $this->getItems($userId);
             $result['hashItems'] = $hashes->items_hash;
         }
-        // проверяем хеш по мобам
-        //...
+
+        if ($hashes->mobs_hash !== $hashMobs) {
+            $result['mobs'] = $this->getMobs();
+            $result['hashMobs'] = $hashes->mobs_hash;
+        }
+
         // проверяем хеш по карте
         //...
         return $result;
@@ -79,6 +89,13 @@ class Game
         $this->db->move($userId, $direction, $x, $y, $status);
         $hash = md5(rand(0, 100000));
         $this->db->updateGamersHash($hash);
+        return true;
+    }
+    function moveMobs($x, $y)
+    {
+        $this->db->moveMobs($x, $y);
+        $hash = md5(rand(0, 100000));
+        $this->db->updateMobsHash($hash);
         return true;
     }
 }

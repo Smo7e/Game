@@ -95,16 +95,16 @@ class Application {
         $token = $params['token'];
         $hashGamers = $params['hashGamers'];
         $hashItems = true;
-        $hashMobs = true;
+        $hashMobs = $params['hashMobs'];
         $hashMap = true;
         if ($token && $hashGamers && $hashItems && $hashMobs && $hashMap) {
             $user = $this->user->getUser($token);
             if ($user) {
                 return $this->game->getScene($user->id, $hashGamers, $hashItems, $hashMobs, $hashMap);
             }
-            return array(false, 9000);
+            return array(false, 455);
         }
-        return array(false, 9000);
+        return array(false, 1001);
     }
 
     function move($params) {
@@ -118,9 +118,18 @@ class Application {
             if ($user) {
                 return $this->game->move($user->id, $direction, $x, $y, $status);
             }
-            return array(false, 9000);
+            return array(false, 455);
         }
-        return array(false, 9000);
+        return array(false, 1001);
+    }
+    function moveMobs($params) {
+        $token = $params['token'];
+        $x = $params['x'];
+        $y = $params['y'];
+        if ( $x && $y) {
+            return $this->game->moveMobs($x, $y);
+        }
+        return array(false, 1001);
     }
 
     function getItems(){

@@ -52,7 +52,7 @@ const Player: React.FC = memo(() => {
             const newPosition = cameraPosition.lerp(cameraMove, 0.1);
             setCameraPosition(newPosition);
             state.camera.position.copy(newPosition);
-            server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y);
+            server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y, "alive");
         }
     });
 

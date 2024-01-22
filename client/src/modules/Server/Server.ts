@@ -116,8 +116,8 @@ export default class Server {
         }
         return answer;
     }
-    move(direction: string, x: number, y: number) {
-        return this.request("move", { direction, x, y });
+    move(direction: string, x: number, y: number, status: string) {
+        return this.request("move", { direction, x, y, status });
     }
     moveMobs(x: number, y: number) {
         return this.request("moveMobs", { x, y });

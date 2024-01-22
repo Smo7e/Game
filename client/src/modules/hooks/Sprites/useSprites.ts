@@ -23,7 +23,6 @@ function useSprites(name: string) {
             }
             arr2.push(arr);
         }
-
         return arr2;
     };
     switch (name) {
