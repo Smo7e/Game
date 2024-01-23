@@ -36,6 +36,7 @@ export type TGamer = {
     x: number;
     y: number;
     direction: string;
+    hp: number;
 };
 export type TMobs = {
     id: number;

@@ -57,7 +57,6 @@ const Lobby: React.FC<ILobbyProps> = ({ epages }) => {
                     setGamers(result);
                 }
             });
-            // console.log(mediator.gamers);
         }, 800);
 
         document.addEventListener("mousedown", handleClickOutside);
@@ -87,11 +86,11 @@ const Lobby: React.FC<ILobbyProps> = ({ epages }) => {
 
             {panel === EPANEL.ADDAFRIEND1 ? (
                 <div ref={panelRef} id="test-Addafriend1">
-                    <Addafriend1 friends={mediator.friends} />
+                    <Addafriend1 friends={mediator.friends} userId={mediator.user.id} />
                 </div>
             ) : panel === EPANEL.ADDAFRIEND2 ? (
                 <div ref={panelRef} id="test-Addafriend2">
-                    <Addafriend2 friends={mediator.friends} />
+                    <Addafriend2 friends={mediator.friends} userId={mediator.user.id} />
                 </div>
             ) : (
                 <></>

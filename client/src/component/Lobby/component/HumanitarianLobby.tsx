@@ -21,14 +21,38 @@ const HumanitarianLobby: React.FC<IHumanitarianLobbyProps> = ({ lobby, gamerNumb
         lobby(ELOBBY.TECHGUY);
     };
     return (
-        <div>
-            <button onClick={rightArrowHandler} className="arrow-2"></button>
-            <button onClick={leftArrowHandler} className="arrow-3"></button>
+        <>
+            {gamerNumber === 0 ? (
+                <div>
+                    <button onClick={rightArrowHandler} className="arrow-2"></button>
+                    <button onClick={leftArrowHandler} className="arrow-3"></button>
 
-            <div className="image-humanitarian">
-                <button className="button">&lt;Гуманитарий&gt;</button>
-            </div>
-        </div>
+                    <div className="image-humanitarian">
+                        <button className="button">&lt;Гуманитарий&gt;</button>
+                    </div>
+                </div>
+            ) : gamerNumber === 1 ? (
+                <div>
+                    <button onClick={rightArrowHandler} className="arrow-2Friend1"></button>
+                    <button onClick={leftArrowHandler} className="arrow-3Friend1"></button>
+
+                    <div className="image-humanitarian">
+                        <button className="button">&lt;Гуманитарий&gt;</button>
+                    </div>
+                </div>
+            ) : gamerNumber === 2 ? (
+                <div>
+                    <button onClick={rightArrowHandler} className="arrow-2Friend2"></button>
+                    <button onClick={leftArrowHandler} className="arrow-3Friend2"></button>
+
+                    <div className="image-humanitarian">
+                        <button className="button">&lt;Гуманитарий&gt;</button>
+                    </div>
+                </div>
+            ) : (
+                <></>
+            )}
+        </>
     );
 };
 

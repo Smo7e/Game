@@ -2,15 +2,17 @@ import { useFrame } from "@react-three/fiber";
 import React, { useContext, useState, memo, useEffect } from "react";
 import { useRef } from "react";
 
-import useSprites from "../hooks/Sprites/useSprites";
+import useSprites from "../hooks/sprites/useSprites";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { Vector3 } from "three";
 import { MediatorContext, ServerContext } from "../../App";
 import useControls from "../hooks/controls/useControls";
-const Player: React.FC = memo(() => {
+interface PlayerProps {
+    infoFriends: any;
+}
+const Player: React.FC<PlayerProps> = memo((infoFriends) => {
     const server = useContext(ServerContext);
     const mediator = useContext(MediatorContext);
-
     const personRef = useRef<RapierRigidBody>(null);
     const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites(mediator.gamer.person_id);
 
@@ -23,7 +25,11 @@ const Player: React.FC = memo(() => {
     const frameLegth = moveDown.length;
 
     useFrame((state) => {
-        if (!personRef.current) return;
+        if (!personRef.current || !infoFriends || !infoFriends.infoFriends) return;
+        if (infoFriends.infoFriends[0].hp <= 0) {
+            setDirectionPlayer(death[0]);
+            return;
+        }
         const { w, a, s, d } = controls;
         if (w || a || s || d) {
             const move = new Vector3();

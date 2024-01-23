@@ -29,6 +29,10 @@ class DB {
         $query = 'SELECT * FROM users WHERE id=?';
         return $this->preparationQuery($query, [$id])->fetch(PDO::FETCH_OBJ);
     }
+    function getUserByName($name) {
+        $query = 'SELECT * FROM users WHERE name=?';
+        return $this->preparationQuery($query, [$name])->fetch(PDO::FETCH_OBJ);
+    }
 
     function getUserByLogin($login) {
         $query = 'SELECT * FROM users WHERE login=?';
@@ -115,7 +119,8 @@ class DB {
             g.status AS status,
             g.x AS x,
             g.y AS y,
-            g.direction AS direction
+            g.direction AS direction,
+            g.hp as hp
         FROM gamers AS g
         INNER JOIN users AS u
         ON u.id=g.user_id';
@@ -154,4 +159,17 @@ class DB {
         $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, 0, "stand", 0, 0, "down")';
         $this->preparationQuery($query, [$a]);
     }
+    function addInvitation($userId,$friendId){
+        $query = 'INSERT INTO invitations (id_who,id_to_whom) VALUES (?,?)';
+        $this->preparationQuery($query, [$userId, $friendId]);
+    }
+    function checkInvites($userId){
+        $query = 'SELECT id_who FROM invitations WHERE id_to_whom=?';
+        return $this->preparationQuery($query, [ $userId])->fetchAll(PDO::FETCH_OBJ);
+    }
+    function updateHp($userId, $gamerHp){
+        $query = 'UPDATE gamers SET hp=? WHERE user_id=?';
+        $this->preparationQuery($query, [$gamerHp, $userId]);
+    }
+    
 }

@@ -13,6 +13,7 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
     const idRef = useRef<HTMLInputElement>(null);
     const [friends, setFriends] = useState<number[]>([]);
     const [friend, setFriend] = useState<TFriend[]>([{ id: 0, name: "У Вас нету друзей,пхахахахахха!" }]);
+    const [invites, setInvites] = useState<any>([]);
 
     const clickHandler = async () => {
         const id = idRef.current!.value;
@@ -43,12 +44,24 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
             }
         };
         fetchFriends();
+
+        const interval = setInterval(async () => {
+            await server.checkInvites(mediator.user.id).then((result): any => {
+                if (result != null) {
+                    setInvites(result);
+                }
+            });
+        }, 1000);
+        return () => {
+            clearInterval(interval);
+        };
     }, [friends]);
     const lobbyHandler = async () => {
         await server.deleteGamers();
         await server.addGamers();
         epages(EPAGES.LOBBY);
     };
+
     const userSave = async () => {
         await server.getUserByToken().then((result): any => {
             mediator.user = result;
@@ -60,9 +73,30 @@ const Menu: React.FC<IMenuProps> = ({ epages }) => {
         await server.logout();
         epages(EPAGES.LOGIN);
     };
-
     return (
         <div className="mainMenu" id="test-mainMemu">
+            <div style={{ height: 200, width: 200, position: "absolute", bottom: 200, right: 200 }}>
+                {invites[0] != true ? (
+                    invites.map((invite: any, index: number) => (
+                        <div style={{ display: "flex" }}>
+                            <div className="your-friend" key={index}>
+                                Пользователь с id:{invite.id_who} приглашает вас.
+                            </div>
+                            <button
+                                onClick={() => {
+                                    server.addGamers();
+                                    epages(EPAGES.LOBBY);
+                                }}
+                            >
+                                Принять
+                            </button>
+                            <button onClick={() => console.log(0)}>Отказать</button>
+                        </div>
+                    ))
+                ) : (
+                    <></>
+                )}
+            </div>
             <img className="photo-button" src={logo} id="test-logo" />
 
             <div className="buttons-container">

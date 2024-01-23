@@ -77,6 +77,10 @@ class Game {
         //...
         return $result;
     }
+    function updateHp($gamerName, $gamerHp){
+        $user = $this->db->getUserByName($gamerName);
+        $this->db->updateHp($user->id, $gamerHp);
+    }
 
     function move($userId, $direction, $x, $y, $status) {
         $this->db->move($userId, $direction, $x, $y, $status);

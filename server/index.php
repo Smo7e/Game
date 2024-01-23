@@ -55,6 +55,12 @@ function result($params) {
                 return $app->updatePersonId($params);
             case 'getGamerById':
                 return $app->getGamerById($params);
+            case 'addInvitation':
+                return $app->addInvitation($params);
+            case 'checkInvites':
+                return $app->checkInvites($params);
+            case 'updateHp':
+                return $app->updateHp($params);
             default:
                 return array(false, 466);
         }

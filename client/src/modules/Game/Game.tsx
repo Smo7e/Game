@@ -8,6 +8,7 @@ import { Physics } from "@react-three/rapier";
 import Friends from "./Friends";
 import Boss from "./Boss";
 import Bullets from "./Bullets";
+import BossFriends from "./BossFriends";
 const Game: React.FC = () => {
     const server = useContext(ServerContext);
     const mediator = useContext(MediatorContext);
@@ -33,26 +34,46 @@ const Game: React.FC = () => {
         };
     });
     return (
-        <Canvas
-            camera={{
-                position: [0, 0, 14],
-                zoom: 65,
-                near: 0.1,
-                far: 1000,
-            }}
-            orthographic
-        >
-            <ambientLight intensity={2} position={[0, 0, 5]} />
-            <Physics gravity={[0, 0, -10]}>
-                <Scene />
-                <Player />
-                {infoFriends && infoFriends.length === 2 ? <Friends infoFriends={infoFriends} /> : <></>}
+        <>
+            <Canvas
+                camera={{
+                    position: [0, 0, 14],
+                    zoom: 65,
+                    near: 0.1,
+                    far: 1000,
+                }}
+                orthographic
+            >
+                <ambientLight intensity={2} position={[0, 0, 5]} />
+                <Physics gravity={[0, 0, -10]}>
+                    <Scene />
+                    <Player infoFriends={infoFriends?.filter((n) => n.name == mediator.user.name)} />
+                    {infoFriends && infoFriends!.length >= 2 ? (
+                        <Friends infoFriends={infoFriends.filter((n) => n.name !== mediator.user.name)} />
+                    ) : (
+                        <></>
+                    )}
+                    {infoFriends && infoFriends[0].name === mediator.user.name ? (
+                        <Boss />
+                    ) : (
+                        <BossFriends infoMobs={infoMobs} />
+                    )}
 
-                <Boss />
-
-                <Bullets infoFriends={infoFriends} infoMobs={infoMobs} />
-            </Physics>
-        </Canvas>
+                    <Bullets infoFriends={infoFriends} infoMobs={infoMobs} />
+                </Physics>
+            </Canvas>
+            <div style={{ position: "absolute", left: 50, top: 200 }}>
+                {infoFriends ? (
+                    infoFriends.map((elem) => (
+                        <div style={{ height: 30, width: 200, marginTop: 1, color: "red" }}>
+                            {elem.name} : {elem.hp}/100HP
+                        </div>
+                    ))
+                ) : (
+                    <></>
+                )}
+            </div>
+        </>
     );
 };
 export default Game;

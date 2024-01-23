@@ -151,4 +151,13 @@ export default class Server {
     getUserById(idFriend: number) {
         return this.request("getUserById", { idFriend: idFriend });
     }
+    addInvitation(userId: number, friendId: number) {
+        return this.request("addInvitation", { userId: userId, friendId: friendId });
+    }
+    checkInvites(userId: number) {
+        return this.request("checkInvites", { userId: userId });
+    }
+    async updateHp(gamerName: string, gamerHp: number) {
+        return await this.request("updateHp", { gamerName: gamerName, gamerHp: gamerHp });
+    }
 }

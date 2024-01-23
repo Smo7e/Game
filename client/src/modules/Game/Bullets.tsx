@@ -1,14 +1,16 @@
-import { createRef, memo, useCallback, useEffect, useState } from "react";
+import { createRef, memo, useCallback, useContext, useEffect, useState } from "react";
 import { Mesh, TextureLoader } from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
 import fireBall from "./image/Bullets/fireBall.png";
 import { TGamer, TMobs } from "../Server/types";
+import { ServerContext } from "../../App";
 
 interface IPropsBullets {
     infoFriends: TGamer[] | null;
     infoMobs: TMobs[] | null;
 }
 const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
+    const server = useContext(ServerContext);
     const [bulletsRefs, setbulletsRefs] = useState<any>([]);
     const [arrBullet, setArrBullet] = useState<any>([]);
 
@@ -72,7 +74,7 @@ const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
                 infoFriends?.forEach((gamer) => {
                     const dist = Math.pow(arrBullet[i][0] - gamer.x, 2) + Math.pow(arrBullet[i][1] - gamer.y, 2);
                     if (dist < 1) {
-                        //console.log("попадание");
+                        server.updateHp(gamer.name, gamer.hp - 5);
                     }
                 });
                 delete arrBullet[i];

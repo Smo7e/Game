@@ -212,4 +212,25 @@ class Application {
         return $this->lobby->getItems();
     }
 
+   function addInvitation($params){
+    $userId = $params['userId'];
+    $friendId = $params['friendId'];
+    return $this->lobby->addInvitation($userId, $friendId);
+   }
+   function checkInvites($params){
+    $userId = $params['userId'];
+    $result = $this->lobby->checkInvites($userId);
+    if ($result) {
+        return $result;
+    }
+    return array(true);
+
+   }
+   function updateHp($params){
+    $gamerName = $params['gamerName'];
+    $gamerHp = $params['gamerHp'];
+    $this->game->updateHp($gamerName, intval($gamerHp));
+    return true;
+   }
+
 }

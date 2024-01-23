@@ -52,4 +52,12 @@ class Lobby {
     function getItems(){
         return $this->db->getItems();
     }
+    function addInvitation($userId, $friendId){
+        $this->db->addInvitation($userId,$friendId);
+        return true;
+    }
+    function checkInvites($userId){
+        return $this->db->checkInvites($userId);
+        
+    }
 }

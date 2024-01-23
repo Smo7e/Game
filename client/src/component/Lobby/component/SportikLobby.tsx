@@ -33,8 +33,8 @@ const SportikLobby: React.FC<ISportikLobbyProps> = ({ lobby, gamerNumber }) => {
                 </>
             ) : gamerNumber === 1 ? (
                 <>
-                    <button onClick={rightArrowHandler} className="arrow-2"></button>
-                    <button onClick={leftArrowHandler} className="arrow-3"></button>
+                    <button onClick={rightArrowHandler} className="arrow-2Friend1"></button>
+                    <button onClick={leftArrowHandler} className="arrow-3Friend1"></button>
 
                     <div className="image-Sportik">
                         <button className="button">&lt;Спортик&gt;</button>

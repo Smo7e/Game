@@ -10,7 +10,7 @@ interface IFriendLobby2Props {
 }
 const FriendLobby2: React.FC<IFriendLobby2Props> = ({ setPanel, gamers }) => {
     const mediator = useContext(MediatorContext);
-    const [lobbyFriend1, setLobbyFriend2] = useState<ELOBBY>(ELOBBY.SPORTIK);
+    const [lobbyFriend2, setLobbyFriend2] = useState<ELOBBY>(ELOBBY.SPORTIK);
 
     if (!gamers) return <></>;
 
@@ -22,15 +22,15 @@ const FriendLobby2: React.FC<IFriendLobby2Props> = ({ setPanel, gamers }) => {
                 </div>
             ) : gamers.length === 3 &&
               mediator.user.name === mediator.gamers[2].name &&
-              lobbyFriend1 === ELOBBY.SPORTIK ? (
+              lobbyFriend2 === ELOBBY.SPORTIK ? (
                 <SportikLobby lobby={setLobbyFriend2} gamerNumber={2} />
             ) : gamers.length === 3 &&
               mediator.user.name === mediator.gamers[2].name &&
-              lobbyFriend1 === ELOBBY.HUMANITARIAN ? (
+              lobbyFriend2 === ELOBBY.HUMANITARIAN ? (
                 <HumanitarianLobby lobby={setLobbyFriend2} gamerNumber={2} />
             ) : gamers.length === 3 &&
               mediator.user.name === mediator.gamers[2].name &&
-              lobbyFriend1 === ELOBBY.TECHGUY ? (
+              lobbyFriend2 === ELOBBY.TECHGUY ? (
                 <TechguyLobby lobby={setLobbyFriend2} gamerNumber={2} />
             ) : (
                 <div id="test-image-rack2" className="image-rack2"></div>
