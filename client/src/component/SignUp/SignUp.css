@@ -6,7 +6,7 @@
 }
 
 img {
-    width: 200px;
+    width: 45px;
 }
 .text-register {
     color: #000;
@@ -110,7 +110,7 @@ img {
     line-height: normal;
     background-color: unset;
     transition: 0.2s;
-    cursor:default;
+    cursor: default;
 }
 .estakk:hover {
     color: #ebe4e4;

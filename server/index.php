@@ -24,8 +24,10 @@ function result($params) {
                 return $app->sendMessage($params);
             case 'getMessages':
                 return $app->getMessages($params);
-            case 'getItems':
-                return $app->getItems();
+            case 'getItemsForShop':
+                return $app->getItemsForShop();
+            case 'addItemsGamers':
+                return $app->addItemsGamers($params);
             case 'addFriend':
                 return $app->addFriend($params);
             case 'getFriends':

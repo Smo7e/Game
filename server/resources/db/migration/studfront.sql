@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 22 2024 г., 21:26
+-- Время создания: Янв 23 2024 г., 04:59
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -36,14 +36,14 @@ CREATE TABLE `game` (
   `mobs_hash` varchar(256) NOT NULL,
   `update_timestamp` int(11) NOT NULL DEFAULT 0,
   `update_timeout` int(11) NOT NULL DEFAULT 300
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `game`
 --
 
 INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `mobs_hash`, `update_timestamp`, `update_timeout`) VALUES
-(1, '1.0.0', 'f7b7838b7e99419f3517f44296651324', '76922c89884d1b9a048be7fb505f2eb5', '', 'b19684264b21249ebb88234399473bbc', 1705946495, 300);
+(1, '1.0.0', 'fa885ef56bc066949a4f1d8fbbe72aed', 'b7246659746fe82a1a79316361167d8f', '', '2859d4b47bfe5c717dd76d74a888ee5a', 1705961121, 300);
 
 -- --------------------------------------------------------
 
@@ -58,15 +58,16 @@ CREATE TABLE `gamers` (
   `status` varchar(256) NOT NULL,
   `x` float NOT NULL DEFAULT 0,
   `y` float NOT NULL DEFAULT 0,
-  `direction` varchar(256) NOT NULL DEFAULT 'down'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `direction` varchar(256) NOT NULL DEFAULT 'down',
+  `items` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `gamers`
 --
 
-INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`) VALUES
-(1, 7, 0, 'alive', 12.551, -4.52945, 'walk');
+INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`, `items`) VALUES
+(1, 4, 0, 'alive', -0.387084, -8.84089, 'walk', '[]');
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,7 @@ CREATE TABLE `items` (
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -117,18 +118,18 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `type`, `location`, `image`, `description`) VALUES
-(1, 'Пиво', 'Расходник', 'Багетница', 'https://drive.google.com/uc?id=1txKPVJl2qxHKfoTPNLb2Gof4Sb2_CJEp', 'Восстанавливает здоровье на 15 единиц, на время боя увеличивает максимальное здоровье на 20 единиц'),
-(2, 'Сосиска в тесте', 'Расходник', 'Багетница', 'https://drive.google.com/uc?id=1_Oh0szf4vo2Uadnup78RSiPBVqOceEHD', 'Восстанавливает здоровье на 15 единиц'),
-(3, 'Айфон', 'Гаджет', 'Программирование', 'https://drive.google.com/uc?id=1_1JOzhHE-A07iss6PFHKy6vSVpugUL0q', 'Увеличивает урон по “Программированию” на 15 единиц'),
-(4, 'Спортивки', 'Одежда', 'Физра', 'https://drive.google.com/uc?id=1NVcwa-CUL0unvHG2Ai3dRB4unnqtxdK7', 'Увеличивает постоянное здоровье на 15 единиц'),
-(5, 'Энергос', 'Расходник', 'Багетница', 'https://drive.google.com/uc?id=1zOmnG7A1hi2swN4PRdhb5zP_phY0NOec', 'Восстанавливает здоровье на 15 единиц, на время боя увеличивает максимальное здоровье на 20 единиц'),
-(6, 'Учебник', 'Расходник', 'Программирование, русский язык, математика, английский язык', 'https://drive.google.com/uc?id=1CcxSd3GCb92Krr4Of_iHkR82-iqm1PRV', 'Увеличивает урон по всем парам кроме “Физра” на 5 единиц'),
-(7, 'Сигареты', 'Расходник', 'Багетница', 'https://drive.google.com/uc?id=1w8Rg20Ee_N4WXohJtQ6wclGg3mXmjPzX', 'Уменьшает текущее здоровье на 20, но на время боя увеличивает урон каждой атаки на 10 '),
-(8, 'Кофта “Stone Island” ', 'Одежда', 'Физра', 'https://drive.google.com/uc?id=19xKs-LkbtI47TDBA22StocB-nvzkMaAv', 'Увеличивает максимальное здоровье на 15'),
-(9, 'Калькулятор', 'Гаджет', 'Математика', 'https://drive.google.com/uc?id=14HEzCbJRFXuc9p0AjPwlTK2pp3j43dCo', 'Увеличивает урон по “Математике” на 15 единиц'),
-(10, 'Словарь', 'Книга', 'Русский язык, английский язык', 'https://drive.google.com/uc?id=1Sms2iIUvf2aN3-EHdLz8-jMTyJLHhom0', 'Увеличивает урон по “Русскому языку” и “Английскому языку” на 10 единиц'),
-(11, 'Ноутбук', 'Гаджет', 'Математика, программирование', 'https://drive.google.com/uc?id=1AmXmAyEcvSGUK0gL70VDyx_nLIhT7GQI', 'Увеличивает урон по “Программированию” и “Математике” на 10 единиц'),
-(12, 'Багет', 'Расходник', 'Багетница', 'https://drive.google.com/uc?id=17LFVpq1h5V_HrYuHz6zbYpK3rcXpPBIY', ' Восстанавливает здоровье на 25 единиц');
+(1, 'Пиво', 'Расходник', 'Багетница', 'https://2.downloader.disk.yandex.ru/preview/ce82e19c2ff4898aaf42a5a2f8e3a4601106aa934610d9f3874a6c8fc709f2f1/inf/CqCDVzZNh_l94LsU93TdF1XaqIrJBCeQYdRiJvPh-2BgTr_tp6PHm99cJODQGakl-C318NYmOZ-b1vNmEv9woQ%3D%3D?uid=1918380254&filename=Пиво%203.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Восстанавливает здоровье на 15 единиц, на время боя увеличивает максимальное здоровье на 20 единиц'),
+(2, 'Сосиска в тесте', 'Расходник', 'Багетница', 'https://1.downloader.disk.yandex.ru/preview/dd2300280e8d57092599326105a294b084c6ff173fd2ce7e6a211933a6ff22d1/inf/YclkTDHmwV-u5Pf1QmRWlq0a7YIDun_rZPL8y32-rPUNG6SLr26vZNX4NRXfitDRLyEHcYqPoqOvMm8nJFCFAw%3D%3D?uid=1918380254&filename=Сосиска%20в%20тесте%202.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Восстанавливает здоровье на 15 единиц'),
+(3, 'Айфон', 'Гаджет', 'Программирование', 'https://4.downloader.disk.yandex.ru/preview/778d254b1a855d13ba8d804985e739f25436054364dcdfaf430ac8859d9d9129/inf/eatCyn3YfBU5hAg6xYlNcjRawbHYzDjzeGonShPBFHcrQt6jYAj8oRgxGGa1vWJbx63ukKubCz2XeoC2y85bbw%3D%3D?uid=1918380254&filename=Айфон%202.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает урон по “Программированию” на 15 единиц'),
+(4, 'Спортивки', 'Одежда', 'Физра', 'https://1.downloader.disk.yandex.ru/preview/19cfa6775dbf7eced65636038e8bc375b517f64f7ad386a6518eb17acbc45fdd/inf/bqIcPfOQ4Ypr-F_YDYNPeldMtpAELcRbQSeStAvzV7dudLc0-OaLI8470k5LApPbFrkeDp4-IWFKAS_O5vVrUw%3D%3D?uid=1918380254&filename=Спортивки%201.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает постоянное здоровье на 15 единиц'),
+(5, 'Энергос', 'Расходник', 'Багетница', 'https://3.downloader.disk.yandex.ru/preview/1f88ab6c0a54c40a8f0a91efd3506a1fb80d22bd7285a709d59cee3230541901/inf/nHG61WSCKSgh0JU0h7vkF60a7YIDun_rZPL8y32-rPUH6ZC67n3v9P_rCqNQsV3yJd197SHWdNQ-GBi-BlR4Dw%3D%3D?uid=1918380254&filename=Энергетик%201.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Восстанавливает здоровье на 15 единиц, на время боя увеличивает максимальное здоровье на 20 единиц'),
+(6, 'Учебник', 'Расходник', 'Программирование, русский язык, математика, английский язык', 'https://1.downloader.disk.yandex.ru/preview/82e7c67d8e873d1c90a82978a1eb266675a56d27596811a37f0ed21d45b6e08b/inf/NH106e2d1xvCPL6Y1-J-CbLHsfQ4JKWKSBa1zUVcdIwXqD_t2fpxPa7IZS17wsxkwObGI_haiTMk_BGqyDEJwQ%3D%3D?uid=1918380254&filename=Учебник%201.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает урон по всем парам кроме “Физра” на 5 единиц'),
+(7, 'Сигареты', 'Расходник', 'Багетница', 'https://3.downloader.disk.yandex.ru/preview/70f4d1dc1b547eaafd88e5bb3d81f0b2c7e833f2172d1c350fee45090a6be089/inf/G0SkIEVzjWWYKXDDgwQifOLxU4D2F5YIiYfD194BMCefJwIOql-ylC6ydOs3OHIEiQT6wEkcMPSoQ-g1yZPkrg%3D%3D?uid=1918380254&filename=Сигареты%201.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Уменьшает текущее здоровье на 20, но на время боя увеличивает урон каждой атаки на 10 '),
+(8, 'Кофта “Stone Island” ', 'Одежда', 'Физра', 'https://1.downloader.disk.yandex.ru/preview/3b1dcee2a0e46dd6b5094dabb21a490b0750e1428ebc8868c9e6aafcb4e9b239/inf/Vjs_x6jMgF9ibZkRLUR5OoNwxhhF_EpxvM87yCAhOFAfXLsTVMNAnqsmSOZOtgIt48nKrLMeBfDqBrRnpHkkYg%3D%3D?uid=1918380254&filename=Стоник%202.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает максимальное здоровье на 15'),
+(9, 'Калькулятор', 'Гаджет', 'Математика', 'https://4.downloader.disk.yandex.ru/preview/10469d19b40f44a2ad5a9ce66d7373c3cbb2cff22ae737755c927f892020c3dd/inf/qL_TTzJOBGRxpRWSWiXQ3dkdl1WGJhx7mMDJw3xSoV9wP3BZNsIet755OmGTqMqipmqn8x55kv1CncCT44XLhw%3D%3D?uid=1918380254&filename=калькулятор%203.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает урон по “Математике” на 15 единиц'),
+(10, 'Словарь', 'Книга', 'Русский язык, английский язык', 'https://3.downloader.disk.yandex.ru/preview/2846aa1c2f28daf2badef1b47672a729bfff74ad7ebb093b9e401392c87d8800/inf/yMtTHN9KmQ0R5Px4uwDl6uLxU4D2F5YIiYfD194BMCe6wpkH7agF3MnDSzPlJ3NnVoIaZCKO7wTc0lgwc-NgjQ%3D%3D?uid=1918380254&filename=Словарь%203.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает урон по “Русскому языку” и “Английскому языку” на 10 единиц'),
+(11, 'Ноутбук', 'Гаджет', 'Математика, программирование', 'https://2.downloader.disk.yandex.ru/preview/882952702382ddddb2ce2280786578ca0cfa729577c7cfa8ab55c2b247513c2c/inf/j0u6SmJP9Cg35WDwxCqdp732nqPvliVyT95Wet27Y09h4uIAmv-C7mIbDYRLNDkwzhaqU7bKRXzcz9CKfSLjPQ%3D%3D?uid=1918380254&filename=Ноут%201.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', 'Увеличивает урон по “Программированию” и “Математике” на 10 единиц'),
+(12, 'Багет', 'Расходник', 'Багетница', 'https://3.downloader.disk.yandex.ru/preview/07974061e9feac1dee9589c27a5b5ed6dc596a4320d42ad8bb5ce2ee1985bdd2/inf/KbglbWOTKizt0qQxTb7oKtkdl1WGJhx7mMDJw3xSoV8e-B0OQzsMyceOVpaoelhX-lIDc622neSHONr6o6UREg%3D%3D?uid=1918380254&filename=Багет%201.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1918380254&tknv=v2&size=1860x895', ' Восстанавливает здоровье на 25 единиц');
 
 -- --------------------------------------------------------
 
@@ -141,7 +142,7 @@ CREATE TABLE `messages` (
   `user_id` int(11) NOT NULL,
   `message` varchar(256) NOT NULL,
   `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `messages`
@@ -161,7 +162,9 @@ INSERT INTO `messages` (`id`, `user_id`, `message`, `created`) VALUES
 (11, 1, 'Hello, this is a test message.', '2024-01-21 16:18:42'),
 (12, 1, 'Hello, this is a test message.', '2024-01-21 20:52:40'),
 (13, 1, '5', '2024-01-21 20:52:45'),
-(14, 1, '57654', '2024-01-21 20:52:54');
+(14, 1, '57654', '2024-01-21 20:52:54'),
+(15, 4, '2', '2024-01-23 02:06:55'),
+(16, 1, '1', '2024-01-23 02:07:01');
 
 -- --------------------------------------------------------
 
@@ -181,7 +184,7 @@ CREATE TABLE `mobs` (
 --
 
 INSERT INTO `mobs` (`id`, `x`, `y`, `status`) VALUES
-(1, 15.7749, -12.5815, 'alive');
+(1, 8.02582, -10.9891, 'alive');
 
 -- --------------------------------------------------------
 
@@ -321,23 +324,19 @@ CREATE TABLE `users` (
   `name` varchar(256) NOT NULL,
   `token` varchar(256) DEFAULT NULL,
   `friends` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`, `friends`) VALUES
-(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'd330911f486cad8540875bd81d3dcaf9', '[2,4,5,11,12,6,7,8]'),
+(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', '7691c32cf82b7b637ec0864abdd23d74', '[2,4,5,6,7]'),
 (2, 'petya', '321', 'Petya Petroff', NULL, '[]'),
-(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '826c181183abdb683aaeb372c5d8da1c', '[9, 10, 5]'),
+(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '291655e480ff7944afd702cad38e7d7d', '[5]'),
 (5, '1', 'c51ce410c124a10e0db5e4b97fc2af39', '2', NULL, '[]'),
 (6, '12', '78bf4f00f81a36b57950e239f1df91c1', '12', NULL, '[]'),
-(7, '123', '4297f44b13955235245b2497399d7a93', '123', '3af2f63a80244c18b0d050178ea031d2', '[]'),
-(8, 'wef', 'b1444ebf2a132112bfaec62ed475ef82', 'ASFfvD', NULL, '[]'),
-(11, 'vasya3', 'bbdfc6d64804b6c634d94e52f05505ca', '1231', NULL, '[]'),
-(12, 'user962', '8b69ff1f195992bc7cb9390dc90ddff5', 'example_nicknam', NULL, '[]'),
-(14, 'kostya', '4e0ad448e475a757e711499d86dce379', 'Kosya', NULL, '[]');
+(7, '123', '4297f44b13955235245b2497399d7a93', '123', 'c29a9a323e42e2af1adf57487d9a6e96', '[4,2]');
 
 --
 -- Индексы сохранённых таблиц
@@ -473,7 +472,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `mobs`

@@ -1,4 +1,5 @@
 import { Mediator } from "..";
+import { Product } from "../../component/Lobby/panel/Shop";
 import { TUser, TUserFull, TError, TMessages, TMessage, TScene } from "./types";
 
 export default class Server {
@@ -150,5 +151,11 @@ export default class Server {
     }
     getUserById(idFriend: number) {
         return this.request("getUserById", { idFriend: idFriend });
+    }
+    getItemsForShop() {
+        return this.request("getItemsForShop", {});
+    }
+    addItemsGamers($id: number[]) {
+        return this.request("addItemsGamers", { id: $id });
     }
 }

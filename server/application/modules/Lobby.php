@@ -30,26 +30,33 @@ class Lobby {
         }
         return [];
     }
-    function addGamers($userId){
+    function addGamers($userId) {
         $this->db->addGamers($userId);
-        
+
     }
-   function getGamers(){
+    function getGamers() {
         return $this->db->getGamers();
-   }
-    function updatePersonId( $userId,$newPersonId){
-        $a = json_decode($userId,true);
-       $this->db->updatePersonId($a,$newPersonId);
-       return true;
     }
-    function getGamerById($userId){
-        return  $this->db->getGamerById($userId);
+    function updatePersonId($userId, $newPersonId) {
+        $a = json_decode($userId, true);
+        $this->db->updatePersonId($a, $newPersonId);
+        return true;
     }
-    function deleteGamers(){
+    function getGamerById($userId) {
+        return $this->db->getGamerById($userId);
+    }
+    function deleteGamers() {
         $this->db->deleteGamers();
     }
 
-    function getItems(){
-        return $this->db->getItems();
+    function getItemsForShop() {
+        return $this->db->getItemsForShop();
+    }
+    public function addItemsGamers($idItem, $token) {
+        $user = $this->db->getUserByToken($token);
+        $item = json_decode($idItem['id'], true);
+        if ($user) {
+            return $this->db->addItemsGamers($user->id, $idItem, $item);
+        }
     }
 }

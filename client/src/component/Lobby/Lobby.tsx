@@ -3,7 +3,7 @@ import { EPAGES, MediatorContext, ServerContext } from "../../App";
 import SportikLobby from "./component/SportikLobby";
 import HumanitarianLobby from "./component/HumanitarianLobby";
 import TechguyLobby from "./component/TechguyLobby";
-import ShopLobby from "./component/Shop";
+import Shop from "./panel/Shop";
 
 import Addafriend1 from "./panel/Addafriend1";
 import Addafriend2 from "./panel/Addafriend2";
@@ -69,9 +69,13 @@ const Lobby: React.FC<ILobbyProps> = ({ epages }) => {
 
     return (
         <div id="test-container-Lobby" className="container-Lobby">
-            <button onClick={() => epages(EPAGES.MENU)} id="test-arrow-1" className="arrow-1"></button>
+            <button
+                onClick={() => epages(EPAGES.MENU)}
+                id="test-arrow-1"
+                className="arrow-1"
+            ></button>
 
-            <ShopLobby />
+            <Shop />
 
             <FriendLobby1 gamers={gamers} setPanel={setPanel} />
             <FriendLobby2 gamers={gamers} setPanel={setPanel} />

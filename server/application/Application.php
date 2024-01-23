@@ -140,10 +140,10 @@ class Application {
     function updatePersonId($params) {
         $token = $params['token'];
         $newPersonId = $params['newPersonId'];
-        if($token){
+        if ($token) {
             $user = $this->user->getUser($token);
-            if($user){
-               return $this->lobby->updatePersonId($user->id,$newPersonId);
+            if ($user) {
+                return $this->lobby->updatePersonId($user->id, $newPersonId);
                 //return true;
 
             }
@@ -151,38 +151,37 @@ class Application {
         }
         return array(false, 1001);
     }
-    function getGamerById($params){
+    function getGamerById($params) {
         $userId = $params['userId'];
         return $this->lobby->getGamerById($userId);
     }
-    function getGamers(){
+    function getGamers() {
         return $this->lobby->getGamers();
     }
-    function getUserByToken($params){
+    function getUserByToken($params) {
         $token = $params['token'];
-        if($token){
+        if ($token) {
             return $this->user->getUserByToken($token);
         }
         return array(false, 1001);
     }
-    function addGamers($params){
+    function addGamers($params) {
         $token = $params['token'];
-        
-        if($token){
+
+        if ($token) {
             $user = $this->user->getUser($token);
-            if($user){
+            if ($user) {
                 $this->lobby->addGamers($user->id);
                 return true;
             }
             return array(false, 455);
         }
-        return array(false,1001);
+        return array(false, 1001);
     }
-    function deleteGamers($params){
+    function deleteGamers($params) {
         $this->lobby->deleteGamers();
         return true;
     }
-    
 
     function move($params) {
         $token = $params['token'];
@@ -202,14 +201,19 @@ class Application {
     function moveMobs($params) {
         $x = $params['x'];
         $y = $params['y'];
-        if ( $x && $y) {
+        if ($x && $y) {
             return $this->game->moveMobs($x, $y);
         }
         return array(false, 1001);
     }
 
-    function getItems(){
-        return $this->lobby->getItems();
+    function getItemsForShop() {
+        return $this->lobby->getItemsForShop();
+    }
+    function addItemsGamers($params) {
+        $id = $params['id'];
+        $token = $params['token'];
+        return $this->lobby->addItemsGamers($id, $token);
     }
 
 }

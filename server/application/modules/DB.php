@@ -50,10 +50,15 @@ class DB {
         $this->preparationQuery($query, [$token, $userId]);
     }
 
-    function getItems() {
-        $query = 'SELECT * FROM items';
-        $stmt = $this->db->query($query);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    function getItemsForShop() {
+        $query = 'SELECT * FROM items WHERE location = "Багетница"';
+        return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function addItemsGamers($idUser, $idItem, $item) {
+        $query = 'UPDATE gamers SET items = JSON_ARRAY_APPEND(items, "$", ?) WHERE id = ?';
+
+        return $this->preparationQuery($query, [$item, $idUser]);
     }
 
     function sendMessage($userId, $message) {
@@ -128,7 +133,7 @@ class DB {
 
     function move($userId, $direction, $x, $y, $status) {
         $query = 'UPDATE gamers SET direction=?, x=?, y=?, status=? WHERE user_id=?';
-        $this->preparationQuery($query, [$direction, $x, $y, $status,$userId]);
+        $this->preparationQuery($query, [$direction, $x, $y, $status, $userId]);
     }
     function moveMobs($x, $y) {
         $query = 'UPDATE mobs SET x=?, y=? WHERE id=1';
@@ -139,18 +144,18 @@ class DB {
         $query = 'UPDATE gamers SET person_id=? WHERE user_id=?';
         $this->preparationQuery($query, [$newPersonId, $userId]);
     }
-    function getGamerById($userId){
+    function getGamerById($userId) {
         $query = 'SELECT * FROM gamers WHERE user_id=?';
-        return $this->preparationQuery($query, [ $userId])->fetch(PDO::FETCH_OBJ);
+        return $this->preparationQuery($query, [$userId])->fetch(PDO::FETCH_OBJ);
     }
 
-    function deleteGamers(){
+    function deleteGamers() {
         $query = 'TRUNCATE TABLE gamers';
         $this->preparationQuery($query, []);
     }
 
     function addGamers($userId) {
-        $a = json_decode($userId,true);
+        $a = json_decode($userId, true);
         $query = 'INSERT INTO gamers (user_id, person_id, status, x, y, direction) VALUES (?, 0, "stand", 0, 0, "down")';
         $this->preparationQuery($query, [$a]);
     }
