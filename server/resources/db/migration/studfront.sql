@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 22 2024 г., 21:26
--- Версия сервера: 10.3.22-MariaDB
--- Версия PHP: 7.1.33
+-- Время создания: Янв 23 2024 г., 06:19
+-- Версия сервера: 10.8.4-MariaDB
+-- Версия PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `game` (
 --
 
 INSERT INTO `game` (`id`, `version`, `chat_hash`, `gamers_hash`, `items_hash`, `mobs_hash`, `update_timestamp`, `update_timeout`) VALUES
-(1, '1.0.0', 'f7b7838b7e99419f3517f44296651324', '76922c89884d1b9a048be7fb505f2eb5', '', 'b19684264b21249ebb88234399473bbc', 1705946495, 300);
+(1, '1.0.0', 'f7b7838b7e99419f3517f44296651324', '129b8a294ade36534889cd0553f3e86a', '', 'b60adcb70283fea07596c9a73ddfb899', 1705979558, 300);
 
 -- --------------------------------------------------------
 
@@ -58,15 +58,16 @@ CREATE TABLE `gamers` (
   `status` varchar(256) NOT NULL,
   `x` float NOT NULL DEFAULT 0,
   `y` float NOT NULL DEFAULT 0,
-  `direction` varchar(256) NOT NULL DEFAULT 'down'
+  `direction` varchar(256) NOT NULL DEFAULT 'down',
+  `hp` int(11) NOT NULL DEFAULT 100
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `gamers`
 --
 
-INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`) VALUES
-(1, 7, 0, 'alive', 12.551, -4.52945, 'walk');
+INSERT INTO `gamers` (`id`, `user_id`, `person_id`, `status`, `x`, `y`, `direction`, `hp`) VALUES
+(1, 7, 0, 'alive', -0.258235, -3.42907, 'walk', 45);
 
 -- --------------------------------------------------------
 
@@ -96,6 +97,26 @@ CREATE TABLE `gamers_properties` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `invitations`
+--
+
+CREATE TABLE `invitations` (
+  `id` int(11) NOT NULL,
+  `id_who` int(11) NOT NULL,
+  `id_to_whom` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `invitations`
+--
+
+INSERT INTO `invitations` (`id`, `id_who`, `id_to_whom`) VALUES
+(5, 7, 4),
+(6, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -173,15 +194,16 @@ CREATE TABLE `mobs` (
   `id` int(11) NOT NULL,
   `x` float NOT NULL DEFAULT 0,
   `y` float NOT NULL DEFAULT 0,
-  `status` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+  `status` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hp` int(11) NOT NULL DEFAULT 120
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `mobs`
 --
 
-INSERT INTO `mobs` (`id`, `x`, `y`, `status`) VALUES
-(1, 15.7749, -12.5815, 'alive');
+INSERT INTO `mobs` (`id`, `x`, `y`, `status`, `hp`) VALUES
+(1, 7.99018, -21.0582, 'alive', 120);
 
 -- --------------------------------------------------------
 
@@ -328,16 +350,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `token`, `friends`) VALUES
-(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'd330911f486cad8540875bd81d3dcaf9', '[2,4,5,11,12,6,7,8]'),
-(2, 'petya', '321', 'Petya Petroff', NULL, '[]'),
-(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', '826c181183abdb683aaeb372c5d8da1c', '[9, 10, 5]'),
+(1, 'vasya', '4a2d247d0c05a4f798b0b03839d94cf0', 'Vasya Ivanoff', 'ddc8333a742f3f6ab2c3bf63dba70a59', '[2,4,5,6,7]'),
+(2, 'petya', '123', 'Petya Petroff', NULL, '[]'),
+(4, 'masha', 'ebf191604221bd6bc7af3f959d41b5eb', 'Masha', 'e5b1f3fa1ee368b38248f4dad09b5bc6', '[5]'),
 (5, '1', 'c51ce410c124a10e0db5e4b97fc2af39', '2', NULL, '[]'),
 (6, '12', '78bf4f00f81a36b57950e239f1df91c1', '12', NULL, '[]'),
-(7, '123', '4297f44b13955235245b2497399d7a93', '123', '3af2f63a80244c18b0d050178ea031d2', '[]'),
-(8, 'wef', 'b1444ebf2a132112bfaec62ed475ef82', 'ASFfvD', NULL, '[]'),
-(11, 'vasya3', 'bbdfc6d64804b6c634d94e52f05505ca', '1231', NULL, '[]'),
-(12, 'user962', '8b69ff1f195992bc7cb9390dc90ddff5', 'example_nicknam', NULL, '[]'),
-(14, 'kostya', '4e0ad448e475a757e711499d86dce379', 'Kosya', NULL, '[]');
+(7, '123', '4297f44b13955235245b2497399d7a93', '123', '347b4d69dfa3f0c543f4f12a8f8c2453', '[4,2,1]');
 
 --
 -- Индексы сохранённых таблиц
@@ -369,6 +387,12 @@ ALTER TABLE `gamers_items`
 ALTER TABLE `gamers_properties`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gamer_id` (`gamer_id`);
+
+--
+-- Индексы таблицы `invitations`
+--
+ALTER TABLE `invitations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `items`
@@ -462,6 +486,12 @@ ALTER TABLE `gamers_items`
 --
 ALTER TABLE `gamers_properties`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `invitations`
+--
+ALTER TABLE `invitations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `items`
