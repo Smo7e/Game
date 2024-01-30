@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b2478016.css",
+    "main.js": "/static/js/main.769ec914.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/fon.png": "/static/media/fon.47bd55aafe209fe69323.png",
+    "static/media/fon.jpg": "/static/media/fon.634c977c9e3522d989e5.jpg",
+    "static/media/floor1.png": "/static/media/floor1.1fe2ef2a9a2b65c48120.png",
+    "static/media/baguettebox.png": "/static/media/baguettebox.10f868387088cc8232f1.png",
+    "static/media/udsu.jpg": "/static/media/udsu.43b3fc01d21b13641f19.jpg",
+    "static/media/rack.png": "/static/media/rack.414e76a858045e35344e.png",
+    "static/media/humanitarian.png": "/static/media/humanitarian.3db65a88dddbedd61d47.png",
+    "static/media/Sportik.png": "/static/media/Sportik.ba8d67957de93d0862d7.png",
+    "static/media/techguy.png": "/static/media/techguy.59b8fc34e10ac7862ec5.png",
+    "static/media/logo.png": "/static/media/logo.58dcb7fe3bef35a8f7c8.png",
+    "static/media/spriteSportik.png": "/static/media/spriteSportik.d6a94082fbabc3ca2479.png",
+    "static/media/spriteThetechguy.png": "/static/media/spriteThetechguy.22601fa4621d5e1504f9.png",
+    "static/media/spritePushkareva.png": "/static/media/spritePushkareva.9f15e08394e0e4913a09.png",
+    "static/media/spriteMajorova.png": "/static/media/spriteMajorova.976bafc0c96e392b573f.png",
+    "static/media/spriteGolovizin.png": "/static/media/spriteGolovizin.d91e0d7e96e802303b60.png",
+    "static/media/spriteTrusov.png": "/static/media/spriteTrusov.de795d5b33522e3432da.png",
+    "static/media/spriteHumanities.png": "/static/media/spriteHumanities.ea0bbbae1c70b6870dac.png",
+    "static/media/table5.png": "/static/media/table5.05684faf8bbe1fabff96.png",
+    "static/media/spriteRusanova.png": "/static/media/spriteRusanova.367329b04296e100fa77.png",
+    "static/media/imageB.png": "/static/media/imageB.ef46578363edda1d5997.png",
+    "index.html": "/index.html",
+    "main.b2478016.css.map": "/static/css/main.b2478016.css.map",
+    "main.769ec914.js.map": "/static/js/main.769ec914.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2478016.css",
+    "static/js/main.769ec914.js"
+  ]
+}
