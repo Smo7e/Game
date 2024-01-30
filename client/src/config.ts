@@ -3,7 +3,7 @@
 // const PORT = 81;
 
 // dev
-const DOMAIN = "http://studfront";
+const DOMAIN = "http://i904839l.beget.tech";
 const PORT = 0;
 
 // prod
