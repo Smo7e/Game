@@ -19,6 +19,13 @@ const Boss: React.FC = memo(() => {
     var frameSpeed = 0.1;
     var frameLength = 9;
     let limitationОfSending = 0;
+    let hpMobs = 100;
+    server.getMobs().then((result: any): any => {
+        console.log(result);
+        if (result) {
+            hpMobs = result[0].hp;
+        }
+    });
 
     let directionPlayer: Texture = moveDown[0];
     const position = usePositionMatrix();
@@ -29,6 +36,15 @@ const Boss: React.FC = memo(() => {
     useFrame(() => {
         if (!bossRef.current) return;
         if (!mediator.triger) return;
+        if (hpMobs <= 0) {
+            if (spriteRef.current) {
+                if (spriteRef.current.map) {
+                    spriteRef.current.map.dispose();
+                    spriteRef.current.map = death[0];
+                }
+            }
+            return;
+        }
         let x;
         let y;
         if (canPosition) {

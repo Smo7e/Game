@@ -9,7 +9,7 @@ class Game {
     private function getGamers($userId) {
         return $this->db->getGamers();
     }
-    private function getMobs() {
+    function getMobs() {
         return $this->db->getMobs();
     }
 
@@ -85,6 +85,11 @@ class Game {
         $this->db->updateGamersHash($hash);
         $this->db->updateHp($user->id, $gamerHp);
     }
+    function updateHpMobs(){
+        $hash = md5(rand(0, 100000));
+        $this->db->updateMobsHash($hash);
+        $this->db->updateHpMobs();
+    }
 
     function move($userId, $direction, $x, $y, $status) {
         $this->db->move($userId, $direction, $x, $y, $status);
@@ -97,5 +102,8 @@ class Game {
         $hash = md5(rand(0, 100000));
         $this->db->updateMobsHash($hash);
         return true;
+    }
+    function getQuestionsProgrammer(){
+        return $this->db->getQuestionsProgrammer();
     }
 }

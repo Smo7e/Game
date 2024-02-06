@@ -160,4 +160,13 @@ export default class Server {
     async updateHp(gamerName: string, gamerHp: number) {
         return await this.request("updateHp", { gamerName: gamerName, gamerHp: gamerHp });
     }
+    async getQuestionsProgrammer() {
+        return await this.request("getQuestionsProgrammer", {});
+    }
+    async updateHpMobs() {
+        return await this.request("updateHpMobs", {});
+    }
+    async getMobs() {
+        return await this.request("getMobs", {});
+    }
 }

@@ -232,5 +232,15 @@ class Application {
     $this->game->updateHp($gamerName, intval($gamerHp));
     return true;
    }
+   function updateHpMobs(){
+    $this->game->updateHpMobs();
+    return true;
+   }
+   function getQuestionsProgrammer(){
+    return $this->game->getQuestionsProgrammer();
+   }
+   function getMobs(){
+    return $this->game->getMobs();
+   }
 
 }

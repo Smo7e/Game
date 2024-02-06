@@ -61,6 +61,12 @@ function result($params) {
                 return $app->checkInvites($params);
             case 'updateHp':
                 return $app->updateHp($params);
+            case 'getQuestionsProgrammer':
+                return $app->getQuestionsProgrammer();
+            case 'updateHpMobs':
+                return $app->updateHpMobs();
+            case 'getMobs':
+                return $app->getMobs();
             default:
                 return array(false, 466);
         }

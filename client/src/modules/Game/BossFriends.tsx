@@ -1,7 +1,7 @@
 import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import { useRef, useState } from "react";
 import { Mesh, MeshStandardMaterial, Texture, Vector3 } from "three";
-import useSprites from "../hooks/sprites/useSprites";
+import useSprites from "../hooks/Sprites/useSprites";
 import { useFrame } from "@react-three/fiber";
 interface BossFriendsProps {
     infoMobs: any;
@@ -19,9 +19,17 @@ const BossFriends: React.FC<BossFriendsProps> = ({ infoMobs }) => {
     const [directionPlayer, setDirectionPlayer] = useState<Texture>(moveDown[0]);
     useFrame(() => {
         if (!bossRef.current || !infoMobs) return;
+        if (infoMobs[0].hp <= 0) {
+            if (spriteRef.current) {
+                if (spriteRef.current.map) {
+                    spriteRef.current.map.dispose();
+                    spriteRef.current.map = death[0];
+                }
+            }
+            return;
+        }
         const bossCoord = bossRef.current!.translation();
         const move = new Vector3();
-        //console.log(bossCoord.x, bossCoord.y, "     ", .x-0, infoMobs.y);
         if (bossCoord.x <= infoMobs[0].x - 0) {
             move.x += bossSpeed;
         } else {

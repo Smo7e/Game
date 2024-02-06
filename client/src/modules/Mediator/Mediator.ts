@@ -27,6 +27,8 @@ export default class Mediator {
     gamers: any;
     friends: any;
     triger: any;
+    mobs: any;
+    tim: number;
 
     constructor(params: TParams) {
         const { EVENTS, TRIGGERS } = params;
@@ -37,6 +39,8 @@ export default class Mediator {
         this.gamers = 0;
         this.friends = [];
         this.triger = false;
+        this.mobs = null;
+        this.tim = 0;
 
         this.events = {};
         Object.keys(EVENTS).forEach((key) => (this.events[key] = []));

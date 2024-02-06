@@ -17,9 +17,9 @@ const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
     const [arrBullet, setArrBullet] = useState<any>([]);
 
     const bulletsSpeed = 0.1;
-    const triger = false;
     useFrame(() => {
         if (!mediator.triger) return;
+        if (infoMobs && infoMobs[0].hp <= 0) return;
 
         if (arrBullet.filter((n: any) => n).length === 0) {
             setArrBullet(arrBullet.filter((n: any) => n));
@@ -103,7 +103,7 @@ const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
             {Array(arrBullet.length)
                 .fill(0)
                 .map((el, i) => (
-                    <mesh ref={bulletsRefs[i]} key={i}>
+                    <mesh ref={bulletsRefs[i]} key={i} position={[200, 200, 0]}>
                         <planeGeometry args={[0.5, 0.25]} />
                         <meshStandardMaterial map={a} transparent />
                     </mesh>

@@ -9,12 +9,14 @@ import Friends from "./Friends";
 import Boss from "./Boss";
 import Bullets from "./Bullets";
 import BossFriends from "./BossFriends";
+import TaskSelection from "../../component/Interface/component/TaskSelection/TaskSelection";
 const Game: React.FC = () => {
     const server = useContext(ServerContext);
     const mediator = useContext(MediatorContext);
     const { GET_SCENE } = mediator.getEventTypes();
     const [infoFriends, setInfoFriends] = useState<TGamer[] | null>(null);
     const [infoMobs, setInfoMobs] = useState<TMobs[] | null>(null);
+    const [questionFlag, setQuestionFlag] = useState<boolean>(true);
 
     useEffect(() => {
         server.startGameInterval();
@@ -42,6 +44,14 @@ const Game: React.FC = () => {
             server.stopGameInterval();
         };
     });
+    if (!questionFlag && mediator.triger) {
+        if (mediator.tim < 13) {
+            mediator.tim += 1;
+        } else {
+            setQuestionFlag(true);
+            mediator.tim = 0;
+        }
+    }
     return (
         <>
             <Canvas
@@ -71,7 +81,13 @@ const Game: React.FC = () => {
                     <Bullets infoFriends={infoFriends} infoMobs={infoMobs} />
                 </Physics>
             </Canvas>
-            <div style={{ position: "absolute", left: 50, top: 200 }}>
+
+            <div
+                style={{ position: "absolute", left: 50, top: 200 }}
+                onClick={() => {
+                    setQuestionFlag(true);
+                }}
+            >
                 {infoFriends ? (
                     infoFriends.map((elem) => (
                         <div style={{ height: 30, width: 200, marginTop: 1, color: "red" }}>
@@ -82,6 +98,25 @@ const Game: React.FC = () => {
                     <></>
                 )}
             </div>
+            {mediator.triger && questionFlag ? <TaskSelection setQuestionFlag={setQuestionFlag} /> : <></>}
+
+            {mediator.triger ? (
+                <div
+                    style={{
+                        width: 200,
+                        height: 100,
+                        fontSize: 30,
+                        position: "absolute",
+                        left: "50%",
+                        top: 0,
+                        color: "red",
+                    }}
+                >
+                    {infoMobs ? <div>BossXP: {infoMobs[0].hp}</div> : <></>}
+                </div>
+            ) : (
+                <></>
+            )}
         </>
     );
 };

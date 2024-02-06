@@ -8,9 +8,6 @@ import Login from "./component/Login/Login";
 import Heroes from "./component/Heroes/Heroes";
 import Interface from "./component/Interface/Interface";
 import Lobby from "./component/Lobby/Lobby";
-// import TaskText from "./component/Interface/component/TaskText/TaskText";
-// import TaskSelection from "./component/Interface/component/TaskSelection/TaskSelection";
-
 
 import "./App.css";
 
@@ -44,7 +41,7 @@ const MainApp = () => {
             ) : epages === EPAGES.HEROES ? (
                 <Heroes epages={setEpages} />
             ) : epages === EPAGES.LOBBY ? (
-                <Lobby epages={setEpages} />        
+                <Lobby epages={setEpages} />
             ) : (
                 <></>
             )}

@@ -173,5 +173,18 @@ class DB {
         $query = 'UPDATE gamers SET hp=? WHERE user_id=?';
         $this->preparationQuery($query, [$hp2->hp-5, $userId]);
     }
+    function updateHpMobs(){
+        $hp = 'SELECT `hp` FROM `mobs` WHERE `id` = 1';
+        $hp2 =  $this->preparationQuery($hp,[])->fetch(PDO::FETCH_OBJ);
+        $query = 'UPDATE mobs SET hp=? WHERE id=1';
+        $this->preparationQuery($query, [$hp2->hp-5]);
+
+
+    }
+    function getQuestionsProgrammer(){
+        $query = 'SELECT * FROM `questions_programmer`';
+        return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
+
+    }
     
 }

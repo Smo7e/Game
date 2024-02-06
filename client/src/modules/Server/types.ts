@@ -40,10 +40,10 @@ export type TGamer = {
 };
 export type TMobs = {
     id: number;
-    person_id: number;
-    status: string;
     x: number;
     y: number;
+    status: string;
+    hp: number;
 };
 
 export type TScene = {
