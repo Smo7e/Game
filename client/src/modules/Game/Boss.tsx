@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 
-import useSprites from "../hooks/sprites/useSprites";
+import useSprites from "../hooks/Sprites/useSprites";
 import React, { memo, useContext, useEffect, useRef } from "react";
 import { Mesh, MeshStandardMaterial, PlaneGeometry, Texture, Vector3 } from "three";
 import usePositionMatrix from "../hooks/positionMatrix/usePositionMatrix";
