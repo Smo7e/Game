@@ -13,11 +13,14 @@ interface IPropsFriends {
 const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
     const mediator = useContext(MediatorContext);
     const [friendsRefs, setFriendsRefs] = useState<any>([]);
-    const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites("sportik");
-    const [death1, moveDown1, moveRight1, moveUp1, moveLeft1] = useSprites("trusov");
-
+    const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites(
+        `${infoFriends && infoFriends[0] ? infoFriends[0].person_id : 0}`
+    );
+    const [death1, moveDown1, moveRight1, moveUp1, moveLeft1] = useSprites(
+        `${infoFriends && infoFriends[1] ? infoFriends[1].person_id : 0}`
+    );
     const [directionFriends, setDirectionFriends] = useState(moveDown[0]);
-    const [directionFriends2, setDirectionFriends2] = useState(death1[0]);
+    const [directionFriends2, setDirectionFriends2] = useState(moveDown[1]);
     const [currentFrame, setCurrentFrame] = useState(0);
 
     useEffect(() => {
@@ -58,7 +61,6 @@ const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
             }
             friendsCoord.set(friendsCoord.x + move.x, friendsCoord.y + move.y, 0);
             if (i === 0) {
-                console.log(infoFriends[0].hp);
                 if (infoFriends[0].hp - 0 > 0) {
                     let direction = moveDown;
                     if (move.x != 0 || move.y != 0) {
@@ -108,6 +110,7 @@ const Friends: React.FC<IPropsFriends> = memo(({ infoFriends }) => {
             }
         });
     });
+
     return (
         <>
             {Array(infoFriends ? infoFriends.length : 0)

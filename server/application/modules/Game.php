@@ -20,6 +20,8 @@ class Game {
     function updateScene($updateTimestamp, $updateTimeout) {
         if (time() - $updateTimestamp >= $updateTimeout) {
             $this->db->updateTimestamp(time());
+
+            
             // удалить мёртвых игроков
             // если у игрока статус "умер" - удалить его из БД
 
@@ -79,6 +81,8 @@ class Game {
     }
     function updateHp($gamerName, $gamerHp){
         $user = $this->db->getUserByName($gamerName);
+        $hash = md5(rand(0, 100000));
+        $this->db->updateGamersHash($hash);
         $this->db->updateHp($user->id, $gamerHp);
     }
 

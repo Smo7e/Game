@@ -38,7 +38,6 @@ const BossFriends: React.FC<BossFriendsProps> = ({ infoMobs }) => {
         if (bossCoord.y + eps >= infoMobs[0].y - 0 && bossCoord.y - eps <= infoMobs[0].y - 0) {
             move.y = 0;
         }
-        console.log(move);
         let direction = moveDown;
 
         if (Math.abs(infoMobs[0].y - 0 - bossCoord.y) > Math.abs(infoMobs[0].x - 0 - bossCoord.x)) {

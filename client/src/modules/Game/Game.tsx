@@ -27,7 +27,16 @@ const Game: React.FC = () => {
             }
         };
         mediator.subscribe(GET_SCENE, getSceneHandler);
-
+        if (!mediator.triger) {
+            let srAr = 0;
+            infoFriends?.forEach((elem) => {
+                srAr += Math.sqrt(
+                    Math.pow((infoMobs ? infoMobs[0].x : 0) - elem.x - 0, 2) +
+                        Math.pow((infoMobs ? infoMobs[0].y : 0) - elem.y - 0, 2)
+                );
+            });
+            if (srAr / (infoFriends ? infoFriends?.length : 0) < 5) mediator.triger = true;
+        }
         return () => {
             mediator.unsubscribe(GET_SCENE, getSceneHandler);
             server.stopGameInterval();

@@ -1,9 +1,10 @@
 import { useFrame } from "@react-three/fiber";
-import React, { useContext, useState, memo, useEffect } from "react";
+import React, { useContext, useState, memo } from "react";
 import { useRef } from "react";
 
 import useSprites from "../hooks/sprites/useSprites";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
+
 import { Vector3 } from "three";
 import { MediatorContext, ServerContext } from "../../App";
 import useControls from "../hooks/controls/useControls";
@@ -15,6 +16,7 @@ const Player: React.FC<PlayerProps> = memo((infoFriends) => {
     const mediator = useContext(MediatorContext);
     const personRef = useRef<RapierRigidBody>(null);
     const [death, moveDown, moveRight, moveUp, moveLeft] = useSprites(mediator.gamer.person_id);
+    const [limitationОfSending, setLimitationОfSending] = useState(0);
 
     const controls = useControls();
     const [cameraPosition, setCameraPosition] = useState(new Vector3(0, 0, 14));
@@ -59,7 +61,10 @@ const Player: React.FC<PlayerProps> = memo((infoFriends) => {
             const newPosition = cameraPosition.lerp(cameraMove, 0.1);
             setCameraPosition(newPosition);
             state.camera.position.copy(newPosition);
-            server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y, "alive");
+            if (limitationОfSending % 50 === 0) {
+                server.move("walk", personRef.current!.translation().x, personRef.current!.translation().y, "alive");
+            }
+            setLimitationОfSending(limitationОfSending + 1);
         }
     });
 

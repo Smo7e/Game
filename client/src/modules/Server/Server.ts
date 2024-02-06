@@ -142,11 +142,11 @@ export default class Server {
     async getGamers() {
         return await this.request("getGamers", {});
     }
-    move(direction: string, x: number, y: number, status: string) {
-        return this.request("move", { direction, x, y, status });
+    async move(direction: string, x: number, y: number, status: string) {
+        return await this.request("move", { direction, x, y, status });
     }
-    moveMobs(x: number, y: number) {
-        return this.request("moveMobs", { x, y });
+    async moveMobs(x: number, y: number) {
+        return await this.request("moveMobs", { x, y });
     }
     getUserById(idFriend: number) {
         return this.request("getUserById", { idFriend: idFriend });

@@ -168,8 +168,10 @@ class DB {
         return $this->preparationQuery($query, [ $userId])->fetchAll(PDO::FETCH_OBJ);
     }
     function updateHp($userId, $gamerHp){
+        $hp = 'SELECT `hp` FROM `gamers` WHERE `user_id` = ?';
+        $hp2 =  $this->preparationQuery($hp,[$userId])->fetch(PDO::FETCH_OBJ);
         $query = 'UPDATE gamers SET hp=? WHERE user_id=?';
-        $this->preparationQuery($query, [$gamerHp, $userId]);
+        $this->preparationQuery($query, [$hp2->hp-5, $userId]);
     }
     
 }

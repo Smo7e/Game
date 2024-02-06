@@ -18,17 +18,29 @@ const FriendLobby1: React.FC<IFriendLobby1Props> = ({ setPanel, gamers }) => {
                 <div id="test-image-rack1" className="image-rack1">
                     <div onClick={() => setPanel(EPANEL.ADDAFRIEND1)} id="test-friend" className="friend"></div>
                 </div>
-            ) : gamers.length === 2 &&
-              mediator.user.name === mediator.gamers[1].name &&
-              lobbyFriend1 === ELOBBY.SPORTIK ? (
+            ) : gamers.length > 1 && gamers && mediator.user.name != gamers[1].name ? (
+                <>
+                    {gamers && gamers[1].person_id - 0 === 0 ? (
+                        <div className="image-Sportik1">
+                            <button className="button">&lt;Спортик&gt;</button>
+                        </div>
+                    ) : gamers && gamers[1].person_id - 0 === 1 ? (
+                        <div className="image-techguy1">
+                            <button className="button">&lt;Технарь&gt;</button>
+                        </div>
+                    ) : gamers && gamers[1].person_id - 0 === 2 ? (
+                        <div className="image-humanitarian1">
+                            <button className="button">&lt;Гуманитарий&gt;</button>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
+                </>
+            ) : lobbyFriend1 === ELOBBY.SPORTIK ? (
                 <SportikLobby lobby={setLobbyFriend1} gamerNumber={1} />
-            ) : gamers.length === 3 &&
-              mediator.user.name === mediator.gamers[1].name &&
-              lobbyFriend1 === ELOBBY.HUMANITARIAN ? (
+            ) : lobbyFriend1 === ELOBBY.HUMANITARIAN ? (
                 <HumanitarianLobby lobby={setLobbyFriend1} gamerNumber={1} />
-            ) : gamers.length === 3 &&
-              mediator.user.name === mediator.gamers[1].name &&
-              lobbyFriend1 === ELOBBY.TECHGUY ? (
+            ) : lobbyFriend1 === ELOBBY.TECHGUY ? (
                 <TechguyLobby lobby={setLobbyFriend1} gamerNumber={1} />
             ) : (
                 <div id="test-image-rack1" className="image-rack1"></div>

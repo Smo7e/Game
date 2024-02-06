@@ -5,10 +5,12 @@ import useSprites from "../hooks/sprites/useSprites";
 import React, { memo, useContext, useEffect, useRef } from "react";
 import { Mesh, MeshStandardMaterial, PlaneGeometry, Texture, Vector3 } from "three";
 import usePositionMatrix from "../hooks/positionMatrix/usePositionMatrix";
-import { ServerContext } from "../../App";
+import { MediatorContext, ServerContext } from "../../App";
 
 const Boss: React.FC = memo(() => {
     const server = useContext(ServerContext);
+    const mediator = useContext(MediatorContext);
+
     const bossRef = useRef<RapierRigidBody>(null);
     const bossPositionRef = useRef<Mesh>(null);
     const spriteRef = useRef<MeshStandardMaterial>(null);
@@ -26,6 +28,7 @@ const Boss: React.FC = memo(() => {
     let distances = 0;
     useFrame(() => {
         if (!bossRef.current) return;
+        if (!mediator.triger) return;
         let x;
         let y;
         if (canPosition) {
@@ -104,7 +107,7 @@ const Boss: React.FC = memo(() => {
     function rndNumber(min: number, max: number) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
-    function CheckPosition() {
+    function CheckPositionMatrix() {
         return (
             <>
                 {position.map((elem, index) => {
@@ -127,14 +130,14 @@ const Boss: React.FC = memo(() => {
     }
     return (
         <>
-            {/* <CheckPosition /> */}
+            {/* <CheckPositionMatrix /> */}
             <RigidBody gravityScale={10} position={[8, -3, 0]} ref={bossRef} lockRotations mass={50}>
                 <mesh>
                     <boxGeometry args={[0.8, 0.8, 1]} />
                     <meshStandardMaterial transparent opacity={0} />
                 </mesh>
             </RigidBody>
-            <mesh ref={bossPositionRef}>
+            <mesh ref={bossPositionRef} position={[8, -3, 0]}>
                 <planeGeometry args={[1, 1]} />
                 <meshStandardMaterial ref={spriteRef} map={moveDown[0]} transparent />
             </mesh>

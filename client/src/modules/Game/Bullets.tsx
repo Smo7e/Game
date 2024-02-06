@@ -3,7 +3,7 @@ import { Mesh, TextureLoader } from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
 import fireBall from "./image/Bullets/fireBall.png";
 import { TGamer, TMobs } from "../Server/types";
-import { ServerContext } from "../../App";
+import { MediatorContext, ServerContext } from "../../App";
 
 interface IPropsBullets {
     infoFriends: TGamer[] | null;
@@ -11,12 +11,16 @@ interface IPropsBullets {
 }
 const Bullets: React.FC<IPropsBullets> = memo(({ infoFriends, infoMobs }) => {
     const server = useContext(ServerContext);
+    const mediator = useContext(MediatorContext);
+
     const [bulletsRefs, setbulletsRefs] = useState<any>([]);
     const [arrBullet, setArrBullet] = useState<any>([]);
 
     const bulletsSpeed = 0.1;
-
+    const triger = false;
     useFrame(() => {
+        if (!mediator.triger) return;
+
         if (arrBullet.filter((n: any) => n).length === 0) {
             setArrBullet(arrBullet.filter((n: any) => n));
         }

@@ -36,7 +36,7 @@ const TechguyLobby: React.FC<ITechguyLobbyProps> = ({ lobby, gamerNumber }) => {
                     <button onClick={rightArrowHandler} className="arrow-2Friend1"></button>
                     <button onClick={leftArrowHandler} className="arrow-3Friend1"></button>
 
-                    <div className="image-techguy">
+                    <div className="image-techguy1">
                         <button className="button">&lt;Технарь&gt;</button>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ const TechguyLobby: React.FC<ITechguyLobbyProps> = ({ lobby, gamerNumber }) => {
                     <button onClick={rightArrowHandler} className="arrow-2Friend2"></button>
                     <button onClick={leftArrowHandler} className="arrow-3Friend2"></button>
 
-                    <div className="image-techguy">
+                    <div className="image-techguy2">
                         <button className="button">&lt;Технарь&gt;</button>
                     </div>
                 </div>
