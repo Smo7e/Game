@@ -106,4 +106,11 @@ class Game {
     function getQuestionsProgrammer(){
         return $this->db->getQuestionsProgrammer();
     }
+
+    function updateSpeedBoss(){
+        $hash = md5(rand(0, 100000));
+        $this->db->updateMobsHash($hash);
+        $this -> db -> updateSpeedBoss();
+        
+    }
 }
