@@ -186,5 +186,15 @@ class DB {
         return $this->preparationQuery($query, [])->fetchAll(PDO::FETCH_OBJ);
 
     }
+
+    function updateBossSpeed($newSpeed) {
+        $currentSpeedQuery = 'SELECT `speed` FROM `boss`';
     
+        $currentSpeedResult = $this->preparationQuery($currentSpeedQuery, [])->fetch(PDO::FETCH_OBJ);
+        $currentSpeed = $currentSpeedResult->speed;
+
+        $updateQuery = 'UPDATE `boss` SET `speed` = ? ';
+        $this->preparationQuery($updateQuery, [$newSpeed]);
+
+    }
 }
