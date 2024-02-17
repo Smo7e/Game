@@ -243,4 +243,8 @@ class Application {
     return $this->game->getMobs();
    }
 
+   function updateSpeedBoss(){
+       return $this->game->updateSpeedBoss();
+   }
+
 }
